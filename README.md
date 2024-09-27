@@ -3,6 +3,44 @@
 > 매일의 학습, 끊임없는 성장
 ---
 
+<table>
+  <tr>
+    <td align="center" width="150px">
+      <a href="https://github.com/dldydtn0805" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/139421083?v=4" alt="dldydtn0805" width="100" height="100" />
+      </a>
+    </td>
+    <td align="center" width="150px">
+      <a href="https://github.com/yeongjunsgit" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/139421121?v=4" alt="yeongjunsgit" width="100" height="100" />
+      </a>
+    </td>
+    <td align="center" width="150px">
+      <a href="https://github.com/minkyu-1180" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/139421158?v=4" alt="minkyu-1180" width="100" height="100" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/dldydtn0805" target="_blank">
+        dldydtn0805
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/yeongjunsgit" target="_blank">
+        yeongjunsgit
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/minkyu-1180" target="_blank">
+        minkyu-1180
+      </a>
+    </td>
+  </tr>
+</table>
+
+
 이 레포지토리는 우리 그룹의 'Today I Learned' (TIL) 내용을 공유하는 특별한 공간입니다. 매일 배운 새로운 지식, 기술, 통찰을 기록하고 팀원들과 공유함으로써 집단 지성을 활용하고 지속적인 학습 문화를 만들어갑니다.
 
 ## 🎯 목적
