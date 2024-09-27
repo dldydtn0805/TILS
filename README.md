@@ -115,9 +115,9 @@ LGTM 원칙을 팀 내에서 적용해 보기로 결정했다.
 
 ## 📊 통계
 
-![기여자](https://img.shields.io/github/contributors/dldydtn0805/repo)
-![총 TIL 수](https://img.shields.io/github/directory-file-count/dldydtn0805/repo)
-![마지막 커밋](https://img.shields.io/github/last-commit/dldydtn0805/repo)
+![기여자](https://img.shields.io/github/contributors/dldydtn0805/TILS)
+![총 TIL 수](https://img.shields.io/github/directory-file-count/dldydtn0805/TILS)
+![마지막 커밋](https://img.shields.io/github/last-commit/dldydtn0805/TILS)
 
 ## 📜 라이선스
 
