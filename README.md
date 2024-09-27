@@ -1,6 +1,7 @@
-# 🌟 그룹 TIL (Today I Learned) 레포지토리
+# 🌟 세상에서 제일 열심히 하는 사람들의 Today I Learned 🌟
 
-![TIL Banner](https://via.placeholder.com/800x200?text=Welcome+to+Our+Group+TIL)
+> 매일의 학습, 끊임없는 성장
+---
 
 이 레포지토리는 우리 그룹의 'Today I Learned' (TIL) 내용을 공유하는 특별한 공간입니다. 매일 배운 새로운 지식, 기술, 통찰을 기록하고 팀원들과 공유함으로써 집단 지성을 활용하고 지속적인 학습 문화를 만들어갑니다.
 
@@ -13,11 +14,9 @@
 
 ## 🔍 참여 방법
 
-1. 이 레포지토리를 **Fork** 합니다.
-2. 새로운 내용을 학습했다면, 적절한 폴더에 마크다운(.md) 파일을 생성합니다.
-3. 파일명은 `YYYYMMDD-주제.md` 형식을 따릅니다. (예: `20240927-git-basics.md`)
-4. 내용을 작성하고 커밋합니다.
-5. **Pull Request**를 생성하여 메인 레포지토리에 병합을 요청합니다.
+1. 새로운 내용을 학습했다면, 적절한 폴더에 마크다운(.md) 파일을 생성합니다.
+2. 파일명은 `YYYYMMDD-주제.md` 형식을 따릅니다. (예: `20240927-git-basics.md`)
+3. 내용을 작성하고 커밋합니다.
 
 ## 📂 폴더 구조
 
@@ -119,10 +118,6 @@ LGTM 원칙을 팀 내에서 적용해 보기로 결정했다.
 ![기여자](https://img.shields.io/github/contributors/dldydtn0805/TILS)
 ![총 TIL 수](https://img.shields.io/github/directory-file-count/dldydtn0805/TILS)
 ![마지막 커밋](https://img.shields.io/github/last-commit/dldydtn0805/TILS)
-
-## 📜 라이선스
-
-이 프로젝트는 [MIT 라이선스](LICENSE)에 따라 라이선스가 부여됩니다.
 
 ---
 
