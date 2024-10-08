@@ -1,7 +1,7 @@
 # 정보 처리 기사(필기)
 ## Ch 01. 소프트웨어 설계 
-### 01-00.  
-출처 : [Youtube_[이기적 영진 닷컴 - 정보처리기사 필기 절대족보(2024년)]](https://www.youtube.com/playlist?list=PL6i7rGeEmTvqEjTJF3PJR4a1N9KTPpfw0)
+### 01-00. 
+출처 : [네이버 블로그_[함공의 공부방]](https://m.blog.naver.com/wook2124)
 
 #### 마크다운 양식
 *기울임*
