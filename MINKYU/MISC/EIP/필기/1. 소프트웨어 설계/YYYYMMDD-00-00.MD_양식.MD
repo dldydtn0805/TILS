@@ -1,7 +1,7 @@
 # 정보 처리 기사(필기)
 ## Ch 01. 소프트웨어 설계 
 ### 01-00. 
-출처 : [네이버 블로그_[함공의 공부방]](https://m.blog.naver.com/wook2124)
+출처 : 출처 : [Youtube_[길벗시나공 - 시나공 정보처리기사 필기 기본서]](https://www.youtube.com/playlist?list=PLpYNFXUfkvDoPPqElgpoSJQwUJ7GrWr-v)
 
 #### 마크다운 양식
 *기울임*
