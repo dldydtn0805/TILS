@@ -4,8 +4,22 @@
 
 #### 🔄 [매일 고정적으로 해야할 일]
 - 알고리즘 풀이
+- 프로그래머스 SQL 문제 풀이
+  
 #### 🔴 [우선순위 상]
-- 프로그래머스 SQL 문제 풀어보기
+  
+#### 🟡 [우선순위 중]
+      
+#### 🔵 [우선순위 하]
+
+- Spring 김영한 강의 구매하기
+- [카카오 네비 클론 코딩](https://github.com/dldydtn0805/KAKAONAVI)
+    - Express
+    - React + TypeScript
+        - TanstackQuery + Zustand
+        - Emotion
+    - MSW + Jest + Playwright
+ 
 - 정보처리기사
     - 기출 빈도 순
       1. [10장] 프로그래밍 언어의 활용  
@@ -15,23 +29,13 @@
       5. [9장] 소프트웨어 개발 보안 구축
       6. [7장] 애플리케이션 테스트 관리
       7. [1장] 요구사항 확인 중 `UML 다이어그램`
-  
-#### 🟡 [우선순위 중]
-      
-#### 🔵 [우선순위 하]
-
-- Java 기초 문법 배우기
-- Spring 김영한 강의 구매하기
-- [카카오 네비 클론 코딩](https://github.com/dldydtn0805/KAKAONAVI)
-    - Express
-    - React + TypeScript
-        - TanstackQuery + Zustand
-        - Emotion
-    - MSW + Jest + Playwright
-    - 
+          
 #### ⚫ [완료]
 
+- ~~Java 기초 문법 배우기~~
 - ~~리액트 강의 다시 듣기~~
 - ~~정보처리기사 책 구매~~
 - ~~국민은행 AI 역량검사~~
 - ~~Java 기초 세팅 배우기~~
+
+
