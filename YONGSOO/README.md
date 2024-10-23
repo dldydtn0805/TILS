@@ -12,7 +12,7 @@
       
 #### 🔵 [우선순위 하]
 
-- Spring 김영한 강의 구매
+- Spring 김영한 강의
 - [카카오 네비 클론 코딩](https://github.com/dldydtn0805/KAKAONAVI)
     - Express
     - React + TypeScript
