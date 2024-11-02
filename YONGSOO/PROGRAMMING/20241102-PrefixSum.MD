@@ -43,5 +43,4 @@ rl.on('line', (line: string) => {
     }
     console.log(ans)
 });
-
 ```
