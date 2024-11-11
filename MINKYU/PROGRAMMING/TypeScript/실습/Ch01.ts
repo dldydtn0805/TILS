@@ -42,3 +42,4 @@ let project :projectType = {
     days : 30,
     started : true,
 }
+console.log(project);

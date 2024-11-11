@@ -12,7 +12,7 @@ function func1(name?:string) :string{
     return "이름이 없습니다";
 }
 
-console.log(func1("홍길동")); // "안녕하세요 홍길동" 출력
+console.log(func1("kim")); // "안녕하세요 홍길동" 출력
 console.log(func1()); // "이름이 없습니다" 출력
 
 
@@ -30,7 +30,7 @@ function func2(param :(number | string)) :number {
         return param.toString().length;
     }
 }
-
+console.log(func2(2));
 
 /* Q3. 
 결혼 가능 확률을 알려주는 함수를 만들어봅시다.

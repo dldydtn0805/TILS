@@ -1,11 +1,9 @@
 // Union Type
-
 // 기본적인 변수타입의 Union : 할당 순간 정해짐
-let 나의이름 :string | number;
-나의이름 = "kim";
-let 나의나이 :(string | number);
-나의나이 = 27;
-
+const 나의이름 :string | number = "kim";
+const 나의나이 :(string | number) = 27;
+console.log(나의이름);
+console.log(나의나이);
 // Array, Object 타입의 Union : 할당과 상관 없이 Union
 let 숫자들 :(number | string)[];
 숫자들 = [1, '2', 3];
