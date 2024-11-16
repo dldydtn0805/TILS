@@ -1,6 +1,6 @@
 # TypeScript
 ## Ch13. protected & static 키워드
-출처 : [코딩 애플](https://codingapple.com/unit/how-to-install-typescript-in-local-vue-react/?id=11721)
+출처 : [코딩 애플](https://codingapple.com/course/typescript-crash-course/)
 
 ### 1. extends
 앞서 배운 extends : interface 복사 키워드

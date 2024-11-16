@@ -1,6 +1,6 @@
 # TypeScript
 ## Ch10. 함수 rest 파라미터와 destructuring 타입 지정
-출처 : [코딩 애플](https://codingapple.com/unit/how-to-install-typescript-in-local-vue-react/?id=11721)
+출처 : [코딩 애플](https://codingapple.com/course/typescript-crash-course/)
 
 ### 1. rest
 rest : 함수에 들어오는 파라미터의 개수를 확정지을 수 없을 때 사용하는 파라미터 표기법

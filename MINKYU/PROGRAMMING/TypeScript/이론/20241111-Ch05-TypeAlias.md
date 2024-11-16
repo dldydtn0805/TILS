@@ -1,6 +1,6 @@
 # TypeScript
 ## Ch05. Type Alias & ReadOnly
-출처 : [코딩 애플](https://codingapple.com/unit/how-to-install-typescript-in-local-vue-react/?id=11721)
+출처 : 출처 : [코딩 애플](https://codingapple.com/course/typescript-crash-course/)
 
 ### 1. Type Alias
 Type Alias : `type` 키워드를 활용하여 특정 타입을 변수화하는 것

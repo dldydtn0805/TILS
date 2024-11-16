@@ -1,6 +1,6 @@
 # TypeScript
 ## Ch06. Literal Type
-출처 : [코딩 애플](https://codingapple.com/unit/how-to-install-typescript-in-local-vue-react/?id=11721)
+출처 : 출처 : [코딩 애플](https://codingapple.com/course/typescript-crash-course/)
 
 ### 1. Literal Type
 Literal Type : 특정 글자나 숫자만 가질 수 있도록 제한을 두는 타입 지정 방법

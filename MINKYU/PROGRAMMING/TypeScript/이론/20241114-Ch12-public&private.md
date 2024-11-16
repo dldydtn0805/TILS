@@ -1,6 +1,6 @@
 # TypeScript
 ## Ch012. public & private
-출처 : [코딩 애플](https://codingapple.com/unit/how-to-install-typescript-in-local-vue-react/?id=11721)
+출처 : [코딩 애플](https://codingapple.com/course/typescript-crash-course/)
 
 ### 1. public과 privte 키워드
 타입스크립트의 장점 : JS에 없는 객체지향 언어 지원 문법, 키워드 사용 가능

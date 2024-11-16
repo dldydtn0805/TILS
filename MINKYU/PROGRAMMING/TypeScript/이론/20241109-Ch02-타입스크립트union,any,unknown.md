@@ -1,6 +1,6 @@
 # TypeScript
 ## Ch02. Union, Any, Unknown 타입
-출처 : [코딩 애플](https://codingapple.com/unit/how-to-install-typescript-in-local-vue-react/?id=11721)
+출처 : 출처 : [코딩 애플](https://codingapple.com/course/typescript-crash-course/)
 
 ### 1. 애매한 타입 설정
 Q. 만약 변수에 들어갈 값들의 타입이 확실하지 않을 경우?

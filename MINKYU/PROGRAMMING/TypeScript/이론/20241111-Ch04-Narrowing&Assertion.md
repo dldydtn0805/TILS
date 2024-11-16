@@ -1,6 +1,6 @@
 # TypeScript
 ## Ch04. Narrowing & Assertion
-출처 : [코딩 애플](https://codingapple.com/unit/how-to-install-typescript-in-local-vue-react/?id=11721)
+출처 : 출처 : [코딩 애플](https://codingapple.com/course/typescript-crash-course/)
 
 ### 0. 인트로
 TypeScript의 장점 : 명확한 타입 지정

@@ -1,6 +1,6 @@
 # TypeScript
 ## Ch09. Interface
-출처 : [코딩 애플](https://codingapple.com/unit/how-to-install-typescript-in-local-vue-react/?id=11721)
+출처 : [코딩 애플](https://codingapple.com/course/typescript-crash-course/)
 
 ### 1. Interface
 Interface : Object자료형의 타입을 보다 편리하게 지정하기 위한 Type Alias 방식
