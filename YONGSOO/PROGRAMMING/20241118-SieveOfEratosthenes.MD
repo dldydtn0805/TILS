@@ -44,7 +44,7 @@ rl.on('line', (line: string) => {
     for (let i = 2 ; i < N+1; i++) {
         let flag = true
         if (colors[i] === 0) {
-            for (let j = 2; j < i**(0.5)-1; j++) {
+            for (let j = 2; j <= i**(0.5); j++) {
                 if (i % j === 0) {
                     flag = false
                 }
