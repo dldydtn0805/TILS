@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div,
+      h2 {
+        border: 1px solid grey;
+        /* display: none;
+        visibility: hidden; */
+      }
+      span,
+      a {
+        border: 1px solid blue;
+      }
+      article > div,
+      article > span {
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Display</h1>
+    <hr />
+
+    <h2>display: block;</h2>
+    <div>content</div>
+    <div>content</div>
+    <div>content</div>
+    <hr />
+
+    <h2>display: inline;</h2>
+    <span>content</span>
+    <span>content</span>
+    <span>content</span>
+    <a href="www.naver.com">네이버</a>
+    <hr />
+
+    <h2>display: inline-block;</h2>
+    <article>
+      <div>content</div>
+      <span>content</span>
+    </article>
+  </body>
+</html>

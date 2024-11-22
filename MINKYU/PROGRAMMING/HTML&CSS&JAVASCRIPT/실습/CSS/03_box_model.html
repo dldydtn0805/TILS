@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div.content {
+        background-color: blue;
+        /* content 영역 높이 너비 */
+        width: 200px;
+        height: 200px;
+        /* padding 영역 */
+        padding: 20px;
+        /* border 영역 */
+        border: 10px solid black;
+        margin: 40px;
+      }
+      span {
+        /* inline 요소에 Content 범위 적용 X */
+        width: 100px;
+        height: 100px;
+        /* 적용하고 싶을 경우, display 속성값 변경 */
+        display: inline-block;
+        border: 1px solid red;
+      }
+      div.padding {
+        border: 1px solid black;
+        padding: 10px 20px;
+      }
+      div.margin {
+        border: 1px solid black;
+        margin: 10px;
+        /* padding-left: 10px; */
+      }
+      div.content-box {
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 10px solid yellow;
+        margin: 10px;
+      }
+      div.border-box {
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 10px solid yellow;
+        margin: 10px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content"></div>
+    <span>HIHIHIHI</span>
+    <div class="padding">
+      백종원 김치볶음밥 센불만 기억하면 끝~! 이제 시작해볼게요! 재료를
+      준비해주시구요! 신혼집이라 양가부모님댁에서 얻은 김치로 잘 먹고 있는데요
+      김치가 많이 익은지라 설탕 1스푼을 넣어서 신맛을 잡아줬어요 팬에 올리브유를
+      넉넉하게 부은 다음 대파를 볶아주세요 백종원 김치볶음밥의 핵심포인트는
+      센불인데요! 센불에 달달 볶아주면 대파 향이 스물스물 올라온답니다 대파향이
+      올라오면 그때 베이컨을 넣어주세요 저는 베이컨 3장을 사용했어요 이때도
+      마찬가지로 센불은 유지해주세요 다음 간장 1스푼을 넣어주세요 " 대파 ▶
+    </div>
+    <div class="margin">
+      백종원 김치볶음밥 센불만 기억하면 끝~! 이제 시작해볼게요! 재료를
+      준비해주시구요! 신혼집이라 양가부모님댁에서 얻은 김치로 잘 먹고 있는데요
+      김치가 많이 익은지라 설탕 1스푼을 넣어서 신맛을 잡아줬어요 팬에 올리브유를
+      넉넉하게 부은 다음 대파를 볶아주세요 백종원 김치볶음밥의 핵심포인트는
+      센불인데요! 센불에 달달 볶아주면 대파 향이 스물스물 올라온답니다 대파향이
+      올라오면 그때 베이컨을 넣어주세요 저는 베이컨 3장을 사용했어요 이때도
+      마찬가지로 센불은 유지해주세요 다음 간장 1스푼을 넣어주세요 " 대파 ▶
+    </div>
+    <!-- box-sizing -->
+    <div class="content-box"></div>
+    <div class="border-box"></div>
+  </body>
+</html>

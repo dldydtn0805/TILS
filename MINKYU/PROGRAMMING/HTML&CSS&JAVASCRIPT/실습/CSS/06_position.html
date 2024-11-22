@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      main,
+      section,
+      article,
+      div {
+        border: 1px solid black;
+        padding: 20px;
+      }
+      main {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: yellow;
+      }
+      section {
+        background-color: violet;
+      }
+      article {
+        background-color: cyan;
+      }
+      div {
+        background-color: white;
+      }
+
+      div.static {
+        position: static;
+        top: 0px;
+        left: 0px;
+        background-color: red;
+      }
+      div.relative {
+        position: relative;
+        top: 5px;
+        left: 5px;
+        background-color: orange;
+      }
+      div.absolute {
+        position: absolute;
+        background-color: yellow;
+        top: 0px;
+        left: 0px;
+      }
+      div.fixed {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        background-color: green;
+      }
+      div.sticky {
+        position: sticky;
+        background-color: blue;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      main
+      <section>
+        section
+        <article>
+          article
+          <div class="static">static</div>
+          <div class="relative">relative</div>
+          <div class="absolute">absolute</div>
+          <div class="fixed">fixed</div>
+          <div class="sticky">sticky</div>
+          <div style="height: 1000px"></div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

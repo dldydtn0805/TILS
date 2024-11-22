@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      fieldset:hover {
+        background-color: lightgrey;
+        box-shadow: 0 0 20px grey;
+      }
+      a {
+        font-size: 30px;
+      }
+      /* a 태그의 링크 부분에 대한 스타일 */
+      a:link {
+        color: cyan;
+      }
+      /* a 태그 주소를 고른 적 있을 경우에 대한 스타일 */
+      a:visited {
+        color: red;
+      }
+      /* a 태그 위에 마우스를 놓을 경우에 대한 스타일 */
+      a:hover {
+        color: blue;
+        font-weight: 900;
+      }
+      a:active {
+        color: yellow;
+      }
+
+      div.field {
+        margin-bottom: 10px;
+      }
+      input:hover {
+        outline: none;
+        border: 3px solid pink;
+        background-color: pink;
+        box-shadow: 0 0 20px pink;
+      }
+      input:focus {
+        outline: none;
+        border: 3px solid red;
+        background-color: red;
+        box-shadow: 0 0 20px red;
+      }
+      li:nth-child(even) {
+        background-color: yellow;
+      }
+      li:nth-child(odd) {
+        background-color: lime;
+      }
+
+      /* 가상 요소 */
+      .required-label::before {
+        content: '*';
+        margin-right: 2px;
+        color: red;
+        font-size: 18px;
+      }
+      .required-input::after {
+        content: '*';
+        margin-left: 2px;
+        color: red;
+        font-size: 18px;
+      }
+
+      [data-tooltip] {
+        position: relative;
+      }
+      [data-tooltip]:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: 0px;
+        left: 56px;
+        background-color: black;
+        color: white;
+        width: 200px;
+      }
+
+      .letter::first-letter {
+        font-size: 60px;
+        color: blue;
+      }
+      .line::first-line {
+        background-color: yellow;
+        color: blue;
+        font-size: 20px;
+      }
+
+      p::selection {
+        background-color: skyblue;
+        color: white;
+      }
+      .letter::first-letter {
+        font-size: 60px;
+        color: blue;
+      }
+      .line:first-line {
+        background-color: yellow;
+        font-size: 30px;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Pseudo Class</legend>
+      <div>
+        <a href="https://naver.com" target="_blank">네이버</a>
+        <a href="https://kakao.com" target="_blank">카카오</a>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>focus, before, after</legend>
+      <div class="field">
+        <label class="required-label" for="name">이름</label>
+        <input class="required-input" type="text" id="name" />
+      </div>
+      <div class="field">
+        <label class="required-label" for="age">나이</label>
+        <input class="required-input" type="text" id="age" />
+      </div>
+      <button data-tooptip="ㅋㅋ">보내기</button>
+    </fieldset>
+    <fieldset>
+      <legend>nth-child, not</legend>
+      <ul>
+        <li class="target">1 content</li>
+        <li class="target">2 content</li>
+        <li class="target">3 content</li>
+        <li class="target">4 content</li>
+        <li class="target">5 content</li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <legend>first-letter, first-line</legend>
+      <p class="letter">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+      <p class="line">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </fieldset>
+  </body>
+</html>
