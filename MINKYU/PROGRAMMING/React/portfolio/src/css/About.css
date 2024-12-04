@@ -1,0 +1,96 @@
+/* About.css */
+
+.about-container {
+  padding: 10px;
+}
+
+.section-title {
+  padding: 10px; /* 패딩 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  margin-bottom: 15px; /* 아래 여백 */
+  text-align: center; /* 왼쪽 정렬 */
+  width: 100%; /* 전체 너비 */
+}
+
+/* 각 섹션별 제목 배경색 설정 */
+.profile-title {
+  background-color: #e0f7fa; /* About Me 섹션 배경색 */
+}
+
+.certificate-title {
+  background-color: #ffe0b2; /* Certificates 섹션 배경색 */
+}
+
+.skills-title {
+  background-color: #e1bee7; /* Skills 섹션 배경색 */
+}
+
+/* section content */
+.section-content {
+  text-align: left; /* 왼쪽 정렬 */
+}
+
+/* 각 섹션 별 section, content 등 관련 설정 */
+.profile-section {
+  margin-bottom: 20px; /* 하단 여백 */
+}
+
+.profile-content {
+  /* padding-left: 0px; */
+  display: flex; /* 플렉스 박스 사용 */
+  align-items: flex-start; /* 수직 정렬 */
+  justify-content: start; /* 중앙 정렬 */
+  gap: 20px; /* 간격 설정 */
+}
+
+.profile-image {
+  width: 30%; /* 프로필 이미지 크기 */
+  height: fit-content; /* 프로필 이미지 크기 */
+  /* border-radius: 50%; 원형으로 만들기 */
+  /* padding: 0px; */
+}
+
+.education {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: start; /* 텍스트 왼쪽 정렬 */
+}
+
+.certifications-section,
+.skills-section {
+  margin: 20px 0; /* 상하 간격 */
+}
+
+.certificate {
+  list-style-type: none;
+  padding-left: 5px;
+}
+
+.skills {
+  display: flex; /* 플렉스 박스 사용 */
+  flex-direction: column; /* 세로로 배치 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  gap: 15px; /* 아이템 간격 */
+}
+
+.skill-item {
+  display: flex; /* 플렉스 박스 사용 */
+  justify-content: center;
+  width: 40%; /* 수직 정렬 */
+}
+
+.skill-icon {
+  width: 40px; /* 기술 스택 아이콘 크기 */
+  height: 40px; /* 기술 스택 아이콘 크기 */
+  margin-right: 10px; /* 아이콘과 텍스트 간격 */
+}
+.skill-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+.stars {
+  font-size: 1.2em; /* 별 크기 조정 */
+  color: #ffcc00; /* 별 색상 */
+}

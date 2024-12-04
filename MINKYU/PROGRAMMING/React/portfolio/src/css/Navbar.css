@@ -1,0 +1,49 @@
+/* Navigation Bar CSS */
+.nav {
+  background-color: #d68df8;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1030;
+}
+.nav-brand {
+  font-size: 24px;
+  color: #7918a5;
+}
+.nav-icons {
+  display: flex;
+  gap: 20px;
+}
+.nav-link {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #7918a5;
+}
+.nav-link:active {
+  color: #7918a5;
+}
+.nav-text {
+  display: none; /* 기본적으로 숨김 */
+  position: absolute; /* 절대 위치 지정 */
+  bottom: -40px; /* 아이콘 아래에 위치 */
+  background-color: rgba(255, 255, 255, 0.8); /* 배경색 */
+  padding: 5px 10px; /* 패딩 */
+  border-radius: 5px; /* 둥근 모서리 */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* 그림자 */
+  z-index: 1040; /* 다른 요소 위에 표시 */
+}
+
+.nav-link:hover .nav-text {
+  display: block;
+}
