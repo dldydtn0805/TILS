@@ -2,6 +2,16 @@
 body {
   margin-top: 56px;
 }
-.basic-bg {
-  background-color: lightpink;
+.app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
+.content {
+  flex: 1;
+  background-color: lightpink;
+  padding: 20px;
+}
+/* .basic-bg {
+  background-color: lightpink;
+} */

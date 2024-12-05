@@ -1,8 +1,10 @@
 import React from 'react';
 // stack 데이터 import
 import { stackType, stacks } from '../datas/Stacks';
+import { certificateType, certificates } from '../datas/Certificates';
 import '../App.css';
 import '../css/About.css'; // CSS 파일 import
+import { Table } from 'react-bootstrap';
 
 function AboutPage() {
   return (
@@ -24,7 +26,6 @@ function AboutPage() {
               삼성 청년 소프트웨어 아카데미(SSAFY) 10기 파이썬 비전공
               수료(2023.07 ~ 2024.06)
             </li>
-            {/* 추가 이력 사항 */}
           </ul>
         </div>
       </div>
@@ -32,11 +33,28 @@ function AboutPage() {
       <div className="certifications-section">
         <h2 className="section-title certificate-title">Certificates</h2>
         <div className="section-content">
-          <ul className="certificate">
-            <li>자격증 1</li>
-            <li>자격증 2</li>
-            {/* 추가 자격증 사항 */}
-          </ul>
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>자격증</th>
+                <th>합격 일자</th>
+                <th>유효 기간</th>
+                <th>발급 기관</th>
+              </tr>
+            </thead>
+            <tbody>
+              {certificates.map((certificate, index) => (
+                <tr key={index}>
+                  <td>{certificate.name}</td>
+                  <td>{certificate.passingDate}</td>
+                  <td>
+                    {certificate.expirationStart} ~ {certificate.expirationEnd}
+                  </td>
+                  <td>{certificate.Issuer}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </div>
       </div>
 

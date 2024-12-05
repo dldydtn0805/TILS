@@ -49,7 +49,7 @@ function ContactPage() {
             className="contact-img"
           />
           <span className="contact-text">
-            <button className="email-btn">이메일 보내기</button>
+            <a href="mailto:minkyu165@gmail.com">minkyu1655@gmail.com</a>
           </span>
         </div>
         <div className="contact-item naver">
@@ -58,8 +58,9 @@ function ContactPage() {
             alt="naver"
             className="contact-img"
           />
-          <button className="email-btn">이메일 보내기</button>
-          <span className="contact-text"></span>
+          <span className="contact-text">
+            <a href="mailto:minkyu1180@naver.com">minkyu1180@naver.com</a>
+          </span>
         </div>
       </div>
     </div>
