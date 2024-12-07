@@ -66,31 +66,31 @@
   padding-left: 5px;
 }
 
-.skills {
-  display: flex; /* 플렉스 박스 사용 */
-  flex-direction: column; /* 세로로 배치 */
-  align-items: flex-start; /* 왼쪽 정렬 */
-  gap: 15px; /* 아이템 간격 */
+.skills-content {
+  /* display: block;
+  direction: column;
+  align-items: center; */
+  /* padding: 5px 50px; */
+}
+
+.button-group {
+  margin: auto;
 }
 
 .skill-item {
-  display: flex; /* 플렉스 박스 사용 */
-  justify-content: center;
-  width: 40%; /* 수직 정렬 */
+  align-items: center;
+  text-align: center;
+  margin: auto;
 }
 
+.slider-container {
+  margin-left: 50px;
+  margin-right: 50px;
+}
 .skill-icon {
-  width: 40px; /* 기술 스택 아이콘 크기 */
-  height: 40px; /* 기술 스택 아이콘 크기 */
-  margin-right: 10px; /* 아이콘과 텍스트 간격 */
-}
-.skill-rating {
-  display: flex;
-  justify-content: space-between;
+  width: 200px;
+  height: 200px;
+  /* display: block; */
   align-items: center;
-  flex-grow: 1;
-}
-.stars {
-  font-size: 1.2em; /* 별 크기 조정 */
-  color: #ffcc00; /* 별 색상 */
+  margin: auto;
 }

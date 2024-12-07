@@ -1,7 +1,39 @@
-footer {
-  margin-top: auto;
-  padding-top: 10px;
+.footer {
   background-color: #747474;
   color: rgb(235, 230, 230);
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
   text-align: center;
+}
+
+.footer-contents {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.footer-title {
+  font-weight: bold;
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+.copyright {
+}
+
+.contact {
+}
+
+.sns {
 }
