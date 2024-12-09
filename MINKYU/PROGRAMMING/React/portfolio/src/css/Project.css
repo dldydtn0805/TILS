@@ -1,0 +1,38 @@
+.project-page {
+  padding: 20px;
+}
+
+.project-toggle-list {
+  position: fixed;
+  top: 60px;
+  left: 7px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.project-toggle {
+  cursor: pointer; /* 커서 포인터 */
+}
+
+.project-toggle-image {
+  width: 60px; /* 이미지 너비 */
+  height: 60px; /* 이미지 높이 */
+  border-radius: 50%; /* 동그란 모양 */
+  object-fit: cover; /* 이미지 비율 유지 */
+  transition: transform 0.3s; /* 호버 시 애니메이션 효과 */
+}
+
+.projet-description {
+  margin-top: 57px;
+}
+.project-toggle:hover .project-toggle-image {
+  transform: scale(1.1);
+}
+
+.description-container {
+  position: relative; /* 설명 컨테이너의 위치 설정 */
+  margin-bottom: 20px; /* 각 프로젝트 설명 간의 간격 */
+  /* margin-top: 0px; 상단 여백 추가 */
+  padding-top: 30px;
+}

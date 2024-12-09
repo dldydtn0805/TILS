@@ -17,7 +17,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage></HomePage>}></Route>
           <Route path="/about" element={<AboutPage></AboutPage>}></Route>
-          <Route path="/project" element={<ProjectPage></ProjectPage>}></Route>
+          <Route path="/project" element={<ProjectPage></ProjectPage>}>
+            <Route path="/project/healthscedule" element={<div>1</div>}></Route>
+            <Route path="/project/zigeum" element={<div>2</div>}></Route>
+            <Route path="/project/makja" element={<div>3</div>}></Route>
+          </Route>
           <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
           <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
         </Routes>
