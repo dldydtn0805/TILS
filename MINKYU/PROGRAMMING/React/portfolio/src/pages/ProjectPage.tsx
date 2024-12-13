@@ -5,7 +5,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { projectType, projects } from '../datas/Projects';
 import '../css/Project.css';
 
-import HealthSchedule from '../components/project/Healthscedule';
+import HealthSchedule from '../components/project/HealthSchedule';
 import Zigeum from '../components/project/Zigeum';
 import Makja from '../components/project/Makja';
 
@@ -37,23 +37,26 @@ function ProjectPage() {
 
   return (
     <div className="project-page">
-      <div className="project-toggle-list">
-        {projects.map((project) => (
-          <button
-            key={project.id}
-            className={`project-toggle ${
-              activeProject === project.id ? 'active' : ''
-            }`}
-            onClick={() => handleScrollToProject(project.id)}
-            style={{ background: 'none', border: 'none', padding: 0 }} // 기본 버튼 스타일 제거
-          >
-            <img
-              src={project.image}
-              alt={project.name}
-              className="project-toggle-image"
-            />
-          </button>
-        ))}
+      <div className="project-nav">
+        <p>Show My Project!</p>
+        <div className="project-toggle-list">
+          {projects.map((project) => (
+            <button
+              key={project.id}
+              className={`project-toggle ${
+                activeProject === project.id ? 'active' : ''
+              }`}
+              onClick={() => handleScrollToProject(project.id)}
+              style={{ background: 'none', border: 'none', padding: 0 }} // 기본 버튼 스타일 제거
+            >
+              <img
+                src={project.image}
+                alt={project.name}
+                className="project-toggle-image"
+              />
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="project-description">

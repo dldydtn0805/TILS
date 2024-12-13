@@ -1,50 +1,66 @@
+import '../../css/Project.css';
+import { stackType, stackSetType } from '../../datas/Projects';
+import { makjaStackSet } from '../../datas/Makja';
 const Makja = () => {
   return (
-    <div
-      style={{
-        border: '2px solid #007bff',
-        padding: '20px',
-        margin: '20px 0',
-      }}
-    >
-      <h2>Makja</h2>
-      <p>Makja 프로젝트에 대한 설명입니다.</p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
-      <p>
-        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-      </p>
+    <div className="project-container">
+      <div className="project-title">
+        <img
+          src={`${process.env.PUBLIC_URL}/assets/images/project/makja/logo.png`}
+          alt="막자 Logo"
+        />
+        <div className="project-info">
+          <h2>막자(Makja)</h2>
+          <div>
+            <p>기존의 단순한 디펜스 게임에서 벗어나고 싶은 사람</p>
+            <p>다양한 옵션을 통해 디펜스 게임을 즐기고 싶은 사람</p>
+            <p>3D로 구현된 게임을 즐기고 싶은 사람</p>
+            <p>
+              다양한 유저들과의 기록 경쟁을 통해 순위권을 차지하고 싶은 사람
+            </p>
+            <p>디펜스 게임 속에 직접 참여하여 플레이 하고 싶은 사람</p>
+            <p>
+              다양한 디펜스 게임이 출시되는 가운데, 직접 포탑을 설치하거나
+              본인의 레벨, 무기를 업그레이드하며 1인칭 3D로 즐길 수 있는 새로운
+              디펜스 게임, 막자(Makja)를 소개합니다!
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="project-tech-stack">
+        <h4>사용한 기술 스택</h4>
+        {makjaStackSet.map((set) => (
+          <div className="stack-set">
+            <h5>{set.name}</h5>
+            <ul>
+              {set.stacks.map((stack) => (
+                <li>
+                  <div>
+                    <img src={stack.image} alt="" />
+                    <p>{stack.name}</p>
+                  </div>
+                  <div>
+                    <p>{stack.description}</p>
+                    {stack.application.map((app) => (
+                      <p>{app}</p>
+                    ))}
+                    <p></p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="project-main-content">
+        <h4>주요 기능</h4>
+      </div>
+      <div className="project-my-work">
+        <h4>내가 구현한 기능</h4>
+      </div>
+      <div className="project-challenges">
+        <h4>도전과제 및 배운 점</h4>
+      </div>
     </div>
   );
 };

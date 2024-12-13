@@ -21,6 +21,16 @@ const projects: projectType[] = [
     image: `${process.env.PUBLIC_URL}/assets/images/project/makja/logo.png`, // 프로젝트 로고 이미지 경로
   },
 ];
+type stackType = {
+  name: string;
+  image: string;
+  description: string;
+  application: string[];
+};
+type stackSetType = {
+  name: string;
+  stacks: stackType[];
+};
 
-export type { projectType };
+export type { projectType, stackType, stackSetType };
 export { projects };
