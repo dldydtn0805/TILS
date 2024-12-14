@@ -1,6 +1,7 @@
 import '../../css/Project.css';
-import { stackType, stackSetType } from '../../datas/Projects';
+
 import { zigeumStackSet } from '../../datas/Zegium';
+import StacksAccordion from './StacksAccordion';
 const Zigeum = () => {
   return (
     <div className="project-container">
@@ -24,28 +25,7 @@ const Zigeum = () => {
       </div>
       <div className="project-tech-stack">
         <h4>사용한 기술 스택</h4>
-        {zigeumStackSet.map((set) => (
-          <div className="stack-set">
-            <h5>{set.name}</h5>
-            <ul>
-              {set.stacks.map((stack) => (
-                <li>
-                  <div>
-                    <img src={stack.image} alt="" />
-                    <p>{stack.name}</p>
-                  </div>
-                  <div>
-                    <p>{stack.description}</p>
-                    {stack.application.map((app) => (
-                      <p>{app}</p>
-                    ))}
-                    <p></p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <StacksAccordion stackSet={zigeumStackSet}></StacksAccordion>
       </div>
       <div className="project-main-content">
         <h4>주요 기능</h4>

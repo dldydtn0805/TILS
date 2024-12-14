@@ -1,7 +1,8 @@
 import '../../css/Project.css';
-import { stackType, stackSetType } from '../../datas/Projects';
 import { healthScheduleStackSet } from '../../datas/HealthSchedule';
-const HealthSchedule = () => {
+import StacksAccordion from './StacksAccordion';
+
+function HealthSchedule() {
   return (
     <div className="project-container">
       <div className="project-title">
@@ -27,28 +28,7 @@ const HealthSchedule = () => {
       </div>
       <div className="project-tech-stack">
         <h4>사용한 기술 스택</h4>
-        {healthScheduleStackSet.map((set) => (
-          <div className="stack-set">
-            <h5>{set.name}</h5>
-            <ul>
-              {set.stacks.map((stack) => (
-                <li>
-                  <div>
-                    <img src={stack.image} alt="" />
-                    <p>{stack.name}</p>
-                  </div>
-                  <div>
-                    <p>{stack.description}</p>
-                    {stack.application.map((app) => (
-                      <p>{app}</p>
-                    ))}
-                    <p></p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <StacksAccordion stackSet={healthScheduleStackSet}></StacksAccordion>
       </div>
       <div className="project-main-content">
         <h4>주요 기능</h4>
@@ -61,6 +41,6 @@ const HealthSchedule = () => {
       </div>
     </div>
   );
-};
+}
 
 export default HealthSchedule;
