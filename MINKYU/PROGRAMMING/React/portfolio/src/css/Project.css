@@ -73,11 +73,25 @@
 }
 
 .stacks-accordion {
-  background-color: transparent;
+  /* background-color: transparent; */
   border: none;
 }
 
 .stack-card {
   background-color: transparent;
   border: none;
+}
+
+.stack-toggle {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px;
+  font-size: 20px;
+  transition: all 0.3s ease-out;
+}
+
+.stack-toggle:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.1);
 }

@@ -5,55 +5,25 @@ const makjaStackSet: stackSetType[] = [
     name: 'BackEnd',
     stacks: [
       {
-        name: 'ERD Cloud',
-        image: '',
-        description: '',
-        application: ['a', 'b', 'c'],
-      },
-      {
-        name: 'Web RTC',
-        image: '',
-        description: '',
-        application: ['a', 'b', 'c'],
-      },
-      {
-        name: 'Web Socket',
-        image: '',
+        name: 'Spring',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/spring.png`,
         description: '',
         application: ['a', 'b', 'c'],
       },
     ],
   },
   {
-    name: 'FrontEnd',
+    name: 'Client',
     stacks: [
       {
-        name: 'Next.js',
-        image: '',
+        name: 'Unreal Engine',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/unreal.png`,
         description: '',
         application: ['', '', ''],
       },
       {
-        name: 'React Query',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Zustand',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'React Hook Form',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Anychart.js',
-        image: '',
+        name: 'C++',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/c++.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -63,20 +33,14 @@ const makjaStackSet: stackSetType[] = [
     name: 'Data',
     stacks: [
       {
-        name: 'Hadoop',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Apache Spark',
-        image: '',
+        name: 'MySQL',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/mysql.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Redis',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/redis.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -87,19 +51,25 @@ const makjaStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Git',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/git.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Notion',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/notion.png`,
+        description: '',
+        application: ['', '', ''],
+      },
+      {
+        name: 'Perforce',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/perforce.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Jira',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/jira.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -110,58 +80,7 @@ const makjaStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Figma',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-    ],
-  },
-  {
-    name: 'Cloud',
-    stacks: [
-      {
-        name: 'Amazon S3',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-    ],
-  },
-  {
-    name: 'Deployment',
-    stacks: [
-      {
-        name: 'Docker',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Jenkins',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-    ],
-  },
-  {
-    name: 'DevOps',
-    stacks: [
-      {
-        name: 'Nginx',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Grafana',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Prometheus',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/figma.png`,
         description: '',
         application: ['', '', ''],
       },

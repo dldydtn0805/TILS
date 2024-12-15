@@ -1,3 +1,4 @@
+import '../../css/Project.css';
 import { AccordionContext, useAccordionButton } from 'react-bootstrap';
 import { useContext } from 'react';
 import { Context } from 'vm';
@@ -25,11 +26,7 @@ function ContextAwareToggle({
   const isCurrentEventKey = activeEventKey === eventKey;
 
   return (
-    <button
-      type="button"
-      style={{ backgroundColor: isCurrentEventKey ? COLOR1 : COLOR2 }}
-      onClick={decoratedOnClick}
-    >
+    <button type="button" className="stack-toggle" onClick={decoratedOnClick}>
       {children}
     </button>
   );

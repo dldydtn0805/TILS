@@ -5,20 +5,14 @@ const healthScheduleStackSet: stackSetType[] = [
     name: 'BackEnd',
     stacks: [
       {
-        name: 'ERD Cloud',
-        image: '',
+        name: 'Node.js',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/nodejs.png`,
         description: '',
         application: ['a', 'b', 'c'],
       },
       {
-        name: 'Web RTC',
-        image: '',
-        description: '',
-        application: ['a', 'b', 'c'],
-      },
-      {
-        name: 'Web Socket',
-        image: '',
+        name: 'Express',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/express.png`,
         description: '',
         application: ['a', 'b', 'c'],
       },
@@ -28,32 +22,31 @@ const healthScheduleStackSet: stackSetType[] = [
     name: 'FrontEnd',
     stacks: [
       {
-        name: 'Next.js',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'React Query',
-        image: '',
+        name: 'React',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/react.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Zustand',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/zustand.png`,
+        description: '',
+        application: ['', '', ''],
+      },
+    ],
+  },
+  {
+    name: 'Embedded',
+    stacks: [
+      {
+        name: 'RFID',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/rfid.png`,
         description: '',
         application: ['', '', ''],
       },
       {
-        name: 'React Hook Form',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Anychart.js',
-        image: '',
+        name: 'Raspberry Pi',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/rasbperrypi.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -63,20 +56,14 @@ const healthScheduleStackSet: stackSetType[] = [
     name: 'Data',
     stacks: [
       {
-        name: 'Hadoop',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Apache Spark',
-        image: '',
+        name: 'MySQL',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/mysql.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Redis',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/redis.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -87,19 +74,19 @@ const healthScheduleStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Git',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/git.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Notion',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/notion.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Jira',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/jira.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -110,7 +97,7 @@ const healthScheduleStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Figma',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/figma.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -120,8 +107,8 @@ const healthScheduleStackSet: stackSetType[] = [
     name: 'Cloud',
     stacks: [
       {
-        name: 'Amazon S3',
-        image: '',
+        name: 'Amazon EC2',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/amazon.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -132,13 +119,13 @@ const healthScheduleStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Docker',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/docker.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Jenkins',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/jenkins.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -149,19 +136,7 @@ const healthScheduleStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Nginx',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Grafana',
-        image: '',
-        description: '',
-        application: ['', '', ''],
-      },
-      {
-        name: 'Prometheus',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/nginx.png`,
         description: '',
         application: ['', '', ''],
       },

@@ -6,19 +6,19 @@ const zigeumStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'ERD Cloud',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/erdcloud.png`,
         description: '',
         application: ['a', 'b', 'c'],
       },
       {
         name: 'Web RTC',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/webrtc.png`,
         description: '',
         application: ['a', 'b', 'c'],
       },
       {
         name: 'Web Socket',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/websocket.png`,
         description: '',
         application: ['a', 'b', 'c'],
       },
@@ -29,31 +29,31 @@ const zigeumStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Next.js',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/nextjs.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'React Query',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/reactquery.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Zustand',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/zustand.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'React Hook Form',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/reacthookform.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Anychart.js',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/anychart.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -64,19 +64,19 @@ const zigeumStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Hadoop',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/hadoop.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Apache Spark',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/apachespark.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Redis',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/redis.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -87,19 +87,19 @@ const zigeumStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Git',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/git.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Notion',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/notion.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Jira',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/jira.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -110,7 +110,7 @@ const zigeumStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Figma',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/figma.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -121,7 +121,7 @@ const zigeumStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Amazon S3',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/amazon.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -132,13 +132,13 @@ const zigeumStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Docker',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/docker.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Jenkins',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/jenkins.png`,
         description: '',
         application: ['', '', ''],
       },
@@ -149,19 +149,19 @@ const zigeumStackSet: stackSetType[] = [
     stacks: [
       {
         name: 'Nginx',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/nginx.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Grafana',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/grafana.png`,
         description: '',
         application: ['', '', ''],
       },
       {
         name: 'Prometheus',
-        image: '',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/prometheus.png`,
         description: '',
         application: ['', '', ''],
       },
