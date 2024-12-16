@@ -1,7 +1,8 @@
 import '../../css/Project.css';
 
-import { zigeumStackSet } from '../../datas/Zegium';
+import { zigeumStackSet, zigeumDetail } from '../../datas/Zegium';
 import StacksAccordion from './StacksAccordion';
+import Detail from './Detail';
 const Zigeum = () => {
   return (
     <div className="project-container">
@@ -29,6 +30,10 @@ const Zigeum = () => {
       </div>
       <div className="project-main-content">
         <h4>주요 기능</h4>
+      </div>
+      <div>
+        <h4>프로젝트 세부 사항</h4>
+        <Detail detail={zigeumDetail}></Detail>
       </div>
       <div className="project-my-work">
         <h4>내가 구현한 기능</h4>

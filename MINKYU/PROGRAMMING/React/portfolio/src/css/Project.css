@@ -76,7 +76,22 @@
   /* background-color: transparent; */
   border: none;
 }
-
+.stack-description {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.stack-description > img {
+  width: 45px;
+  height: auto;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: white;
+}
+.stack-description > p {
+  margin-bottom: 0px;
+}
 .stack-card {
   background-color: transparent;
   border: none;
@@ -94,4 +109,29 @@
   background-color: white;
   color: black;
   transform: scale(1.1);
+}
+
+/* 세부 기능 */
+.detail-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.detail-slide img,
+.detail-slide video {
+  width: 600px;
+  height: auto;
+  border-radius: 8px; /* 모서리 둥글게 */
+}
+
+.slick-slide {
+  display: flex !important; /* 슬라이드가 flexbox로 설정되도록 강제 */
+  justify-content: center; /* 슬라이드 내부의 내용 중앙 정렬 */
+}
+
+.slick-dots {
+  bottom: 10px; /* 페이지네이션 위치 조정 */
 }

@@ -1,4 +1,4 @@
-import { stackType, stackSetType } from './Projects';
+import { stackType, stackSetType, detailType } from './Projects';
 
 const zigeumStackSet: stackSetType[] = [
   {
@@ -169,4 +169,33 @@ const zigeumStackSet: stackSetType[] = [
   },
 ];
 
-export { zigeumStackSet };
+const zigeumDetail: detailType[] = [
+  {
+    name: '기능 명세서',
+    image: `${process.env.PUBLIC_URL}/assets/images/project/zigeum/detail/.png`,
+    video: `${process.env.PUBLIC_URL}/assets/images/project/zigeum/detail/.mp4`,
+  },
+  {
+    name: 'ERD',
+    image: `${process.env.PUBLIC_URL}/assets/images/project/zigeum/detail/erd.png`,
+  },
+  {
+    name: '웹 화면(피그마)',
+    image: `${process.env.PUBLIC_URL}/assets/images/project/zigeum/detail/figma.png`,
+  },
+  {
+    name: '아키텍처',
+    image: `${process.env.PUBLIC_URL}/assets/images/project/zigeum/detail/architecture.png`,
+  },
+  {
+    name: 'API',
+    image: `${process.env.PUBLIC_URL}/assets/images/project/zigeum/detail/api.gif`,
+  },
+  {
+    name: 'UCC',
+    image: `${process.env.PUBLIC_URL}/assets/images/project/zigeum/detail/.png`,
+    video: `${process.env.PUBLIC_URL}/assets/images/project/zigeum/detail/.mp4`,
+  },
+];
+
+export { zigeumStackSet, zigeumDetail };

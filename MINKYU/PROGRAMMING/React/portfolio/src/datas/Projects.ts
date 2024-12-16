@@ -8,7 +8,7 @@ const projects: projectType[] = [
   {
     id: 0,
     name: "헬스케쥴(Health's Schedule)",
-    image: `${process.env.PUBLIC_URL}/assets/images/project/healthscedule/logo.png`, // 프로젝트 로고 이미지 경로
+    image: `${process.env.PUBLIC_URL}/assets/images/project/healthschedule/logo.png`, // 프로젝트 로고 이미지 경로
   },
   {
     id: 1,
@@ -32,5 +32,15 @@ type stackSetType = {
   stacks: stackType[];
 };
 
-export type { projectType, stackType, stackSetType };
+type mainType = {
+  name: string;
+  image: string;
+};
+
+type detailType = {
+  name: string;
+  image?: string;
+  video?: string;
+};
+export type { projectType, stackType, stackSetType, mainType, detailType };
 export { projects };

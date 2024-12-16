@@ -15,12 +15,13 @@ function StacksAccordion({ stackSet }: { stackSet: stackSetType[] }) {
               <Card.Body>
                 {set.stacks.map((stack) => (
                   <div>
-                    <div>
+                    <div className="stack-description">
                       <img src={stack.image} alt="" />
-                      <p>{stack.name}</p>
+                      <p>
+                        {stack.name} : {stack.description}
+                      </p>
                     </div>
                     <div>
-                      <p>{stack.description}</p>
                       {stack.application.map((app) => (
                         <p>{app}</p>
                       ))}
