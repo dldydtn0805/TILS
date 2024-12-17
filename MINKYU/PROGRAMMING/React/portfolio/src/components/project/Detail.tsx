@@ -4,7 +4,7 @@ import '../../css/Project.css';
 
 function Detail({ detail }: { detail: detailType[] }) {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 300,
     slidesToShow: 1,

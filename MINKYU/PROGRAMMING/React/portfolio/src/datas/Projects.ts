@@ -34,7 +34,9 @@ type stackSetType = {
 
 type mainType = {
   name: string;
-  image: string;
+  image?: string;
+  video?: string;
+  description: string;
 };
 
 type detailType = {

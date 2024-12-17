@@ -6,6 +6,12 @@ const healthScheduleStackSet: stackSetType[] = [
     name: 'BackEnd',
     stacks: [
       {
+        name: 'ERD Cloud',
+        image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/erdcloud.png`,
+        description: 'DB 설계를 위한 클라우드 기반 도구',
+        application: ['DB 모델링'],
+      },
+      {
         name: 'Node.js',
         image: `${process.env.PUBLIC_URL}/assets/images/project/stacks/nodejs.png`,
         description: 'Server Side Application 개발을 위한 JavaScript 런타임',
@@ -178,18 +184,22 @@ const healthScheduleMain: mainType[] = [
   {
     name: '이름1',
     image: '경로1',
+    description: '설명1',
   },
   {
     name: '이름2',
     image: '경로2',
+    description: '설명1',
   },
   {
     name: '이름3',
     image: '경로3',
+    description: '설명1',
   },
   {
     name: '이름4',
     image: '경로4',
+    description: '설명1',
   },
 ];
 
