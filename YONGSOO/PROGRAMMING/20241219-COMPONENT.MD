@@ -91,6 +91,16 @@ function App() {
 
 - `index.jsx에서는 <App/> 을 가져와서 사용`한다. 단, 여기서 JSX 코드는 없다. 함수로 전환되지 않는 것이다. 대신 App.jsx는 값으로 사용되서 다른 메소드의 인자로 쓰인다. 
 
+```js
+import ReactDOM from "react-dom/client";
+
+import App from "./App";
+import "./index.css";
+
+const entryPoint = document.getElementById("root");
+ReactDOM.createRoot(entryPoint).render(<App />);
+```
+
 - 리액트 개발자로서 우리는 `대부분의 경우 컴포넌트에 jsx 코드를 사용`하지만, index.jsx는 index.html 파일에 가장 먼저 로딩되는 파일로, `리액트 앱의 주요 입구로 작동하여 아주 중요한 예외적인 경우로 작동`한다. 
 
 - 정확히는 `ReactDom`이라는 특별한 리액트 DOM 라이브러리로 인해 앱 컴포넌트가 결과적으로 렌더링 되는 것이다. 즉 앱 컴포넌트의 화면 출력을 담당한다. `render` 메서드는 `<App />`이라는 JSX 값을 인자로 받아 화면에 출력하는데 이는 `ReactDOM.createRoot(endPoint).render(<App/>);` 순서로 호출된다. 여기서 `endPoint`는 `index.html`의 `root`라는 이름을 가진 div이다. 즉 리액트 프로젝트가 모든 컴포넌트들[app components와 모든 nested components]을 root에 삽입한다. 
