@@ -105,6 +105,21 @@ ReactDOM.createRoot(entryPoint).render(<App />);
 
 - 정확히는 `ReactDom`이라는 특별한 리액트 DOM 라이브러리로 인해 앱 컴포넌트가 결과적으로 렌더링 되는 것이다. 즉 앱 컴포넌트의 화면 출력을 담당한다. `render` 메서드는 `<App />`이라는 JSX 값을 인자로 받아 화면에 출력하는데 이는 `ReactDOM.createRoot(endPoint).render(<App/>);` 순서로 호출된다. 여기서 `endPoint`는 `index.html`의 `root`라는 이름을 가진 div이다. 즉 리액트 프로젝트가 모든 컴포넌트들[app components와 모든 nested components]을 root에 삽입한다. 
 
+```js
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+    <title>React App</title>
+  </head>
+
+  <body>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <div id="root"></div>
+  </body>
+</html>
+```
+
 - 따라서 브라우저 소스코드를 보면 추가적인 HTML 요소가 포함되어 있게 된다. 화면에 보이는 `모든 요소가 root div에 모두 추가`되어 있다.
 
 - 모든 요소들은 트리 형태로 제공되는데 root component는 app component이며 header와 같이 자식 컴포넌트를 다수 가지고 있을 수 있다. 이런 형태로 컴포넌트의 계층구조가 설립된다. 이는 `컴포넌트 트리`라 불리는 컴포넌트 구조물이 리액트를 통해 화면으로 렌더링 되는 것이다. 
