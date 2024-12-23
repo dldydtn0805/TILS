@@ -44,5 +44,28 @@ type detailType = {
   image?: string;
   video?: string;
 };
-export type { projectType, stackType, stackSetType, mainType, detailType };
+
+// 각 task에 해당하는
+type taskType = {
+  task: string;
+  detail: string[];
+};
+
+type issueType = {
+  issue: string;
+  tasks: taskType[];
+};
+
+type myWorkType = {
+  epic: string;
+  issues: issueType[];
+};
+export type {
+  projectType,
+  stackType,
+  stackSetType,
+  mainType,
+  detailType,
+  myWorkType,
+};
 export { projects };

@@ -1,4 +1,10 @@
-import { stackType, stackSetType, mainType, detailType } from './Projects';
+import {
+  stackType,
+  stackSetType,
+  mainType,
+  detailType,
+  myWorkType,
+} from './Projects';
 
 // 헬스케줄 사용 기술 스택
 const healthScheduleStackSet: stackSetType[] = [
@@ -227,11 +233,113 @@ const healthScheduleDetail: detailType[] = [
   },
   {
     name: 'API',
-    image: `${process.env.PUBLIC_URL}/assets/images/project/healthschedule/detail/api.png`,
+    video: `${process.env.PUBLIC_URL}/assets/images/project/healthschedule/detail/api.mp4`,
   },
   {
     name: 'UCC',
     video: `${process.env.PUBLIC_URL}/assets/images/project/healthschedule/detail/ucc.mp4`,
   },
 ];
-export { healthScheduleStackSet, healthScheduleMain, healthScheduleDetail };
+const healthScheduleMyWork: myWorkType[] = [
+  {
+    // 가장 큰 작업 단위
+    epic: 'FrontEnd',
+    issues: [
+      {
+        // 작업한 이슈 단위
+        issue: '키오스크 웹 화면 구현',
+        tasks: [
+          {
+            // 1. 로그인 화면
+            task: '로그인 화면 구현',
+            detail: [
+              '회원일 경우 등록된 전화번호를 입력하여 로그인을 할 수 있게끔 구현했다.',
+              '등록된 전화번호를 입력할 경우, 로그인에 성공한다.',
+              '등록되지 않은 전화번호를 입력할 경우, 로그인에 실패한다.',
+            ],
+          },
+          {
+            // 2. 로그인 성공 이후 화면
+            task: '로그인 후 선택 화면 구현',
+            detail: [
+              '로그인이 성공한 경우, 네 가지 버튼 중 하나를 선택하는 화면을 구현했다.',
+              '"예약하기" 버튼 클릭 시, 원하는 시간대에 운동기구를 예약하는 화면으로 전환된다.',
+              '"예약수정" 버튼 클릭 시, 본인 계정으로 예약된 기구가 있을 경우, 이를 수정할 수 있는 화면으로 전환된다.',
+              '"운동루틴추천" 버튼 클릭 시, 헬스장에서 자체적으로 등록한 부위별 운동 루틴 추천 화면으로 전환된다.',
+              '"퇴실하기" 버튼 클릭 시, 오늘의 운동 정보를 보여주는 퇴실 화면으로 전환된다.',
+            ],
+          },
+
+          {
+            // 3-1. 예약하기 버튼 클릭
+            task: '예약하기 버튼 클릭 시 화면 구현',
+            detail: [
+              '현재 헬스장 운동기구 별 이용 및 예약 현황을 실시간으로 보여주는 화면을 구현했다.',
+              '원하는 운동 부위를 클릭함으로써, 관련된 운동 기구의 예약 현황을 확인 가능하다.',
+              '각 운동기구 별로 시간 별 예약 여부(10분 단위)를 색상으로 확인 가능하다.',
+              '흰색일 경우, 예약이 가능한 운동기구이다.',
+              '파란색인 경우, 예약이 불가능한 운동기구이다.',
+              '하늘색인 경우, 본인이 예약한 운동기구 또는 시간대이다.',
+            ],
+          },
+          {
+            // 3-2. 예약수정 버튼 클릭
+            task: '예약수정 버튼 클릭 시 화면 구현',
+            detail: [
+              '현재 사용자가 예약해 둔 운동기구 목록을 보여주는 화면을 구현했다.',
+              '사용자가 예약한 운동기구가 없을 경우, 화면에 "예약한 운동기구가 존재하지 않습니다."라는 문구가 등장한다.',
+              '사용자가 예약한 운동기구가 있을 경우, 각 운동기구를 클릭하여 해당 예약 시간에 사용 가능한 다른 운동기구들을 확인할 수 있다.',
+            ],
+          },
+          {
+            // 3-3. 운동루틴추천 버튼 클릭
+            task: '운동루틴추천 버튼 클릭 시 화면 구현',
+            detail: [
+              '헬스장 자체적으로 등록해 둔 운동루틴 목록을 예약 화면과 함께 보여주는 화면을 구현했다.',
+              '원하는 운동부위를 클릭할 경우, 해당 운동부위에 알맞은 운동루틴목록 및 기구들이 슬라이더 형식으로 예약 화면 상단에 등장한다.',
+            ],
+          },
+          {
+            // 3-4. 퇴실하기 버튼 클릭
+            task: '퇴실하기 버튼 클릭 시 화면 구현',
+            detail: [
+              '퇴실 시 사용자가 오늘 한 운동기록을 확인할 수 있는 화면을 구현했다.',
+              '사용자는 오늘 사용한 운동기구 별 횟수, 시간 등의 운동기록을 확인 가능하다.',
+            ],
+          },
+        ],
+      },
+      {
+        // 작업한 이슈 단위
+        issue: '일반 웹 화면 구현',
+        tasks: [
+          {
+            // 1. 로그인
+            task: '로그인 화면 구현',
+            detail: [
+              '웹 애플리케이션을 사용하기 위한 로그인 화면을 구현했다.',
+              '로그인에 성공할 경우, 사용자와 관련된 정보를 보여주는 페이지로 이동한다.',
+              '로그인에 실패한 경우, 로그인 실패 경고 문구가 활성화된다.',
+            ],
+          },
+          {
+            // 2. 홈페이지
+            task: '로그인 성공 화면 구현',
+            detail: [
+              '로그인에 성공할 경우, 해당 사용자와 관련된 정보들을 보여주는 화면울 구현했다.',
+              '사용자가 등록한 헬스장의 운동기구 별 이용 및 예약 현황을 확인할 수 있다.',
+              '사용자의 운동 기록을 저장하고 있는 달력을 통해 년, 월, 일별로 운동 기록을 확인 가능하다.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export {
+  healthScheduleStackSet,
+  healthScheduleMain,
+  healthScheduleDetail,
+  healthScheduleMyWork,
+};

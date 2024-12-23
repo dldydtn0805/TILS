@@ -226,7 +226,7 @@ const makjaDetail: detailType[] = [
   },
   {
     name: '클래스 관계도',
-    video: `${process.env.PUBLIC_URL}/assets/images/project/makja/detail/classrelationship.png`,
+    image: `${process.env.PUBLIC_URL}/assets/images/project/makja/detail/classrelationship.png`,
   },
 ];
 

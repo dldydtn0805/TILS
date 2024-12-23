@@ -1,4 +1,10 @@
-import { stackType, stackSetType, mainType, detailType } from './Projects';
+import {
+  stackType,
+  stackSetType,
+  mainType,
+  detailType,
+  myWorkType,
+} from './Projects';
 
 const zigeumStackSet: stackSetType[] = [
   {
@@ -266,6 +272,85 @@ const zigeumDetail: detailType[] = [
   {
     name: 'API',
     image: `${process.env.PUBLIC_URL}/assets/images/project/zigeum/detail/api.gif`,
+  },
+];
+
+const zigeumMyWork: myWorkType[] = [
+  {
+    // 가장 큰 작업 단위
+    epic: 'FrontEnd',
+    issues: [
+      {
+        // 작업한 이슈 단위
+        issue: '싱글 게임 화면 구현',
+        tasks: [
+          {
+            // 1. 화면 분할
+            task: '주어진 화면을 필요한 컴포넌트들로 분할',
+            detail: [
+              '주어진 화면에 필요한 내용들을 선정하여 적절한 크기로 나누어 분할하였다.',
+              '화면 가운데 주어진 종목 별 그래프를 배치하였다.',
+              '좌측에는 총평가자산 정보, 보유자산 정보, 매매내역 정보를 배치하였다.',
+              '우측에는 턴 정보 및 매도/매수/건너뛰기 버튼, 종목 별 증감 정보, 해당 날짜의 시장정보 및 트렌드를 배치하였다.',
+            ],
+          },
+          {
+            // 2. 그래프 세분화
+            task: '매매 결정에 필요한 차트 그래프를 세분화하여 구현',
+            detail: [
+              '현재 주어진 기간에 대한 정보를 통해 매매를 결정할 수 있도록 필요한 그래프들을 구현했다.',
+              '기본적으로 캔들스틱(OHLC) 그래프를 상단에 배치했다.',
+              '하단에는 거래량, RSI, MACD 그래프 중 한 가지 그래프를 보거나 전체를 한 번에 볼 수 있게 구현했다.',
+              '최하단에 위치한 progress bar를 통해 차트 그래프의 크기를 사용자에 맞게 조절 할 수 있게끔 했다.',
+            ],
+          },
+          {
+            // 3. 단축기 설정
+            task: '사용자 편의를 위한 단축키 구현',
+            detail: [
+              '빠르게 매매 결정을 해야 하는 주식 특성에 알맞게 단축키를 구현했다.',
+              '매수, 매도, 건너뛰기를 각 단축키에 대응시켰다.',
+              '매수 또는 매도 시, 매매하고자 하는 주를 직접 입력하거나 퍼센트(%)를 단축키로 선택하여 간편하게 매매 결정이 가능하다.',
+              '각 종목 별 그래프를 1 ~ 10번까지의 단축키를 통해 볼 수 있다.',
+            ],
+          },
+        ],
+      },
+      {
+        // 작업한 이슈 단위
+        issue: '멀티 게임 화면 구현',
+        tasks: [
+          {
+            // 1.
+            task: '',
+            detail: [''],
+          },
+        ],
+      },
+      {
+        // 작업한 이슈 단위
+        issue: '싱글 게임 복기 화면 구현',
+        tasks: [
+          {
+            // 1.
+            task: '',
+            detail: [''],
+          },
+        ],
+      },
+
+      {
+        // 작업한 이슈 단위
+        issue: '게시판 화면 구현',
+        tasks: [
+          {
+            // 1.
+            task: '',
+            detail: [''],
+          },
+        ],
+      },
+    ],
   },
 ];
 
