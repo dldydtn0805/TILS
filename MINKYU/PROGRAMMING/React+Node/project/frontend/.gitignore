@@ -6,8 +6,8 @@ package-lock.json
 yarn.lock
 
 # Environment Variables
-backend/.env
-frontend/.env
+.env
+# Config 
 
 # Logs
 logs
