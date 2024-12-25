@@ -6,7 +6,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config/key');
-const bcrypt = require('bcrypt'); // bcrypt 추가
 
 // other files
 const { User } = require('./models/User');
@@ -19,7 +18,6 @@ const mongoURI = config.mongoURI;
 app.use(bodyParser.urlencoded({ extended: true })); // URL-encoded 형식의 데이터 파싱
 app.use(bodyParser.json()); // JSON 형식의 데이터 파싱
 
-const saltRounds = 10;
 
 mongoose
   .connect(mongoURI)
