@@ -1,6 +1,7 @@
 // User Model
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const saltRounds = 10;
 // Schema
@@ -41,6 +42,7 @@ const userSchema = mongoose.Schema({
   },
 });
 
+// 비밀번호 해싱 미들웨어
 userSchema.pre('save', function (next) {
   var user = this;
   if (user.isModified('password')) {
@@ -56,8 +58,42 @@ userSchema.pre('save', function (next) {
         next();
       });
     });
+  } else {
+    next();
   }
 });
+
+// 비밀번호 비교
+userSchema.methods.comparePassword = async function (plainPassword) {
+  const user = this;
+  return await bcrypt.compare(plainPassword, user.password);
+};
+
+// jwt 생성
+userSchema.methods.generateToken = function () {
+  const user = this;
+  const payload = { id: user._id.toJSON() };
+  const token = jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: '1h',
+  });
+  user.token = token;
+  user.save();
+  // DB에 저장함과 동시에 user를 리턴
+  return token;
+};
+
+// token 복호화
+userSchema.statics.findByToken = async function (token) {
+  const user = this;
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const foundUser = await user.findById(decoded.id);
+    return foundUser;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // Model
 const User = mongoose.model('User', userSchema);
 
