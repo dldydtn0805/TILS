@@ -1,13 +1,14 @@
 // index.js
 // 백엔드 서버의 시작 폴더
-// require
+
+// libraries
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const config = require('./config/key');
-
+const cors = require('cors');
 // other files
 const { User } = require('./models/User');
 const { auth } = require('./middleware/auth');
@@ -16,6 +17,7 @@ const app = express();
 const port = config.PORT;
 
 const mongoURI = config.mongoURI;
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(bodyParser.urlencoded({ extended: true })); // URL-encoded 형식의 데이터 파싱
 app.use(bodyParser.json()); // JSON 형식의 데이터 파싱
 app.use(cookieParser()); // Cookie 데이터 파싱
@@ -98,6 +100,10 @@ app.get('/api/users/auth', auth, (req, res) => {
 // 4. logout
 app.get('/api/users/logout', auth, (req, res) => {
   res.clearCookie('x_auth').status(200).json({ logoutSuccess: true });
+});
+
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Hello from the backend!' });
 });
 
 // server start at port
