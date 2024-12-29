@@ -1,29 +1,30 @@
 ## 조건적 컨텐츠 렌더링
 ```js
+import { EXAMPLES } from "./Data";
+
 function App() {
+  const [selectedTopic, setSelectedTopic] = useState('components');
   ...
   return (
     <div>
-      {/* <Header></Header> */}
-
-      <Header />
+      ...
       <main>
         ...
         <section id="examples">
           <h2>Examples</h2>
-          <menu>
-            <TabButton onSelect={() => handleSelect("components")}>
-              Components
-            </TabButton>
-            ...
-          </menu>
           ...
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
   );
 }
-
 ```
 - 처음에는 `components`를 출력하는 것이 아닌, 빈 문자열을 출력하고 싶다면 어떻게 해야할까. `null` 흑은 빈문자열을 넣을 수 있다. 그리고 컨텐츠 영역에는 `Please select a topic`이라고 나타나야한다. 이 경우를 다뤄보자.
 
