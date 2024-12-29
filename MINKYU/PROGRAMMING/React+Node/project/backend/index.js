@@ -17,7 +17,12 @@ const app = express();
 const port = config.PORT;
 
 const mongoURI = config.mongoURI;
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true, // 쿠키를 포함한 요청 허용
+  })
+);
 app.use(bodyParser.urlencoded({ extended: true })); // URL-encoded 형식의 데이터 파싱
 app.use(bodyParser.json()); // JSON 형식의 데이터 파싱
 app.use(cookieParser()); // Cookie 데이터 파싱
@@ -30,7 +35,7 @@ mongoose
 app.get('/', (req, res) => res.send('Hello World!'));
 
 // 1. 사용자 등록 (post)
-app.post('/register', async (req, res) => {
+app.post('/api/users/register', async (req, res) => {
   if (!req.body.name || !req.body.email || !req.body.password) {
     return res.status(400).json({ message: '모든 필드를 입력하세요.' });
   }

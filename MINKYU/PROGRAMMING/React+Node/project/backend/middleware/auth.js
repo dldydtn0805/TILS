@@ -14,12 +14,12 @@ let auth = async (req, res, next) => {
     console.log('token:', token);
     // 가져온 토큰을 복호화하여 DB에서 유저를 찾는다.
     const user = await User.findByToken(token);
-    console.log('user : ', user);
+
+    // 유저가 있을 경우, 인증이 성공한다.
     if (!user) return res.json({ isAuth: false, error: true });
     req.token = token;
     req.user = user;
     next();
-    // 유저가 있을 경우, 인증이 성공한다.
 
     // 유저가 없을 경우, 인증이 실패한다.
   } catch (error) {

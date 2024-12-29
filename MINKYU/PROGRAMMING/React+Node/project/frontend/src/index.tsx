@@ -4,6 +4,10 @@ import './index.css';
 import App from './App.tsx';
 import reportWebVitals from './reportWebVitals.ts';
 import { BrowserRouter } from 'react-router-dom';
+import axios from 'axios';
+
+// Axios 기본 설정
+axios.defaults.withCredentials = true; // 쿠키를 포함한 요청을 허용
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
