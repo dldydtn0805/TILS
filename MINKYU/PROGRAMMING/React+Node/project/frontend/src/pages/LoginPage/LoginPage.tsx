@@ -23,8 +23,6 @@ function LoginPage() {
 
   const onSubmitHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // console.log(email);
-    // console.log(password);
     const body = {
       email: email,
       password: password,
@@ -32,13 +30,16 @@ function LoginPage() {
     axios
       .post('http://localhost:5000/api/users/login', body)
       .then((response) => {
-        // console.log('로그인 Response : ', response);
-        const previousUrl = sessionStorage.getItem('previousUrl') || '/';
-        console.log(previousUrl);
-        navigate(previousUrl);
+        if (response.status === 401) {
+          console.log('에러 메시지 : ', response.data.message);
+          alert(response.data.message);
+        } else if (response.status === 201)
+          // console.log('로그인 Response : ', response);
+          localStorage.setItem('token', response.data.token);
+        console.log('토큰값 : ', response.data.token);
       })
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
         alert('로그인 실패!');
       });
   };

@@ -2,6 +2,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { Article } = require('./Article');
+const { ArticleLike } = require('./Article_Like');
+const { Comment } = require('./Comment');
+const { CommentLike } = require('./Comment_Like');
 
 const saltRounds = 10;
 // Schema
@@ -11,19 +15,16 @@ const userSchema = mongoose.Schema({
   name: {
     type: String,
     maxlength: 50,
+    unique: 1,
   },
   email: {
     type: String,
-    trim: true, // 공백 없애는 역할
-    unique: 1, // 유일성 1(한개로 제약)
+    trim: true,
+    unique: 1,
   },
   password: {
     type: String,
     minlength: 5,
-  },
-  lastname: {
-    type: String,
-    maxlength: 50,
   },
   // 유저 역할
   role: {
@@ -32,14 +33,6 @@ const userSchema = mongoose.Schema({
   },
   // 유저 이미지
   image: String,
-  // 토큰
-  token: {
-    type: String,
-  },
-  // 토큰 유효 기간
-  tokenExp: {
-    type: Number,
-  },
 });
 
 // 비밀번호 해싱 미들웨어
@@ -63,6 +56,15 @@ userSchema.pre('save', function (next) {
   }
 });
 
+// 사용자 계정 삭제 미들웨어
+userSchema.pre('remove', async function (next) {
+  await Article.deleteMany({ user_id: this._id });
+  await ArticleLike.deleteMany({ user_id: this._id });
+  await Comment.deleteMany({ user_id: this._id });
+  await CommentLike.deleteMany({ user_id: this._id });
+  next();
+});
+
 // 비밀번호 비교
 userSchema.methods.comparePassword = async function (plainPassword) {
   const user = this;
@@ -72,13 +74,13 @@ userSchema.methods.comparePassword = async function (plainPassword) {
 // jwt 생성
 userSchema.methods.generateToken = function () {
   const user = this;
-  const payload = { id: user._id.toJSON() };
+  const payload = { id: user._id.toString() };
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: '1h',
+    expiresIn: '24h',
   });
-  user.token = token;
-  user.save();
-  // DB에 저장함과 동시에 user를 리턴
+  // user.token = token;
+  // user.save();
+  // // DB에 저장함과 동시에 user를 리턴
   return token;
 };
 

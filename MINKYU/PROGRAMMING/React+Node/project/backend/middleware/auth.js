@@ -1,30 +1,31 @@
-// auth.js
+// // auth.js
+// module.exports = { auth };
 const { User } = require('../models/User');
+const jwt = require('jsonwebtoken');
 
 let auth = async (req, res, next) => {
   try {
-    // 인증 처리
-    // 클라이언트 쿠키로부터 토큰을 가져온다.
-    let token = req.cookies.x_auth;
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+    // 권한이 없을 경우
     if (!token) {
       return res
         .status(401)
-        .json({ isAuth: false, error: true, message: 'jwt 토큰 X' });
+        .json({ success: false, message: '토큰이 없습니다.' });
     }
-    console.log('token:', token);
-    // 가져온 토큰을 복호화하여 DB에서 유저를 찾는다.
-    const user = await User.findByToken(token);
 
-    // 유저가 있을 경우, 인증이 성공한다.
-    if (!user) return res.json({ isAuth: false, error: true });
-    req.token = token;
-    req.user = user;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
+    // 해당 토큰을 발급받은 사용자가 없을 경우
+    if (!user)
+      return res
+        .status(401)
+        .json({ success: false, message: '해당 계정이 존재하지 않습니다.' });
+
+    req.user = user; // 사용자 정보를 요청 객체에 추가
     next();
-
-    // 유저가 없을 경우, 인증이 실패한다.
   } catch (error) {
     console.error(error);
-    return res.json({ isAuth: false, error: true });
+    return res.status(401).json({ success: false, message: '서버 에러 발생' });
   }
 };
 

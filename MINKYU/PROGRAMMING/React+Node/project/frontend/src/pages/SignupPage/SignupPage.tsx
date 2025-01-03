@@ -5,9 +5,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // css
-import './css/Register.css';
+import './css/Signup.css';
 
-function RegisterPage() {
+function SignupPage() {
   // 입력 값
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -19,9 +19,11 @@ function RegisterPage() {
   const [nameError, setNameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [password2Error, setPassword2Error] = useState('');
+  // 중복 여부
+  const [isEmailExisted, setIsEmailExisted] = useState(true);
+  const [isNameExisted, setIsNameExisted] = useState(true);
 
   const navigate = useNavigate();
-
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 간단한 이메일 정규 표현식
     return emailRegex.test(email);
@@ -38,36 +40,79 @@ function RegisterPage() {
   const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setEmail(value);
-    setEmailError(validateEmail(value) ? '' : '유효한 이메일을 입력하세요.');
   };
 
   const onNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setName(value);
-    setNameError(validateName(value) ? '' : '이름을 입력하세요.');
   };
 
   const onLastNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setLastName(value);
-    // LastName 유효성 검사 추가 가능
   };
 
   const onPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setPassword(value);
-    setPasswordError(
-      validatePassword(value) ? '' : '비밀번호는 6자 이상이어야 합니다.'
-    );
   };
 
   const onPassword2Handler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setPassword2(value);
-    setPassword2Error(
-      value === password ? '' : '비밀번호가 일치하지 않습니다.'
-    );
   };
+
+  // 이메일중복체크
+  const onCheckEmailHandler = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    email: string
+  ) => {
+    event.preventDefault();
+    axios
+      .get('http://localhost:5000/api/users/email-check', {
+        params: { email },
+      })
+      .then((response) => {
+        // 중복 발생 O
+        if (!response.data.success) {
+          console.log(response, '중복 발생');
+          setIsEmailExisted(true);
+          // 중복 발생 X
+        } else {
+          setIsEmailExisted(false);
+          console.log(response, '사용 가능');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  // 이메일중복체크
+  const onCheckNameHandler = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    name: string
+  ) => {
+    event.preventDefault();
+    axios
+      .get('http://localhost:5000/api/users/name-check', {
+        params: { name },
+      })
+      .then((response) => {
+        // 중복 발생 O
+        if (!response.data.success) {
+          setIsNameExisted(true);
+          console.log(response, '중복 발생');
+          // 중복 발생 X
+        } else {
+          setIsNameExisted(false);
+          console.log(response, '사용 가능');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   // 로그인
   const onLoginHandler = () => {
     const body = {
@@ -78,6 +123,8 @@ function RegisterPage() {
       .post('http://localhost:5000/api/users/login', body)
       .then((response) => {
         // console.log('로그인 Response : ', response);
+        sessionStorage.setItem('token', response.data.token);
+        console.log('토큰값 : ', response.data.token);
         const previousUrl = sessionStorage.getItem('previousUrl') || '/';
         // console.log(previousUrl);
         navigate(previousUrl);
@@ -90,19 +137,25 @@ function RegisterPage() {
   const onSubmitHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const body = {
-      email,
-      name,
+      email: email,
+      name: name,
       lastname: lastName,
-      password,
+      password: password,
+      password2: password2,
     };
 
     axios
-      .post('http://localhost:5000/api/users/register', body)
+      .post('http://localhost:5000/api/users/signup', body)
       .then((response) => {
-        // 회원가입 성공
-        if (response.status === 201) {
-          // 해당 계정을 통해 로그인
+        const status = response.status;
+        console.log(status);
+        if (status === 201) {
+          alert('회원가입 성공!');
           onLoginHandler();
+        } else if (status === 400) {
+          alert('회원가입 실패 : 입력 똑바로 해줘');
+        } else if (status == 500) {
+          alert('회원가입 실패 : 서버 에러');
         }
       })
       .catch((error) => {
@@ -115,11 +168,21 @@ function RegisterPage() {
     <div className="register-container">
       <form className="form" action="">
         <label htmlFor="">Email</label>
-        <input type="email" value={email} onChange={onEmailHandler} />
+        <div>
+          <input type="email" value={email} onChange={onEmailHandler} />
+          <button onClick={(event) => onCheckEmailHandler(event, email)}>
+            이메일중복체크
+          </button>
+        </div>
         {emailError && <div className="error-message">{emailError}</div>}
 
         <label htmlFor="">Name</label>
-        <input type="text" value={name} onChange={onNameHandler} />
+        <div>
+          <input type="text" value={name} onChange={onNameHandler} />
+          <button onClick={(event) => onCheckNameHandler(event, name)}>
+            닉네임중복체크
+          </button>
+        </div>
         {nameError && <span className="error-message">{nameError}</span>}
 
         <label htmlFor="">LastName</label>
@@ -148,4 +211,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default SignupPage;
