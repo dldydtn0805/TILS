@@ -3,7 +3,7 @@ const { auth } = require('../middleware/auth');
 const { Article } = require('../models/Article');
 const { Comment } = require('../models/Comment');
 const router = express.Router();
-// app.use('/api/articles/:articleId/comments', commentRoutes);
+// /api/comments/:articleId
 // 댓글 CRUD
 
 // 1. 특정 게시글에 달린 댓글들 조회

@@ -40,6 +40,7 @@ router.post('/signup', async (req, res) => {
   const { email, name, password, password2 } = req.body;
   // 1-1. 모든 필드가 입력되었는지 확인한다
   // 모든 필드를 입력하지 않은 경우
+  console.log(req.body);
   if (!email || !name || !password || !password2) {
     return res.status(400).json({ success: false, message: '모든 필드 입력' });
   }
@@ -50,7 +51,8 @@ router.post('/signup', async (req, res) => {
   }
   try {
     // 1-3. 이메일 중복이 발생했는지 확인한다
-    const existedEmail = User.findOne({ email: email });
+    console.log(User.find());
+    const existedEmail = await User.findOne({ email: email });
     // 중복 이메일이 존재할 경우
     if (existedEmail) {
       return res.status(400).json({
@@ -59,7 +61,7 @@ router.post('/signup', async (req, res) => {
       });
     }
     // 1-4. 닉네임 중복이 발생했는지 확인한다
-    const existedName = User.findOne({ name: name });
+    const existedName = await User.findOne({ name: name });
     // 중복 닉네임이 존재할 경우
     if (existedName) {
       return res.status(400).json({
@@ -121,11 +123,16 @@ router.post('/login', async (req, res) => {
 });
 
 // 3. 로그아웃
-router.post('/logout', auth, (req, res) => {
-  console.log('logout req : ', req);
-  console.log('logout res : ', res);
-  // 3-1. 로그아웃 처리를 한다.
-  res.status(204).json({ success: true, message: '로그아웃 성공' });
+router.post('/logout', auth, async (req, res) => {
+  try {
+    // 3-1. 로그아웃 처리를 한다.
+    res.status(204).json({ success: true, message: '로그아웃 성공' });
+    // 3-2. 서버 에러가 발생했는지 확인
+  } catch {
+    res
+      .status(500)
+      .json({ success: false, message: '서버 에러가 발생했습니다,' });
+  }
 });
 
 // 4. 특정 사용자 계정 조회
@@ -153,9 +160,9 @@ router.put('/:userId', auth, async (req, res) => {
   const { email, name, password, password2 } = req.body;
   // 5-1. 필드 입력 확인
   // 비어있는 필드가 존재할 경우
-  if (!email || !name || !password || !password2) {
-    return res.status(400).json({ success: false, message: '모든 필드 입력' });
-  }
+  // if (!email || !name || !password || !password2) {
+  //   return res.status(400).json({ success: false, message: '모든 필드 입력' });
+  // }
   // 5-2. 비밀번호 확인
   // 비밀번호와 비밀번호확인이 다를 경우
   if (password !== password2) {
@@ -194,7 +201,7 @@ router.put('/:userId', auth, async (req, res) => {
 router.delete('/:userId', auth, async (req, res) => {
   // 6-1. 삭제하려는 계정이 본인 계정이 맞는지 확인
   // 본인 계정이 아닌 경우
-  if (req.params.userId !== req.user._id) {
+  if (req.params.userId !== req.user._id.toString()) {
     return res.status(401).json({ success: false, message: '권한 없음' });
   }
   try {
@@ -207,7 +214,7 @@ router.delete('/:userId', auth, async (req, res) => {
         .json({ success: false, message: '사용자를 찾을 수 없습니다' });
     }
     // 6-3. 위의 조건을 만족한 경우, 삭제
-    await user.remove();
+    await User.deleteOne({ _id: user._id });
     return res.status(204).json({ success: true, message: '계정 삭제 성공' });
     // 6-4. 서버 에러가 발생했는지 확인
   } catch (error) {

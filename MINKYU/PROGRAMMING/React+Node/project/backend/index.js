@@ -40,9 +40,9 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.use('/api/users', authRoutes); // auth 관련(회원가입, 회원탈퇴, 로그인, 로그아웃)
 app.use('/api/articles', articleRoutes);
-app.use('/api/articles/:articleId/comments', commentRoutes);
-app.use('/api/articles/:articleId/likes', articleLikeRoutes);
-// app.use('/api/comments/likes', commentLikeRoutes);
+app.use('/api/comments/:articleId', commentRoutes);
+app.use('/api/articlelikes/:articleId', articleLikeRoutes);
+// app.use('/api/commentlikes/:commentId', commentLikeRoutes);
 
 // server start at port
 app.listen(port, () =>

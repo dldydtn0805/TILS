@@ -92,15 +92,17 @@ router.delete('/:articleId', auth, async (req, res) => {
         .json({ success: false, message: '게시글을 찾을 수 없습니다.' });
     // 3-2. 삭제 권한 확인
     // 해당 게시글을 삭제할 수 있는 권한이 없는 경우
-    if (!article.user_id.toString() !== req.user._id.toString()) {
+    console.log(article.user_id);
+    console.log(req.user._id);
+    if (article.user_id.toString() !== req.user._id.toString()) {
       return res
         .status(401)
         .json({ success: false, message: '게시글 삭제 권한이 없습니다.' });
     }
     // 3-3. 위의 조건을 만족할 경우, 삭제
-    await article.remove();
+    await Article.deleteOne({ _id: article._id });
     return res
-      .status(201)
+      .status(204)
       .json({ success: false, message: '게시글 삭제에 성공했습니다.' });
     // 3-4. 서버 에러가 발생했을 경우
   } catch (error) {

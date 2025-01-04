@@ -57,13 +57,17 @@ userSchema.pre('save', function (next) {
 });
 
 // 사용자 계정 삭제 미들웨어
-userSchema.pre('remove', async function (next) {
-  await Article.deleteMany({ user_id: this._id });
-  await ArticleLike.deleteMany({ user_id: this._id });
-  await Comment.deleteMany({ user_id: this._id });
-  await CommentLike.deleteMany({ user_id: this._id });
-  next();
-});
+userSchema.pre(
+  'deleteOne',
+  { document: true, query: false },
+  async function (next) {
+    await Article.deleteMany({ user_id: this._id });
+    await ArticleLike.deleteMany({ user_id: this._id });
+    await Comment.deleteMany({ user_id: this._id });
+    await CommentLike.deleteMany({ user_id: this._id });
+    next();
+  }
+);
 
 // 비밀번호 비교
 userSchema.methods.comparePassword = async function (plainPassword) {

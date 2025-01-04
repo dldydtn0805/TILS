@@ -42,12 +42,16 @@ articleSchema.pre('save', function (next) {
   next();
 });
 
-articleSchema.pre('remove', async function (next) {
+articleSchema.pre('deleteOne', async function (next) {
   await ArticleLike.deleteMany({ article_id: this._id });
   await Comment.deleteMany({ article_id: this._id });
   next();
 });
-
+// articleSchema.pre('deleteMany', async function (next) {
+//   await ArticleLike.deleteMany({ article_id: this._id });
+//   await Comment.deleteMany({ article_id: this._id });
+//   next();
+// });
 // Model
 const Article = mongoose.model('Article', articleSchema);
 
