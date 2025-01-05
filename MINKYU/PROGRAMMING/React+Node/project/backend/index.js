@@ -10,10 +10,11 @@ const mongoose = require('mongoose'); // mongoose
 const cors = require('cors'); // cors
 // routes
 const authRoutes = require('./routes/auth');
+const boardRoutes = require('./routes/board');
 const articleRoutes = require('./routes/article');
 const articleLikeRoutes = require('./routes/article_like');
 const commentRoutes = require('./routes/comment');
-// const commentLikeRoutes = require('./routes/comment_like');
+const commentLikeRoutes = require('./routes/comment_like');
 const config = require('./config/key'); // config
 
 // rest
@@ -37,12 +38,12 @@ mongoose
 
 // api endpoint
 app.get('/', (req, res) => res.send('Hello World!'));
-
+app.use('/api/boards', boardRoutes);
 app.use('/api/users', authRoutes); // auth 관련(회원가입, 회원탈퇴, 로그인, 로그아웃)
 app.use('/api/articles', articleRoutes);
-app.use('/api/comments/:articleId', commentRoutes);
-app.use('/api/articlelikes/:articleId', articleLikeRoutes);
-// app.use('/api/commentlikes/:commentId', commentLikeRoutes);
+app.use('/api/comments', commentRoutes);
+app.use('/api/articlelikes', articleLikeRoutes);
+app.use('/api/commentlikes', commentLikeRoutes);
 
 // server start at port
 app.listen(port, () =>

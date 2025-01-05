@@ -29,7 +29,8 @@ const userSchema = mongoose.Schema({
   // 유저 역할
   role: {
     type: Number,
-    default: 0,
+    enum: [0, 1, 2], // 0 : 관리자, 1 : 중간 관리자, 2 : 사용자
+    default: 2, // 기본값 : 사용자(2)
   },
   // 유저 이미지
   image: String,

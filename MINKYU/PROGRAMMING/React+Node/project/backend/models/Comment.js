@@ -4,16 +4,16 @@ const { CommentLike } = require('./Comment_Like');
 
 // 댓글 스키마
 const commentSchema = mongoose.Schema({
-  // 작성자 id
-  user_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
   // 게시글 id
   article_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Article',
+    required: true,
+  },
+  // 작성자 id
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
   },
   // 댓글 내용

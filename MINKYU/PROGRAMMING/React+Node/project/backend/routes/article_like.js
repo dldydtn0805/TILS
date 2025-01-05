@@ -3,11 +3,11 @@ const { auth } = require('../middleware/auth');
 const { Article } = require('../models/Article');
 const { ArticleLike } = require('../models/Article_Like');
 const router = express.Router();
-// /api/articlelikes/:articleId
+// /api/articlelikes
 
 // 좋아요 CRUD
 // 1. 게시글에 좋아요 달기
-router.post('/', auth, async (req, res) => {
+router.post('/:articleId', auth, async (req, res) => {
   const article = await Article.findById(req.params.articleId);
   if (!article) {
     return res
@@ -43,7 +43,7 @@ router.post('/', auth, async (req, res) => {
 });
 
 // 2. 게시글에 달린 좋아요 수 파악하기
-router.get('/', async (req, res) => {
+router.get('/:articleId', async (req, res) => {
   try {
     // 1-1. 해당 게시글 여부 파악하기
     const article = await Article.findById(req.params.articleId);

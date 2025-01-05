@@ -1,19 +1,14 @@
 const mongoose = require('mongoose');
 
 const commentLikeSchema = mongoose.Schema({
+  comment_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment',
+    required: true,
+  },
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
-  },
-  article_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Article',
-    required: true,
-  },
-  comment_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Article',
     required: true,
   },
   createdAt: {

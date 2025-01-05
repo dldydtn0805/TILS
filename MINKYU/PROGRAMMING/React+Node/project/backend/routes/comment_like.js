@@ -4,12 +4,12 @@ const { Article } = require('../models/Article');
 const { ArticleLike } = require('../models/Article_Like');
 const { Comment } = require('../models/Comment');
 const { CommentLike } = require('../models/Comment_Like');
-// /api/comments/
+// /api/commentlikes
 const router = express.Router();
 
 // 좋아요 CRUD
 // 1. 댓글에 좋아요 달기(또는 좋아요 취소)
-router.post('/:commentId/like', auth, async (req, res) => {
+router.post('/:commentId', auth, async (req, res) => {
   // 1-1. 해당 댓글 확인
   const comment = await Comment.findById(req.params.commentId);
   // 댓글이 존재하지 않는 경우
@@ -50,8 +50,8 @@ router.post('/:commentId/like', auth, async (req, res) => {
   }
 });
 
-// 2. 게시글에 달린 좋아요 수 파악하기
-router.get('/:commentId/likes', (req, res) => {
+// 2. 댓글에 달린 좋아요 수 파악하기
+router.get('/:commentId', (req, res) => {
   try {
     // 1-1. 해당 게시글 여부 파악하기
     const comment = Comment.findById(req.params.commentId);
