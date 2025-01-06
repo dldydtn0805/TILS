@@ -33,7 +33,6 @@ const articleSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-
   // 최근 수정 시간
   updatedAt: {
     type: Date,
@@ -42,7 +41,7 @@ const articleSchema = mongoose.Schema({
 });
 
 articleSchema.pre('save', function (next) {
-  if (this.isModified('content')) {
+  if (this.isModified('title') || this.isModified('content')) {
     this.updatedAt = Date.now();
   }
   next();

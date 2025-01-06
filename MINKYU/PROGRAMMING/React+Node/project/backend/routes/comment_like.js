@@ -10,8 +10,11 @@ const router = express.Router();
 // 좋아요 CRUD
 // 1. 댓글에 좋아요 달기(또는 좋아요 취소)
 router.post('/:commentId', auth, async (req, res) => {
+  const user = req.user;
+  const { commentId } = req.params;
+
   // 1-1. 해당 댓글 확인
-  const comment = await Comment.findById(req.params.commentId);
+  const comment = await Comment.findById(commentId);
   // 댓글이 존재하지 않는 경우
   if (!comment) {
     return res
@@ -21,8 +24,8 @@ router.post('/:commentId', auth, async (req, res) => {
   try {
     // 1-2. 해당 댓글에 좋아요를 눌렀는지 확인
     const commentLike = await CommentLike.findOne({
-      user_id: req.user._id,
-      comment_id: req.params.commentId,
+      user_id: user._id,
+      comment_id: commentId,
     });
     // 좋아요를 이미 눌렀을 경우 좋아요 취소
     if (commentLike) {
@@ -33,8 +36,8 @@ router.post('/:commentId', auth, async (req, res) => {
       // 좋아요를 누르지 않았을 경우 좋아요
     } else {
       const commentLike = new CommentLike({
-        user_id: req.user._id,
-        comment_id: req.params.commentId,
+        user_id: user._id,
+        comment_id: commentId,
       });
       await commentLike.save();
       return res
@@ -52,9 +55,10 @@ router.post('/:commentId', auth, async (req, res) => {
 
 // 2. 댓글에 달린 좋아요 수 파악하기
 router.get('/:commentId', (req, res) => {
+  const { commentId } = req.params;
   try {
     // 1-1. 해당 게시글 여부 파악하기
-    const comment = Comment.findById(req.params.commentId);
+    const comment = Comment.findById(commentId);
     // 해당 게시글이 존재하지 않을 경우
     if (!comment) {
       return res
@@ -62,15 +66,7 @@ router.get('/:commentId', (req, res) => {
         .json({ success: false, message: '해당 게시글이 존재하지 않습니다.' });
     }
     // 1-2. 해당 게시글에 달린 좋아요들 파악하기
-    const commentLike = CommentLike.find({ comment_id: req.params.commentId });
-    // 좋아요가 없을 경우
-    if (!commentLike) {
-      return res.status(200).json({
-        success: true,
-        message: '해당 게시글의 좋아요 수는 0개 입니다.',
-        likes: 0,
-      });
-    }
+    const commentLike = CommentLike.find({ comment_id: commentId });
     // 좋아요가 있을 경우
     const likes = commentLike.length;
     return res.status(200).json({

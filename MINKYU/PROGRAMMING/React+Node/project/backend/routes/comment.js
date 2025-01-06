@@ -7,20 +7,20 @@ const router = express.Router();
 // 댓글 CRUD
 
 // 1. 특정 게시글에 달린 댓글들 조회
-router.get('/', async (req, res) => {
-  const { articleId } = req.body;
+router.get('/:articleId', async (req, res) => {
+  const { articleId } = req.params;
   try {
     const article = await Article.findById(articleId);
     if (!article) {
       return res.status(404).json({
         success: false,
-        message: '해당 게시글이123 존재하지 않습니다.',
+        message: '해당 게시글이 존재하지 않습니다.',
       });
     }
     const comments = await Comment.find({ article_id: articleId });
     return res.status(200).json({
       success: true,
-      message: '게시글에 달린 댓글들 조회를 성공했습니다.',
+      message: '해당 게시글에 달린 댓글들 조회를 성공했습니다.',
       comments: comments,
     });
   } catch (error) {
@@ -31,9 +31,10 @@ router.get('/', async (req, res) => {
 });
 
 // 2. 댓글 달기
-router.post('/', auth, async (req, res) => {
-  const { user } = req.user;
-  const { articleId, content } = req.body;
+router.post('/:articleId', auth, async (req, res) => {
+  const user = req.user;
+  const { articleId } = req.params;
+  const { content } = req.body;
   // 2-1. 입력 필드 확인
   // 필수 입력 필드를 입력하지 않은 경우
   if (!content) {
@@ -45,7 +46,7 @@ router.post('/', auth, async (req, res) => {
     // 2-2. 댓글 생성
     const comment = new Comment({
       user_id: user._id,
-      article_id: mongoose.Types.ObjectId(articleId),
+      article_id: articleId,
       content: content,
     });
     await comment.save();
@@ -62,16 +63,15 @@ router.post('/', auth, async (req, res) => {
 });
 
 // 3. 댓글 수정하기
-router.put('/:commentId', auth, async (req, res) => {
-  const { user } = req.user;
-  const { commentId } = req.params;
-  const { content } = req.body;
-  // 3-1. 권환 확인
-  const comment = await Comment.findById(commentId);
-  if (comment.user_id.toString() !== user._id.toString()) {
-    return res.status(401).json({
+router.put('/:articleId', auth, async (req, res) => {
+  const user = req.user;
+  const { articleId } = req.params;
+  const { commentId, content } = req.body;
+  const article = await Article.findById(articleId);
+  if (!article) {
+    return res.status(404).json({
       success: false,
-      message: '권한이 존재하지 않습니다.',
+      message: '해당 게시글이 존재하지 않습니다.',
     });
   }
   // 3-2. 입력 필드 확인
@@ -80,6 +80,15 @@ router.put('/:commentId', auth, async (req, res) => {
     return res
       .status(400)
       .json({ success: false, message: '필수 입력 필드를 작성해 주세요.' });
+  }
+
+  // 3-1. 권환 확인
+  const comment = await Comment.findById(commentId);
+  if (comment.user_id.toString() !== user._id.toString()) {
+    return res.status(401).json({
+      success: false,
+      message: '권한이 존재하지 않습니다.',
+    });
   }
   try {
     // 3-3. 댓글 수정
@@ -98,14 +107,20 @@ router.put('/:commentId', auth, async (req, res) => {
   }
 });
 // 4. 댓글 삭제하기
-router.delete('/:commentId', auth, async (req, res) => {
-  const { user } = req.user;
-  const { commentId } = req.params;
-  const { content } = req.body;
-
+router.delete('/:articleId', auth, async (req, res) => {
+  const user = req.user;
+  const { articleId } = req.params;
+  const { commentId } = req.body;
+  const article = await Article.findById(articleId);
+  if (!article) {
+    return res.status(404).json({
+      success: false,
+      message: '해당 댓글이 존재하지 않습니다.',
+    });
+  }
   const comment = await Comment.findById(commentId);
   if (!comment) {
-    return res.status(400).json({
+    return res.status(404).json({
       success: false,
       message: '해당 댓글이 존재하지 않습니다.',
     });

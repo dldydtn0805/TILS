@@ -24,7 +24,6 @@ let auth = async (req, res, next) => {
     req.user = user; // 사용자 정보를 요청 객체에 추가
     next();
   } catch (error) {
-    console.error(error);
     return res.status(401).json({ success: false, message: '서버 에러 발생' });
   }
 };

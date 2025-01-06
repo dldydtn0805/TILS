@@ -65,7 +65,8 @@ router.put('/:boardId', auth, admin(requiredRole), async (req, res) => {
         .json({ success: false, message: '해당 게시판을 찾을 수 없습니다.' });
 
     board.title = title;
-    board.description = description | board.description;
+    board.description =
+      description !== undefined ? description : board.description;
     await board.save();
     return res.status(200).json({
       success: true,

@@ -6,41 +6,14 @@ const { auth } = require('../middleware/auth');
 const router = express.Router();
 // /api/users
 
-// // 이메일 중복 체크
-// router.get('/email-check', async (req, res) => {
-//   try {
-//     const existedEmail = await User.findOne({ email: req.query.email });
-//     // 중복 발생 O
-//     if (existedEmail) {
-//       return res.status(200).json({ success: false, message: '이메일 중복' });
-//     }
-//     // 중복 발생 X
-//     return res.status(200).json({ success: true, message: '이메일 사용 가능' });
-//   } catch (error) {
-//     return res.status(500).json({ success: false, message: '서버 에러' });
-//   }
-// });
-
-// // 아이디 중복 체크
-// router.get('/name-check', async (req, res) => {
-//   try {
-//     const existedName = await User.findOne({ name: req.query.name });
-//     // 중복 발생 O
-//     if (existedName)
-//       return res.status(200).json({ success: false, message: '아이디 중복' });
-//     // 중복 발생 X
-//     return res.status(200).json({ success: true, message: '아이디 사용 가능' });
-//   } catch (error) {
-//     return res.status(500).json({ success: false, message: '서버 에러' });
-//   }
-// });
-
 // 1. 회원가입
 router.post('/signup', async (req, res) => {
   const { email, name, password, password2 } = req.body;
+  const role = req.body.role !== undefined ? req.body.role : 2;
+
+  // const role = req.body.role !== und?|| 2;
   // 1-1. 모든 필드가 입력되었는지 확인한다
   // 모든 필드를 입력하지 않은 경우
-  console.log(req.body);
   if (!email || !name || !password || !password2) {
     return res.status(400).json({ success: false, message: '모든 필드 입력' });
   }
@@ -71,7 +44,7 @@ router.post('/signup', async (req, res) => {
     }
 
     // 1-5. 위의 네 가지 조건을 만족한 경우, DB에 새로운 계정을 등록한다
-    const user = new User({ email, name, password });
+    const user = new User({ email, name, password, role });
     await user.save();
     return res
       .status(201)
@@ -134,7 +107,17 @@ router.post('/logout', auth, async (req, res) => {
       .json({ success: false, message: '서버 에러가 발생했습니다,' });
   }
 });
-
+// 모든 사용사 계정 조회
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find();
+    return res.status(200).json({ success: true, users: users });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, message: '서버 에러가 발생했습니다.' });
+  }
+});
 // 4. 특정 사용자 계정 조회
 router.get('/:userId', async (req, res) => {
   try {
@@ -158,6 +141,8 @@ router.get('/:userId', async (req, res) => {
 // 5. 계정 수정
 router.put('/:userId', auth, async (req, res) => {
   const { email, name, password, password2 } = req.body;
+  const role = req.body.role !== undefined ? req.body.role : 2;
+
   // 5-1. 필드 입력 확인
   // 비어있는 필드가 존재할 경우
   // if (!email || !name || !password || !password2) {
@@ -175,6 +160,7 @@ router.put('/:userId', auth, async (req, res) => {
       .status(401)
       .json({ success: false, message: '본인의 계정이 아닐 경우 수정 불가' });
   }
+
   try {
     // 5-4. 본인 계정일 경우 수정 절차 밟기
     const user = await User.findById(req.user._id);
@@ -186,6 +172,7 @@ router.put('/:userId', auth, async (req, res) => {
     user.name = name || user.name;
     user.email = email || user.email;
     user.password = password || user.password;
+    user.role = role || user.role;
     await user.save();
     return res
       .status(200)

@@ -29,7 +29,7 @@ const boardSchema = mongoose.Schema({
 });
 
 boardSchema.pre('save', function (next) {
-  if (this.isModified('content')) {
+  if (this.isModified('title') || this.isModified('description')) {
     this.updatedAt = Date.now();
   }
   next();
