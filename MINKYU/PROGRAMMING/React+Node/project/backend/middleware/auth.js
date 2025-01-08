@@ -4,6 +4,7 @@ const { User } = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 let auth = async (req, res, next) => {
+  console.log('hhhalksdfjalskfjlkdas');
   try {
     const token = req.header('Authorization')?.replace('Bearer ', '');
     // 권한이 없을 경우

@@ -6,6 +6,45 @@ const { auth } = require('../middleware/auth');
 const router = express.Router();
 // /api/users
 
+// 이메일 중복 체크
+router.post('/email-check', async (req, res) => {
+  const { email } = req.body;
+  try {
+    const existedEmail = await User.findOne({ email: email });
+    if (existedEmail) {
+      return res
+        .status(400)
+        .json({ success: false, message: '이메일 중복이 발생했습니다.' });
+    }
+    return res
+      .status(200)
+      .json({ success: true, message: '이메일 중복이 발생하지 않았습니다.' });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, message: '서버 에러가 발생했습니다.' });
+  }
+});
+// 닉네임 중복 체크
+router.post('/name-check', async (req, res) => {
+  const { name } = req.body;
+  try {
+    const existedName = await User.findOne({ name: name });
+    if (existedName) {
+      return res
+        .status(400)
+        .json({ success: false, message: '닉네임 중복이 발생했습니다.' });
+    }
+    return res
+      .status(200)
+      .json({ success: true, message: '닉네임 중복이 발생하지 않았습니다.' });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, message: '서버 에러가 발생했습니다.' });
+  }
+});
+
 // 1. 회원가입
 router.post('/signup', async (req, res) => {
   const { email, name, password, password2 } = req.body;
@@ -211,8 +250,9 @@ router.delete('/:userId', auth, async (req, res) => {
 });
 
 // 인증 확인
-router.get('/auth', auth, (req, res) => {
-  res.status(200).json({
+router.get('/get/myinfo', auth, (req, res) => {
+  console.log(req.user);
+  return res.status(200).json({
     _id: req.user._id,
     isAdmin: req.user.role === 0 ? false : true,
     isAuth: true,

@@ -8,23 +8,29 @@ const { Comment } = require('./Comment');
 const { CommentLike } = require('./Comment_Like');
 
 const saltRounds = 10;
-// Schema
+// 이메일 정규 표현식
+const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// 비밀번호 정규 표현식
+const passwordRegEx = /^(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,20}$/;
 
-// 1. 글 작성자 스키마
+// Schema
+// 사용자 스키마
 const userSchema = mongoose.Schema({
   name: {
     type: String,
-    maxlength: 50,
+    required: true,
     unique: 1,
   },
   email: {
     type: String,
-    trim: true,
+    required: true,
     unique: 1,
+    match: [emailRegEx, '이메일 형식이 유효하지 않습니다.'],
   },
   password: {
     type: String,
-    minlength: 5,
+    required: true,
+    match: [passwordRegEx, '비밀번호 형식이 유효하지 않습니다.'],
   },
   // 유저 역할
   role: {

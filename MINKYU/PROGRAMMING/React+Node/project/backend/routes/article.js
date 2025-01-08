@@ -136,7 +136,7 @@ router.get('/', async (req, res) => {
     // 4-2. 위의 조건을 만족하는 경우 게시글들 출력
     return res.status(200).json({
       success: true,
-      message: '모든 게시글 찾기ㅁㄴㅇㄹ에 성공했습니다.',
+      message: '모든 게시글 찾기에 성공했습니다.',
       articles: articles,
     });
     // 4-3. 서버 에러가 발생했는지 확인

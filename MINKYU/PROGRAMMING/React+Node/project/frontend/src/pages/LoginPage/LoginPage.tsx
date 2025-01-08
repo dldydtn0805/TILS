@@ -2,6 +2,8 @@
 import React from 'react';
 // Hooks
 import { useState } from 'react';
+// stores
+import userStore from '../../stores/userStore.ts';
 
 // css
 import './css/Login.css';
@@ -12,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { isLogin, setIsLogin, user, setUser } = userStore();
   const navigate = useNavigate();
 
   const onEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,27 +24,28 @@ function LoginPage() {
     setPassword(event.currentTarget.value);
   };
 
-  const onSubmitHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onSubmitHandler = async (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault();
-    const body = {
-      email: email,
-      password: password,
-    };
-    axios
-      .post('http://localhost:5000/api/users/login', body)
-      .then((response) => {
-        if (response.status === 401) {
-          console.log('에러 메시지 : ', response.data.message);
-          alert(response.data.message);
-        } else if (response.status === 201)
-          // console.log('로그인 Response : ', response);
-          localStorage.setItem('token', response.data.token);
-        console.log('토큰값 : ', response.data.token);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert('로그인 실패!');
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/api/users/login',
+        { email, password }
+      );
+      localStorage.setItem('token', response.data.token);
+      setIsLogin(true);
+      setUser({
+        email: response.data.user.email,
+        name: response.data.user.name,
+        role: response.data.user.role,
+        _id: response.data.user._id,
       });
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
   };
   return (
     <div className="login-container">

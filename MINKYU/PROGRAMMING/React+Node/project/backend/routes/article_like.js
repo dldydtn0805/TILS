@@ -68,7 +68,22 @@ router.get('/:articleId', async (req, res) => {
       likes: likes,
     });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
+    return res
+      .status(500)
+      .json({ success: false, message: '서버 에러가 발생했습니다.' });
+  }
+});
+
+router.get('/:articleId/:userId', async (req, res) => {
+  const { articleId, userId } = req.params;
+  try {
+    const isLike = ArticleLike.findOne({
+      article_id: articleId,
+      user_id: userId,
+    });
+    return res.status(200).json({ success: true, isLike });
+  } catch (error) {
     return res
       .status(500)
       .json({ success: false, message: '서버 에러가 발생했습니다.' });

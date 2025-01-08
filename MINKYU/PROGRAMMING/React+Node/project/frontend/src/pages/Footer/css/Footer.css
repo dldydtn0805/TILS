@@ -1,0 +1,14 @@
+/* Footer.css */
+.footer {
+  position: fixed; /* 고정 위치 설정 */
+  bottom: 0; /* 최하단에 배치 */
+  left: 0; /* 왼쪽 정렬 */
+  right: 0; /* 오른쪽 정렬 */
+  padding: 5px 10px; /* 패딩 설정 */
+  background-color: #f1f1f1; /* Footer 배경 색상 */
+  text-align: center; /* 중앙 정렬 */
+  height: 40px; /* 높이 설정 */
+  display: flex; /* Flexbox로 설정 */
+  align-items: center; /* 가운데 정렬 */
+  z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+}

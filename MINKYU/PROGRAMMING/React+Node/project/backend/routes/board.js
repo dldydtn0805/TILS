@@ -20,7 +20,13 @@ router.post('/', auth, admin(requiredRole), async (req, res) => {
       message: '게시판 생성에 필요한 모든 필드를 입력해 주세요.',
     });
   }
-
+  const existedBoard = await Board.findOne({ title: title });
+  if (existedBoard) {
+    return res.status(400).json({
+      success: false,
+      message: '이미 해당 게시판이 존재합니다.',
+    });
+  }
   try {
     const board = new Board({
       title: title,
@@ -53,6 +59,13 @@ router.put('/:boardId', auth, admin(requiredRole), async (req, res) => {
     return res.status(400).json({
       success: false,
       message: '게시판 수정에 필요한 모든 필드를 입력해 주세요.',
+    });
+  }
+  const existedBoard = await Board.findOne({ title: title });
+  if (existedBoard && existedBoard._id.toString() !== boardId.toString()) {
+    return res.status(400).json({
+      success: false,
+      message: '이미 해당 게시판이 존재합니다.',
     });
   }
   try {
