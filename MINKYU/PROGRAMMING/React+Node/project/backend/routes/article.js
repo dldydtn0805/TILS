@@ -46,6 +46,7 @@ router.post('/', auth, async (req, res) => {
       success: true,
       message: '게시글 작성을 성공하였습니다.',
       article: article,
+      board: board,
     });
     // 1-3. 서버 에러가 발생했는지 확인
   } catch (error) {

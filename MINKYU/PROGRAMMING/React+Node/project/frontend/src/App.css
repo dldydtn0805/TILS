@@ -8,8 +8,6 @@
 .main-content {
   flex: 1; /* 남은 공간을 차지하도록 설정 */
   display: flex;
-  justify-content: center; /* 가운데 정렬 */
-  align-items: center; /* 가운데 정렬 */
   padding: 20px; /* 여백 추가 */
   margin-top: 40px; /* Navbar 높이 만큼 여백 추가 */
   margin-bottom: 40px; /* Footer 높이 만큼 여백 추가 */

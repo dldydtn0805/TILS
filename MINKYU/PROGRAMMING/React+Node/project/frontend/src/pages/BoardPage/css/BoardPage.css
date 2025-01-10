@@ -1,0 +1,68 @@
+/* BoardPage.css */
+.board-container {
+  width: 1000px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.board-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 20px; /* 제목과 버튼 사이의 간격 */
+}
+
+.toggle-button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 18px; /* 버튼 크기 조정 */
+}
+
+.board-description {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #e0f7fa;
+  border-radius: 4px;
+  transition: max-height 0.3s ease;
+  overflow: hidden; /* 숨김 처리 */
+}
+
+.article-item {
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.article-item:hover {
+  background-color: #e0f7fa; /* 호버 시 배경색 변경 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 추가 */
+}
+
+.write-button {
+  margin-left: 10px; /* 제목과 버튼 사이의 간격 */
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.write-button:hover {
+  background-color: #0056b3; /* 호버 시 색상 변경 */
+}

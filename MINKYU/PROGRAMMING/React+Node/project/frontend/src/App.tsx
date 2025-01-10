@@ -9,6 +9,7 @@ import Navbar from './pages/Navbar/Navbar.tsx';
 import LandingPage from './pages/LandingPage/LandingPage.tsx';
 import BoardPage from './pages/BoardPage/BoardPage.tsx';
 import ArticlePage from './pages/ArticlePage/ArticlePage.tsx';
+import ArticleWritePage from './pages/ArticleWritePage/ArticleWritePage.tsx';
 import LoginPage from './pages/LoginPage/LoginPage.tsx';
 import SignupPage from './pages/SignupPage/SignupPage.tsx';
 import Footer from './pages/Footer/Footer.tsx';
@@ -19,39 +20,39 @@ import './App.css';
 
 function App() {
   const { user, setUser, isLogin, setIsLogin } = userStore();
-  // const getUserHandler = async () => {
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     try {
-  //       const response = await axios.get(
-  //         'http://localhost:5000/api/users/get/myinfo',
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-  //       console.log('response : ', response);
-  //       setIsLogin(true);
-  //       setUser({
-  //         email: response.data.email,
-  //         name: response.data.name,
-  //         role: response.data.role,
-  //         userId: response.data._id,
-  //       });
-  //       console.log(isLogin, user);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // };
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   console.log('토큰 값 : ', token);
-  //   if (token) {
-  //     getUserHandler();
-  //   }
-  // }, []);
+  const getUserHandler = async () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const response = await axios.get(
+          'http://localhost:5000/api/users/get/myinfo',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        // console.log('response : ', response);
+        setIsLogin(true);
+        setUser({
+          email: response.data.email,
+          name: response.data.name,
+          role: response.data.role,
+          userId: response.data._id,
+        });
+        // console.log(isLogin, user);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    // console.log('토큰 값 : ', token);
+    if (token) {
+      getUserHandler();
+    }
+  }, []);
   return (
     <div className="App">
       {/* Navbar */}
@@ -61,6 +62,10 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/board/:boardId" element={<BoardPage />}></Route>
+          <Route
+            path="/board/:boardId/write"
+            element={<ArticleWritePage />}
+          ></Route>
           <Route
             path="/board/:boardId/article/:articleId"
             element={<ArticlePage />}

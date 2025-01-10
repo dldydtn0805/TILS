@@ -43,7 +43,7 @@ function Navbar() {
         {isLogin ? (
           <>
             <span>{user?.name}님, 환영합니다!</span>
-            <button onClick={onLogoutHandler}>로그아웃</button>
+            <button onClick={() => onLogoutHandler()}>로그아웃</button>
           </>
         ) : (
           <>

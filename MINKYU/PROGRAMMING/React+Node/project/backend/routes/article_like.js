@@ -7,9 +7,9 @@ const router = express.Router();
 
 // 좋아요 CRUD
 // 1. 게시글에 좋아요 달기
-router.post('/:articleId', auth, async (req, res) => {
+router.post('/', auth, async (req, res) => {
   const user = req.user;
-  const { articleId } = req.params;
+  const { articleId } = req.body;
   const article = await Article.findById(articleId);
   if (!article) {
     return res
@@ -25,7 +25,7 @@ router.post('/:articleId', auth, async (req, res) => {
     if (articleLike) {
       await ArticleLike.deleteOne({
         user_id: user._id,
-        article_id: params.articleId,
+        article_id: articleId,
       });
       return res.status(204).json({ success: true, message: '좋아요 취소' });
     } else {
@@ -34,13 +34,13 @@ router.post('/:articleId', auth, async (req, res) => {
         article_id: articleId,
       });
       await articleLike.save();
-      return res.status(201).json({ succes: true, message: '좋아요 성공' });
+      return res.status(201).json({ success: true, message: '좋아요 성공' });
     }
   } catch (error) {
     // console.error(error);
     return res
       .status(500)
-      .json({ success: false, message: '서버 에러가 발생했습니다.' });
+      .json({ success: false, message: '서버 에러가 발생했습니slsl.' });
   }
 });
 
@@ -78,11 +78,11 @@ router.get('/:articleId', async (req, res) => {
 router.get('/:articleId/:userId', async (req, res) => {
   const { articleId, userId } = req.params;
   try {
-    const isLike = ArticleLike.findOne({
+    const isLike = await ArticleLike.find({
       article_id: articleId,
       user_id: userId,
     });
-    return res.status(200).json({ success: true, isLike });
+    return res.status(200).json({ success: true, isLike: isLike.length === 1 });
   } catch (error) {
     return res
       .status(500)
