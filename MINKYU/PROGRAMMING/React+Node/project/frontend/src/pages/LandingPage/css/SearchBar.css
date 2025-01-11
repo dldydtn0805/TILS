@@ -1,0 +1,56 @@
+/* SearchBar.css */
+.search-bar {
+  width: 50%;
+  margin: 5px auto; /* 위아래 여백 설정 및 가운데 정렬 */
+  padding: 10px; /* 안쪽 여백 */
+  border: 1px solid #ddd; /* 테두리 색상 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  background-color: #64aed1; /* 배경색 */
+  display: flex; /* Flexbox 사용 */
+  justify-content: center; /* 수평 가운데 정렬 */
+}
+.search-bar input {
+  width: 100%;
+  margin: 0px auto;
+  padding: 12px; /* 입력 필드 안쪽 여백 */
+  border: 1px solid #ddd; /* 입력 필드 테두리 색상 */
+  border-radius: 4px; /* 모서리 둥글게 */
+  font-size: 16px; /* 글자 크기 */
+  transition: border-color 0.3s; /* 테두리 색상 변화 애니메이션 */
+}
+
+.search-bar input:focus {
+  border-color: #007bff; /* 포커스 시 테두리 색상 변경 */
+  outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+.search-results {
+  position: absolute; /* 검색 결과 위치 */
+  width: 50%;
+  max-height: 200px; /* 최대 높이 */
+  overflow-y: auto; /* 세로 스크롤 */
+  background-color: white; /* 배경색 */
+  border: 1px solid #ddd; /* 테두리 색상 */
+  border-radius: 4px; /* 모서리 둥글게 */
+  z-index: 1000; /* 위쪽에 표시 */
+  margin-top: 40px; /* 입력 필드와의 간격 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.no-search-result-item {
+  padding: 10px;
+  transition: background-color 0.3s;
+  color: grey;
+  align-items: center;
+}
+
+.search-result-item {
+  padding: 10px; /* 각 검색 결과의 안쪽 여백 */
+  cursor: pointer; /* 커서 변경 */
+  transition: background-color 0.3s; /* 배경색 변화 애니메이션 */
+}
+
+.search-result-item:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 변경 */
+}

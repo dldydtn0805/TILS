@@ -106,8 +106,8 @@ function ArticlePage() {
   }, [article]);
 
   return (
-    <div>
-      <div className="article-container">
+    <div className="article-container">
+      <div className="article">
         <div className="article-header">
           <div className="article-title">
             <h1>{article.title}</h1>

@@ -1,21 +1,37 @@
 /* ArticlePage.css */
 
 .article-container {
-  width: 800px;
-  height: 400px;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  /* width: 90vw;
+  min-height: 80vh;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  overflow: hidden; 콘텐츠가 넘치지 않도록 */
+}
+
+.article {
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
   overflow: hidden; /* 콘텐츠가 넘치지 않도록 */
+  /* flex: 1; */
 }
 
 .article-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 .article-title {
   display: flex;
@@ -30,10 +46,16 @@
 .article-meta {
   font-size: 14px;
   color: #666;
-  margin-bottom: 10px;
 }
 
 .article-content {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #8cd4e3;
+  overflow: hidden; /* 콘텐츠가 넘치지 않도록 */
+
   margin-top: 20px;
   font-size: 16px;
   line-height: 1.5;

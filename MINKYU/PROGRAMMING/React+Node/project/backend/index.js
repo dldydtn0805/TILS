@@ -32,7 +32,11 @@ app.use(bodyParser.urlencoded({ extended: true })); // URL-encoded 형식의 데
 app.use(bodyParser.json()); // JSON 형식의 데이터 파싱
 app.use(cookieParser()); // Cookie 데이터 파싱
 mongoose
-  .connect(mongoURI)
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 20000,
+  })
   .then(() => console.log('MongoDB Connected...'))
   .catch((error) => console.log(error));
 

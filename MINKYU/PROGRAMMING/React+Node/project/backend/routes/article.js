@@ -132,8 +132,8 @@ router.delete('/:articleId', auth, async (req, res) => {
 // 4. 작성된 모든 게시글들 조회
 router.get('/', async (req, res) => {
   try {
-    // 4-1. 존재하는 모든 게시글 불러오기
-    const articles = await Article.find();
+    // 4-1. 존재하는 모든 게시글 불러오기(최신순)
+    const articles = await Article.find().sort({ createdAt: -1 });
     // 4-2. 위의 조건을 만족하는 경우 게시글들 출력
     return res.status(200).json({
       success: true,

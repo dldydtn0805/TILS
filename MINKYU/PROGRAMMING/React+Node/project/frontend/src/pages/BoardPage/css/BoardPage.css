@@ -1,10 +1,13 @@
 /* BoardPage.css */
 .board-container {
-  width: 1000px;
-  padding: 20px;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .board-header {
@@ -37,9 +40,12 @@
   overflow: hidden; /* 숨김 처리 */
 }
 
+.article-list {
+  min-height: 80vh;
+}
 .article-item {
-  padding: 15px;
-  margin: 10px 0;
+  padding: 10px;
+  margin: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: #fff;
@@ -65,4 +71,32 @@
 
 .write-button:hover {
   background-color: #0056b3; /* 호버 시 색상 변경 */
+}
+
+.pagination-container {
+  margin-top: 10px;
+}
+
+.pagination {
+  display: flex; /* 수평 정렬 */
+  justify-content: center; /* 가운데 정렬 */
+}
+
+.pagination button {
+  margin: 0 5px; /* 버튼 간격 */
+  padding: 5px 10px; /* 버튼 내 여백 */
+  border: none; /* 테두리 제거 */
+  border-radius: 4px; /* 둥근 모서리 */
+  background-color: #64aed1; /* 배경색 */
+  color: white; /* 글자색 */
+  cursor: pointer; /* 포인터 커서 */
+  transition: background-color 0.3s; /* 배경색 변화 애니메이션 */
+}
+
+.pagination button:hover {
+  background-color: #007bff; /* 호버 시 색상 변경 */
+}
+
+.pagination button.active {
+  background-color: #0056b3; /* 현재 페이지 색상 */
 }

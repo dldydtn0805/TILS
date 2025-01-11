@@ -1,5 +1,7 @@
 // LandingPage.tsx
 import React, { useEffect } from 'react';
+// components
+import SearchBar from './components/SearchBar.tsx';
 // stores
 import boardStore from '../../stores/boardStore.ts';
 // libraries
@@ -39,6 +41,7 @@ function LandingPage() {
   return (
     <div className="landing-container">
       <h2 className="landing-title">게시판 보기</h2>
+      <SearchBar />
       {boards.length > 0 ? (
         boards.map((board) => (
           <div

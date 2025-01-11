@@ -1,4 +1,3 @@
-// BoardPage.tsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 // stores
@@ -14,6 +13,10 @@ function BoardPage() {
   const [isDescriptionVisible, setDescriptionVisible] = useState(false); // 설명 가시성 상태
   const { boardId } = useParams();
   const navigate = useNavigate();
+
+  // 페이지네이션 관련 상태
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 15; // 한 페이지에 표시할 게시글 수
 
   const fetchBoard = async () => {
     try {
@@ -63,6 +66,15 @@ function BoardPage() {
     setDescriptionVisible(!isDescriptionVisible); // 설명 가시성 토글
   };
 
+  // 페이지네이션 계산
+  const indexOfLastArticle = currentPage * itemsPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - itemsPerPage;
+  const currentArticles = articles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
+  const totalPages = Math.ceil(articles.length / itemsPerPage); // 총 페이지 수
+
   return (
     <div className="board-container">
       <div className="board-header">
@@ -79,9 +91,9 @@ function BoardPage() {
       {isDescriptionVisible && (
         <div className="board-description">{board.description}</div>
       )}
-      <div>
-        {articles.length > 0 ? (
-          articles.map((article) => (
+      <div className="article-list">
+        {currentArticles.length > 0 ? (
+          currentArticles.map((article) => (
             <div
               key={article._id}
               className="article-item"
@@ -91,8 +103,22 @@ function BoardPage() {
             </div>
           ))
         ) : (
-          <div>없음</div>
+          <div>게시글이 없습니다.</div>
         )}
+      </div>
+      {/* 페이지네이션 버튼 */}
+      <div className="pagination-container">
+        <div className="pagination">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => setCurrentPage(index + 1)}
+              className={currentPage === index + 1 ? 'active' : ''}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
