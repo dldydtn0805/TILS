@@ -4,34 +4,71 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <algorithm>
 
+#define pll pair<int, int>
 #define INF 2000001
 using namespace std;
 
-vector<vector<int> > graph;
+vector<vector<pll> > graph;
 
 int N, M, X;
 int result = 0;
 
-void go_to_party()
+struct Compare
 {
-    for (int k=1; k<=N; ++k) {
-        for (int i=1; i<=N; ++i) {
-            for (int j=1; j<=N; ++j) {
-                if (i == j) {
-                    continue;
-                }
-                graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j]);
+    bool operator()(const pll& a, const pll& b) {
+        return a.first > b.first;
+    }
+};
+
+
+void go_to_party(int start)
+{
+    vector<int> visited(N+1, INF);
+    visited[start] = 0;
+    priority_queue<pll, vector<pll>, Compare> que;
+    que.push({0, start});
+    
+    while (!que.empty()) {
+        pll now = que.top();
+        que.pop();
+        
+        if (now.first > visited[X]) {
+            continue;
+        }
+        
+        for (pll p : graph[now.second]) {
+            int next_dist = now.first + p.first;
+            if (visited[X] > next_dist && visited[p.second] > next_dist) {
+                que.push({next_dist, p.second});
+                visited[p.second] = next_dist;
             }
         }
     }
     
-    for (int i=1; i<=N; ++i) {
-        int tmp = graph[i][X] + graph[X][i];
-        if (tmp > result) {
-            result = tmp;
+    que.push({visited[X], X});
+    vector<int> next_visited(N+1, INF);
+    next_visited[X] = visited[X];
+    
+    while (!que.empty()) {
+        pll now = que.top();
+        que.pop();
+        
+        if (now.first > next_visited[start]) {
+            continue;
         }
+        
+        for (pll p : graph[now.second]) {
+            int next_dist = now.first + p.first;
+            if (next_visited[start] > next_dist && next_visited[p.second] > next_dist) {
+                que.push({next_dist, p.second});
+                next_visited[p.second] = next_dist;
+            }
+        }
+    }
+    
+    if (result < next_visited[start]) {
+        result = next_visited[start];
     }
     
     return;
@@ -43,21 +80,19 @@ int main()
     cin.tie(NULL);
     
     cin >> N >> M >> X;
-    graph.resize(N+1, vector<int>(N+1, INF));
-    for (int i=0; i<=N; ++i) {
-        graph[i][i] = 0;
-    }
-    
+    graph.resize(N+1);
     
     int s, e, dist;
     for (int i=0; i<M; ++i) {
         cin >> s >> e >> dist;
         
-        graph[s][e] = dist;
+        graph[s].push_back({dist, e});
     }
     
-    go_to_party();
-
+    for (int i=1; i<=N; ++i) {
+        go_to_party(i);
+    }
+    
     cout << result;
 
     return 0;
@@ -105,51 +140,51 @@ int main()
 > 
 > void go_to_party()
 > {
->     for (int k=1; k<=N; ++k) {
->         for (int i=1; i<=N; ++i) {
->             for (int j=1; j<=N; ++j) {
->                 if (i == j) {
->                     continue;
->                 }
->                 graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j]);
->             }
->         }
->     }
->     
->     for (int i=1; i<=N; ++i) {
->         int tmp = graph[i][X] + graph[X][i];
->         if (tmp > result) {
->             result = tmp;
->         }
->     }
->     
->     return;
+>  for (int k=1; k<=N; ++k) {
+>      for (int i=1; i<=N; ++i) {
+>          for (int j=1; j<=N; ++j) {
+>              if (i == j) {
+>                  continue;
+>              }
+>              graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j]);
+>          }
+>      }
+>  }
+> 
+>  for (int i=1; i<=N; ++i) {
+>      int tmp = graph[i][X] + graph[X][i];
+>      if (tmp > result) {
+>          result = tmp;
+>      }
+>  }
+> 
+>  return;
 > }
 > 
 > int main()
 > {
->     ios_base::sync_with_stdio(false);
->     cin.tie(NULL);
->     
->     cin >> N >> M >> X;
->     graph.resize(N+1, vector<int>(N+1, INF));
->     for (int i=0; i<=N; ++i) {
->         graph[i][i] = 0;
->     }
->     
->     
->     int s, e, dist;
->     for (int i=0; i<M; ++i) {
->         cin >> s >> e >> dist;
->         
->         graph[s][e] = dist;
->     }
->     
->     go_to_party();
+>  ios_base::sync_with_stdio(false);
+>  cin.tie(NULL);
 > 
->     cout << result;
+>  cin >> N >> M >> X;
+>  graph.resize(N+1, vector<int>(N+1, INF));
+>  for (int i=0; i<=N; ++i) {
+>      graph[i][i] = 0;
+>  }
 > 
->     return 0;
+> 
+>  int s, e, dist;
+>  for (int i=0; i<M; ++i) {
+>      cin >> s >> e >> dist;
+> 
+>      graph[s][e] = dist;
+>  }
+> 
+>  go_to_party();
+> 
+>  cout << result;
+> 
+>  return 0;
 > }
 > 
 > ```
@@ -159,4 +194,79 @@ int main()
 > 그렇다면 아무리 생각해도 다익스트라 밖에 없는데 왜 그런걸까? 하고 코드를 잘 살펴보니까 우선순위 큐의 우선순위를 설정하는 Compare의 비교 연산자를 잘못 적어서 이동거리가 가장 큰 순서부터 확인했기 때문에 다익스트라 알고리즘의 장점을 하나도 가지지 못했기 때문이다.. 따라서 비교 연산자만 바꾸니까 바로 패스 됬다..
 >
 > 요즘 우선순위에서 실수를 일으키는 경우가 많아서 이를 좀 유의하면서 하면 좋겠다... 흑흑...
+>
+> 추가로 이 문제에는 아주 효율적인 방법이 있다. 나는 다익스트라를 2N번 사용하여 꽤 위험할 수 있는 방법이지만
+>
+> 단 2번의 연산으로 모든 노드에서의 X까지의 거리와 X에서 모든 노드까지의 거리를 알 수 있다.
+>
+> > 0. 이 방법으로 접근하기 위해서는 먼저 내가 이번에 작성했던 코드에서 목적지에 기록된 거리보다 큰 경우를 배제하는 백트래킹을 시행해선 안된다. 이렇게 하는 경우에는 무조건 현재 노드 A 에서 목적지 B까지의 최단거리만 연산하기 때문이다. 만약 이 조건을 없애면 현재 노드 A에서 모든 노드에 대한 최단거리가 기록된다.
+> >
+> > 1. 모든 간선을 받을때 정방향으로 받고 역방향으로도 받는다.
+> >
+> >    ```c++
+> >     int s, e, dist;
+> >     for (int i=0; i<M; ++i) {
+> >         cin >> s >> e >> dist;
+> >    
+> >         graph[0][s][e] = dist;
+> >         graph[1][e][s] = dist;
+> >     }
+> >    ```
+> >
+> > 2. X를 시작점(command  = 0)으로 모든 노드에 대한 최단 거리를 알 수 있게 다익스트라를 진행한다.
+> >
+> >    ```c++
+> >    // visited를 전역에 선언하고 정방향, 역방향을 위해 2개를 만든다.
+> >    vector<vector<int> > visited(2, vector<int>(N+1, INF));
+> >    
+> >    // 정방향인지 역방향인지 판단할 command 인자를 받는다.
+> >    void go_to_party(int start, int command)
+> >    {
+> >        visited[command][start] = 0;
+> >        priority_queue<pll, vector<pll>, Compare> que;
+> >        que.push({0, start});
+> >        
+> >        while (!que.empty()) {
+> >            pll now = que.top();
+> >            que.pop();
+> >            
+> >            // 현재 위치에 기록된 이동 횟수보다 크다면 다음 것을 본다.
+> >            // 기존에는 목적지에 기록된 이동 횟수보다 크다면 백트래킹 하였지만 그렇게 하면 출발지 부터 모든 노드에 대한 최단 거리를 알 수 없다.
+> >            if (now.first > visited[command][now]) {
+> >                continue;
+> >            }
+> >            
+> >            for (pll p : graph[command][now.second]) {
+> >                int next_dist = now.first + p.first;
+> >                if (visited[command][p.second] > next_dist) {
+> >                    que.push({next_dist, p.second});
+> >                    visited[command][p.second] = next_dist;
+> >                }
+> >            }
+> >        }
+> >        
+> >        return;
+> >    }
+> >    ```
+> >
+> > 3. 위의 함수를 command = 1을 하여 다시 돌려 역방향으로 진행에 모든 노드에서 X까지의 최단 거리를 구한다.
+> >
+> >    > 어째서 그런게 가능하지?
+> >    >
+> >    > 다익스트라는 출발지에서 모든 노드에 대한 최단거리를 알 수 있는 알고리즘이다. 그렇다면 만약에 모든 방향이 역으로 바뀌고 한 지점에서 다른 지점 까지의 최단 거리를 구한다면? 이는 다시 정방향으로 볼 때 모든 노드에서 X까지의 거리로 볼 수 있다.
+> >
+> > 4. 기록된 visited에서 최단 거리 중 최대 거리를 구한다.
+> >
+> >    ```c++
+> >    for (int i=1; i<=N; ++i) {
+> >        int tmp = visited[0][i] + visited[1][i];
+> >        result = max(result, tmp);
+> >    }
+> >    ```
+> >
+> > 5. 구한 result 값을 출력한다.
+>
+> 위와 같은 방법이면 단 2번의 다익스트라로 값을 도출해낼 수 있다.
+>
+> 여태 다익스트라는 출발지와 목적지에 대한 최단거리만 구한다고 생각했는데, 출발지에서 모든 노드에 대한 최단 거리를 구할 수 있다는 것을 기억하고 단방향 그래프일때 역방향을 이용하면 한 노드까지의 대한 모든 노드의 최단거리를 구할 수 있음을 기억하자!
 
