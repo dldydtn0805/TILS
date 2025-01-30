@@ -1,0 +1,106 @@
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/131528
+/*해설
+USER_INFO 테이블에서 나이 정보가 없는 회원이 몇명인지 출력하세요
+*/
+/*입력
+USER_ID	GENDER	AGE	JOINED
+1	1	26	2021-06-01
+2	NULL	NULL	2021-07-25
+3	1	NULL	2021-07-30
+4	0	31	2021-08-03
+*/
+/*출력
+USERS
+2
+*/
+SELECT COUNT(*) AS USERS
+FROM USER_INFO
+WHERE AGE IS NULL
+
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/131114
+/*해설
+FOOD_WAREHOUSE 테이블에서
+경기도에 위치한 창고의 ID, 이름, 주소, 내옹시설 여부를 조회하는 SQL을 작성하세요.
+이때 냉동시설 여부가 NULL인 경우, 'N'으로 출력시켜 주시고 결과는 창고 ID를 기준으로 오름차순 정렬하세요
+
+*/
+/*입력
+WAREHOUSE_ID	WAREHOUSE_NAME	ADDRESS	TLNO	FREEZER_YN
+WH0001	창고_경기1	경기도 안산시 상록구 용담로 141	031-152-1332	Y
+WH0002	창고_충북1	충청북도 진천군 진천읍 씨제이로 110	043-623-9900	Y
+WH0003	창고_경기2	경기도 이천시 마장면 덕평로 811	031-221-7241	NULL
+WH0004	창고_경기3	경기도 김포시 대곶면 율생중앙로205번길	031-671-1900	N
+WH0005	창고_충남1	충청남도 천안시 동남구 광덕면 신덕리1길 9	041-876-5421	Y
+*/
+/*출력
+WAREHOUSE_ID	WAREHOUSE_NAME	ADDRESS	FREEZER_YN
+WH0001	창고_경기1	경기도 안산시 상록구 용담로 141	Y
+WH0003	창고_경기2	경기도 이천시 마장면 덕평로 811	N
+WH0004	창고_경기3	경기도 김포시 대곶면 율생중앙로205번길	N
+*/
+SELECT WAREHOUSE_ID, WAREHOUSE_NAME, ADDRESS, 
+    CASE
+        WHEN FREEZER_YN IS NULL THEN 'N'
+        ELSE FREEZER_YN
+    END AS FREEZER_YN
+FROM FOOD_WAREHOUSE
+WHERE ADDRESS LIKE '경기도%'
+ORDER BY WAREHOUSE_ID ASC
+
+```
+
+
+```sql
+
+#https://school.programmers.co.kr/learn/courses/30/lessons/59407
+/*해설
+동물 보호소에 들어온 동물 중, 이름 있는 동물의 ID를 조회하는 SQL문을 작성하세요.
+
+ID는 오름차순 정렬되어야 합니다.
+*/
+/*입력
+ANIMAL_ID	ANIMAL_TYPE	DATETIME	INTAKE_CONDITION	NAME	SEX_UPON_INTAKE
+A434523	Cat	2015-11-20 14:18:00	Normal	NULL	Spayed Female
+A562649	Dog	2014-03-20 18:06:00	Sick	NULL	Spayed Female
+A524634	Dog	2015-01-02 18:54:00	Normal	*Belle	Intact Female
+A465637	Dog	2017-06-04 08:17:00	Injured	*Commander	Neutered Male
+*/
+/*출력
+ANIMAL_ID
+A465637
+A524634
+*/
+SELECT ANIMAL_ID
+FROM ANIMAL_INS
+WHERE NAME IS NOT NULL
+ORDER BY ANIMAL_ID ASC
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/59039
+/*해설
+동물 보호소에 들어온 동물 중
+이름이 없는 채로 들어온 
+동물의 ID를 조회하세요
+*/
+/*입력
+ANIMAL_ID	ANIMAL_TYPE	DATETIME	INTAKE_CONDITION	NAME	SEX_UPON_INTAKE
+A368930	Dog	2014-06-08 13:20:00	Normal	NULL	Spayed Female
+A524634	Dog	2015-01-02 18:54:00	Normal	*Belle	Intact Female
+A465637	Dog	2017-06-04 08:17:00	Injured	*Commander	Neutered Male
+*/
+/*출력
+ANIMAL_ID
+A368930
+
+*/
+SELECT ANIMAL_ID
+FROM ANIMAL_INS
+WHERE NAME IS NULL
+ORDER BY ANIMAL_ID
+
+```

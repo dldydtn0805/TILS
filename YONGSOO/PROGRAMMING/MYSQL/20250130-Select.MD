@@ -1,0 +1,331 @@
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/144853
+/*해설
+BOOK 테이블에서 2021년에 출판된 인문 카테고리에 속하는 도서 리스트를 찾아서 도서 ID, 출판일을 출력하는 SQL문을 작성하세요.
+결과는 출판일을 기준으로 오름차순으로 정렬하세요.
+*/
+/*입력
+BOOK_ID	CATEGORY	AUTHOR_ID	PRICE	PUBLISHED_DATE
+1	인문	1	10000	2020-01-01
+2	경제	2	9000	2021-02-05
+3	인문	2	11000	2021-04-11
+4	인문	3	10000	2021-03-15
+5	생활	1	12000	2021-01-10
+*/
+/*출력
+BOOK_ID	PUBLISHED_DATE
+4	2021-03-15
+3	2021-04-11
+*/
+SELECT BOOK_ID, DATE_FORMAT(PUBLISHED_DATE, '%Y-%m-%d') as PUBLISHED_DATE
+FROM BOOK
+WHERE DATE_FORMAT(PUBLISHED_DATE, '%Y') = '2021' AND CATEGORY = '인문'
+ORDER BY BOOK_ID
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/132201
+/*해설
+PATIENT 테이블에서 12세 이하인 여자 환자의 
+
+환자이름, 환자번호, 성별코드, 나이, 전화번호를 조회하는 SQL문을 작성하세요.
+
+전화번호가 없는 경우, NONE으로 출력시키고
+
+결과는 나이를 기준으로 내림차순 정렬,
+
+나이가 같다면 환자 이름을 기준으로 오름차순 정렬하세요.
+
+*/
+/*입력
+PT_NO	PT_NAME	GEND_CD	AGE	TLNO
+PT22000003	브라운	M	18	01031246641
+PT22000004	크롱	M	7	NULL
+PT22000006	뽀뽀	W	8	NULL
+PT22000009	한나	W	12	01032323117
+PT22000012	뿡뿡이	M	5	NULL
+PT22000013	크리스	M	30	01059341192
+PT22000014	토프	W	22	01039458213
+PT22000018	안나	W	11	NULL
+PT22000019	바라	W	10	01079068799
+PT22000021	릴로	W	33	01023290767
+
+*/
+/*출력
+PT_NAME	PT_NO	GEND_CD	AGE	TLNO
+한나	PT22000009	W	12	01032323117
+안나	PT22000018	W	11	NONE
+바라	PT22000019	W	10	01079068799
+뽀뽀	PT22000006	W	8	NONE
+*/
+SELECT PT_NAME, PT_NO, GEND_CD, AGE, 
+    CASE 
+        WHEN TLNO IS NULL THEN 'NONE'
+        ELSE TLNO
+    END AS TLNO
+FROM PATIENT
+WHERE GEND_CD = 'W' AND AGE <= 12
+ORDER BY AGE DESC, PT_NAME ASC
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/131535
+/*해설
+USER_INFO 테이블에서 
+
+2021년에 가입한 회원 중 나이가 20세 이상, 29세 이하인 회원이 몇명인지 출력하세요
+
+*/
+/*입력
+USER_ID	GENDER	AGE	JOINED
+1	1	26	2021-10-05
+2	0	NULL	2021-11-25
+3	1	22	2021-11-30
+4	0	31	2021-12-03
+5	0	28	2021-12-16
+6	1	24	2022-01-03
+7	1	NULL	2022-01-09
+*/
+/*출력
+USERS
+3
+*/
+SELECT COUNT(*) AS USERS
+FROM USER_INFO
+WHERE DATE_FORMAT(JOINED, '%Y') = '2021' AND AGE >= 20 AND AGE <= 29
+
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/131112
+/*해설
+FOOD_FACTORY 테이블에서
+
+강원도에 위치한 식품 공장의 공장ID, 공장 이름, 주소를 조회하는 SQL문을 작성하세요.
+
+공장 ID를 기준으로 오름차순 정렬하세요.
+*/
+/*입력
+FACTORY_ID	FACTORY_NAME	ADDRESS	TLNO
+FT19980003	(주)맛있는라면	강원도 정선군 남면 칠현로 679	033-431-3122
+FT19980004	(주)맛있는기름	경기도 평택시 포승읍 포승공단순환로 245	031-651-2410
+FT20010001	(주)맛있는소스	경상북도 구미시 1공단로7길 58-11	054-231-2121
+FT20010002	(주)맛있는통조림	전라남도 영암군 미암면 곤미현로 1336	061-341-5210
+FT20100001	(주)맛있는차	전라남도 장성군 서삼면 장산리 233-1번지	061-661-1420
+FT20100002	(주)맛있는김치	충청남도 아산시 탕정면 탕정면로 485	041-241-5421
+FT20100003	(주)맛있는음료	강원도 원주시 문막읍 문막공단길 154	033-232-7630
+FT20100004	(주)맛있는국	강원도 평창군 봉평면 진조길 227-35	033-323-6640
+FT20110001	(주)맛있는밥	경기도 화성시 팔탄면 가재리 34번지	031-661-1532
+FT20110002	(주)맛있는과자	광주광역시 북구 하서로 222	062-211-7759
+*/
+/*출력
+FACTORY_ID	FACTORY_NAME	ADDRESS
+FT19980003	(주)맛있는라면	강원도 정선군 남면 칠현로 679
+FT20100003	(주)맛있는음료	강원도 원주시 문막읍 문막공단길 154
+FT20100004	(주)맛있는국	강원도 평창군 봉평면 진조길 227-35
+*/
+SELECT FACTORY_ID, FACTORY_NAME, ADDRESS
+FROM FOOD_FACTORY
+WHERE ADDRESS LIKE '강원도%'
+ORDER BY FACTORY_ID ASC
+
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/59405
+/*해설
+동물 보호소에 가장 먼저 들어온 동물의 이름을 조회하세요.
+
+*/
+/*입력
+ANIMAL_ID	ANIMAL_TYPE	DATETIME	INTAKE_CONDITION	NAME	SEX_UPON_INTAKE
+A399552	Dog	2013-10-14 15:38:00	Normal	Jack	Neutered Male
+A379998	Dog	2013-10-23 11:42:00	Normal	Disciple	Intact Male
+A370852	Dog	2013-11-03 15:04:00	Normal	Katie	Spayed Female
+A403564	Dog	2013-11-18 17:03:00	Normal	Anna	Spayed Female
+*/
+/*출력
+NAME
+Jack
+*/
+SELECT NAME
+FROM ANIMAL_INS
+WHERE DATETIME = (
+    SELECT MIN(DATETIME)
+    FROM ANIMAL_INS
+)
+
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/59405
+/*해설
+동물 보호소에 들어온 모든 동물의 아이디와 이름, 보호 시작일을 
+이름 순으로 조회하세요
+이름이 같은 동물 중에서는 보호를 위해 나중에 시작한 동물을 먼저 보여줘야 합니다
+*/
+/*입력
+ANIMAL_ID	ANIMAL_TYPE	DATETIME	INTAKE_CONDITION	NAME	SEX_UPON_INTAKE
+A349996	Cat	2018-01-22 14:32:00	Normal	Sugar	Neutered Male
+A350276	Cat	2017-08-13 13:50:00	Normal	Jewel	Spayed Female
+A396810	Dog	2016-08-22 16:13:00	Injured	Raven	Spayed Female
+A410668	Cat	2015-11-19 13:41:00	Normal	Raven	Spayed Female
+*/
+/*출력
+ANIMAL_ID	NAME	DATETIME
+A350276	Jewel	2017-08-13 13:50:00
+A396810	Raven	2016-08-22 16:13:00
+A410668	Raven	2015-11-19 13:41:00
+A349996	Sugar	2018-01-22 14:32:00
+*/
+SELECT ANIMAL_ID, NAME, DATETIME
+FROM ANIMAL_INS
+ORDER BY NAME, DATETIME DESC
+
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/59403
+/*해설
+동물 보호소에들어온 모든 동물의 아이디와 이름을
+
+ANIMAL_ID 순으로 조회하세요
+*/
+/*입력
+NAME	TYPE	NULLABLE
+ANIMAL_ID	VARCHAR(N)	FALSE
+ANIMAL_TYPE	VARCHAR(N)	FALSE
+DATETIME	DATETIME	FALSE
+INTAKE_CONDITION	VARCHAR(N)	FALSE
+NAME	VARCHAR(N)	TRUE
+SEX_UPON_INTAKE	VARCHAR(N)	FALSE
+*/
+/*출력
+ANIMAL_ID	NAME
+A349996	Sugar
+A350276	Jewel
+A350375	Meo
+A352555	Harley
+A352713	Gia
+A352872	Peanutbutter
+A353259	Bj
+*/
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
+
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/59037
+/*해설
+동물 보호소에 들어온 동물 중
+젊은 동물의 
+아이디와 이름을 조회하세요
+결과는 아이디 순으로 조회하세요
+*/
+/*입력
+ANIMAL_ID	ANIMAL_TYPE	DATETIME	INTAKE_CONDITION	NAME	SEX_UPON_INTAKE
+A365172	Dog	2014-08-26 12:53:00	Normal	Diablo	Neutered Male
+A367012	Dog	2015-09-16 09:06:00	Sick	Miller	Neutered Male
+A365302	Dog	2017-01-08 16:34:00	Aged	Minnie	Spayed Female
+A381217	Dog	2017-07-08 09:41:00	Sick	Cherokee	Neutered Male
+*/
+/*출력
+ANIMAL_ID	NAME
+A365172	Diablo
+A367012	Miller
+A381217	Cherokee
+*/
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE INTAKE_CONDITION != 'Aged'
+ORDER BY ANIMAL_ID
+
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/59036
+/*해설
+동물 보호소에 들어온 동물 중
+아픈 동물의 
+아이디와 이름을 조회하세요
+결과는 아이디 순으로 조회하세요
+*/
+/*입력
+ANIMAL_ID	ANIMAL_TYPE	DATETIME	INTAKE_CONDITION	NAME	SEX_UPON_INTAKE
+A365172	Dog	2014-08-26 12:53:00	Normal	Diablo	Neutered Male
+A367012	Dog	2015-09-16 09:06:00	Sick	Miller	Neutered Male
+A365302	Dog	2017-01-08 16:34:00	Aged	Minnie	Spayed Female
+A381217	Dog	2017-07-08 09:41:00	Sick	Cherokee	Neutered Male
+*/
+/*출력
+ANIMAL_ID	NAME
+A367012	Miller
+A381217	Cherokee
+*/
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE INTAKE_CONDITION = 'Sick'
+ORDER BY ANIMAL_ID
+
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/59035
+/*해설
+동물 보호소에 들어온 모든 동물의
+이름, 보호 시작일을 조회하세요
+결과는 ANIMAL_ID 역순으로 하세요
+*/
+/*입력
+NAME	TYPE	NULLABLE
+ANIMAL_ID	VARCHAR(N)	FALSE
+ANIMAL_TYPE	VARCHAR(N)	FALSE
+DATETIME	DATETIME	FALSE
+INTAKE_CONDITION	VARCHAR(N)	FALSE
+NAME	VARCHAR(N)	TRUE
+SEX_UPON_INTAKE	VARCHAR(N)	FALSE
+
+*/
+/*출력
+NAME	DATETIME
+Rocky	2016-06-07 09:17:00
+Shelly	2015-01-29 15:01:00
+Benji	2016-04-19 13:28:00
+Jackie	2016-01-03 16:25:00
+*Sam	2016-03-13 11:17:00
+*/
+SELECT NAME, DATETIME
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID DESC
+
+```
+
+```sql
+#https://school.programmers.co.kr/learn/courses/30/lessons/59034
+/*해설
+동물 보호소에 들어온 모든 동물의 정보를
+ANIMAL_ID 순으로 출력하세요
+*/
+/*입력
+NAME	TYPE	NULLABLE
+ANIMAL_ID	VARCHAR(N)	FALSE
+ANIMAL_TYPE	VARCHAR(N)	FALSE
+DATETIME	DATETIME	FALSE
+INTAKE_CONDITION	VARCHAR(N)	FALSE
+NAME	VARCHAR(N)	TRUE
+SEX_UPON_INTAKE	VARCHAR(N)	FALSE
+*/
+/*출력
+ANIMAL_ID	ANIMAL_TYPE	DATETIME	INTAKE_CONDITION	NAME	SEX_UPON_INTAKE
+A349996	Cat	2018-01-22 14:32:00	Normal	Sugar	Neutered Male
+A350276	Cat	2017-08-13 13:50:00	Normal	Jewel	Spayed Female
+A350375	Cat	2017-03-06 15:01:00	Normal	Meo	Neutered Male
+A352555	Dog	2014-08-08 04:20:00	Normal	Harley	Spayed Female
+*/
+SELECT *
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID ASC
+
+```
