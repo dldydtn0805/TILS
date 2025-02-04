@@ -115,4 +115,4 @@ export default function Counter() {
 
 ### 결과
 
-<img width="384" alt="Image" src="https://github.com/user-attachments/assets/439131a5-da26-4559-9157-eff46e2cb616" />
+![Image](https://github.com/user-attachments/assets/e9de4154-f8f8-4e0b-8831-b59075730c88)
