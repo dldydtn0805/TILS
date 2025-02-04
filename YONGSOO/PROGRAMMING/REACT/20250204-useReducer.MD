@@ -112,3 +112,7 @@ export default function Counter() {
 - 초기 상태 로직을 지연 : 상태 초기화에 오래 시간이 걸리거나 동적 값을 기반으로 초기 상태를 계산할때 유용하다.
 
 - 성능 최적화 : 필요할때만 상태를 초기화할 수 있다
+
+### 결과
+
+<img width="384" alt="Image" src="https://github.com/user-attachments/assets/439131a5-da26-4559-9157-eff46e2cb616" />
