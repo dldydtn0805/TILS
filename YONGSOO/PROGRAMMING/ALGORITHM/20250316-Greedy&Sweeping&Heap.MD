@@ -122,36 +122,39 @@ public class Main {
     }
 
     public static int solve ( int[][] bridges, int N ) {
-        // 판자 연결하기
+        // 판자 연결시키기
+        List<int[]> connectedBridges = new ArrayList<>();
         int l = bridges[0][0];
         int r = bridges[0][1];
+
         for (int i = 1; i < N; i ++) {
             if (r >= bridges[i][0]) {
-
                 r = Math.max(r, bridges[i][1]);
-                bridges[i][0] = l;
             } else {
+                connectedBridges.add(new int[]{l, r});
                 l = bridges[i][0];
                 r = bridges[i][1];
             }
         }
+        // 마지막 판자 추가해주기
+        connectedBridges.add(new int[]{l, r});
 
-        PriorityQueue<int[]> hq = new PriorityQueue<>((a,b)->{
-            if (b[0] == a[0]) {
-                return b[2] - a[2];
-            }
-            return b[0]-a[0];
+        // 연결된 판자를 바탕으로 최대 거리 계산하기
+        PriorityQueue<Integer> hq = new PriorityQueue<>((a,b)->{
+            return b-a;
         });
-        int maxDistance = bridges[0][1];
-        hq.add(new int[] {bridges[0][1]*2 - bridges[0][0], bridges[0][0], bridges[0][1]});
-        for (int i = 1; i < N; i ++) {
-            // 최대로 뛸 수 있는 거리 안에 왼쪽 판자가 있다
-            if (!hq.isEmpty() && hq.peek()[0] >= bridges[i][0]) {
-                hq.add(new int[]{bridges[i][1]*2 - bridges[i][0], bridges[i][0], bridges[i][1]});
-                maxDistance = Math.max(maxDistance, bridges[i][1]);
+        int maxDistance = connectedBridges.get(0)[1];
+        hq.add(connectedBridges.get(0)[1]*2 - connectedBridges.get(0)[0]);
+        for (int i = 1; i < connectedBridges.size(); i ++) {
+            // 최대로 뛸 수 있는 거리 안에 판자가 있다
+            if (!hq.isEmpty() && hq.peek() >= connectedBridges.get(i)[0]) {
+                hq.add(connectedBridges.get(i)[1]*2 - connectedBridges.get(i)[0]);
+                maxDistance = Math.max(maxDistance, connectedBridges.get(i)[1]);
             }
         }
+
         return maxDistance;
     }
 }
 ```
+
