@@ -181,6 +181,31 @@ String result = input.replaceAll("\\d", "*");
 | `\d+(,\d{3})*` | 천 단위 구분 쉼표 포함 숫자 (ex: 1,000,000) |
 
 
+## Logic
+
+코드 로직은 다음과 같다
+
+- ^ : 문자열의 시작
+
+- (...) : 그룹화
+
+- 100{1,}1{1,} : "10"으로 시작하고, 그다음에 하나 이상의 "0"이 오고, 다음에 하나 이상의 "1"이 오는 패턴
+
+- | : 또는
+
+- 01 : 문자열 "01"
+
+- {1,} : 앞의 그룹이 한번 이상 반복
+
+- $ : 문자열의 끝
+
+이 코드는 다음 패턴 중 하나 이상이 반복되는 문자열을 확인한다
+
+1. "10" 다음에 하나 이상의 0, 그리고 하나 이상의 1이 오는 패턴
+2. "01" 패턴
+
+
+
 ## Input
 ```
 3
@@ -223,7 +248,7 @@ public class Main {
 
     public static boolean solve (String signal) {
         // (100+1+ | 01)+
-        Pattern pattern = Pattern.compile("(100+1+|01)+");
+        Pattern pattern = Pattern.compile("^(100{1,}1{1,}|01){1,}$");
         return pattern.matcher(signal).matches();
     }
 }
