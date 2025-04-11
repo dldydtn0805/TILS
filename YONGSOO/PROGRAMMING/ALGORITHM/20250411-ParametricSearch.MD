@@ -168,13 +168,10 @@ DP(left, right, depth) = dp[depth][l][r]로 두고, depth 만큼 분할했을때
 ## Source Code
 
 ```java
-
-
 import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static int[][] directions = {{-1,0},{0,1},{1,0},{0,-1}};
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -187,7 +184,7 @@ public class Main {
             beads[i] = Integer.parseInt(st.nextToken());
         }
         int[] splitIndexes = new int[M];
-        sb.append(binarySearch(0, Integer.MAX_VALUE, beads, N, M, splitIndexes)).append("\n");
+        sb.append(parametricSearch(0, Integer.MAX_VALUE, beads, N, M, splitIndexes)).append("\n");
         for (int i = 0; i < M; i ++) {
             sb.append(splitIndexes[i]).append(" ");
         }
@@ -197,16 +194,16 @@ public class Main {
     }
 
 
-    public static int binarySearch (int l, int r, int[] beads, int N, int M, int[] splitIndexes) {
+    public static int parametricSearch (int l, int r, int[] beads, int N, int M, int[] splitIndexes) {
         int res = Integer.MAX_VALUE;
         if (N == M) {
             res = 0;
             for (int i = 0; i < N; i ++) {
                 res = Math.max(res, beads[i]);
             }
-            int[] tmpSplitIndexes = new int[M];
-            Arrays.fill(tmpSplitIndexes, 1);
-            System.arraycopy(tmpSplitIndexes, 0, splitIndexes, 0, M);
+            int[] curSplitIndexes = new int[M];
+            Arrays.fill(curSplitIndexes, 1);
+            System.arraycopy(curSplitIndexes, 0, splitIndexes, 0, M);
             return res;
         }
         while (l <= r) {
@@ -223,37 +220,36 @@ public class Main {
     }
 
     public static boolean check (int m, int[] beads, int N, int M, int[] splitIndexes) {
-        int curSum = 0;
-        int curCnt = 1;
-        int curSize = 0;
-        int[] tmpSplitIndexes = new int[M];
+        int groupCnt = 1;
+        int curGroupSum = 0;
+        int curGroupSize = 0;
+        int[] curSplitIndexes = new int[M];
         for (int beadIdx = 0; beadIdx < N; beadIdx ++) {
-            if (curSum + beads[beadIdx] <= m) {
-                curSum += beads[beadIdx];
-                curSize++;
+            if (curGroupSum + beads[beadIdx] <= m) {
+                curGroupSum += beads[beadIdx];
+                curGroupSize++;
             } else {
-                if (curCnt + 1> M) return false;
-                tmpSplitIndexes[curCnt-1] = curSize;
-                curSize = 1;
+                if (groupCnt + 1> M) return false;
+                curSplitIndexes[groupCnt -1] = curGroupSize;
+                curGroupSize = 1;
                 if (beads[beadIdx] > m) return false;
-                curSum = beads[beadIdx];
-                curCnt++;
+                curGroupSum = beads[beadIdx];
+                groupCnt++;
             }
         }
-        tmpSplitIndexes[curCnt-1] = curSize;
+        curSplitIndexes[groupCnt -1] = curGroupSize;
         for (int i = 1; i < M; i ++) {
-            if (tmpSplitIndexes[i] == 0) {
-                if (tmpSplitIndexes[i-1] > 1) {
-                    tmpSplitIndexes[i] = tmpSplitIndexes[i-1] - 1;
-                    tmpSplitIndexes[i-1] = 1;
+            if (curSplitIndexes[i] == 0) {
+                if (curSplitIndexes[i-1] > 1) {
+                    curSplitIndexes[i] = curSplitIndexes[i-1] - 1;
+                    curSplitIndexes[i-1] = 1;
 
                 }
             }
         }
-        System.arraycopy(tmpSplitIndexes, 0, splitIndexes, 0, M);
+        System.arraycopy(curSplitIndexes, 0, splitIndexes, 0, M);
         return true;
     }
 
 }
-
 ```
