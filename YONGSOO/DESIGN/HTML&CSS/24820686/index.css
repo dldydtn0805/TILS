@@ -1,0 +1,134 @@
+body {
+    background-color : ghostwhite;
+    header {
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items : center;
+            .nav-left {
+                display : flex;
+                align-items : center;
+                justify-content: space-around;
+                gap : 4rem;
+                .logo {
+                    width : 6rem;
+                }
+                .category {
+                    display : flex;
+                    color : darkslategray;
+                    justify-content: space-around;
+                    gap : 2rem;
+                    list-style-type : none;
+                    a {
+                        text-decoration: none;
+                        color: inherit;
+                    }
+                }
+            }
+            .nav-right {
+                .login {
+                    color : GrayText;
+                    border : solid lightgray 0.01rem;
+                    border-radius : 0.5rem;
+                    padding : 0.5rem;
+                }
+                .login:hover {
+                    transform: scale(1.1);
+                    cursor: pointer;
+                }
+                .sign-up {
+                    background-color : darkcyan;
+                    color : floralwhite;
+                    border : solid darkcyan 0.01rem;
+                    border-radius : 0.5rem;
+                    padding : 0.5rem;
+                }
+                .sign-up:hover {
+                    transform: scale(1.1);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    main {
+        article {
+            display : flex;
+            align-items : center;
+            justify-content: space-around;
+            .intro-left {
+                .endorser-brand {
+                    display : flex;
+                    align-items: center;
+                    gap : 2rem;
+                    .klarna {
+                        width: 5rem;
+                    }
+                    .coinbase {
+                        width: 5rem;
+                    }
+                    .instacart {
+                        width: 5rem;
+                    }
+                }
+            }
+            .intro-right {
+                position : relative;
+                .example-1 {
+                    list-style-type : none;
+                    border : solid 1px lightgrey;
+                    width : 15rem;
+                    height : 20rem;
+                    box-shadow: 0 0 0 lightgrey;
+                    border-radius: 1rem;
+                    padding : 1rem;
+                    header {
+                        display : flex;
+                        justify-content: start;
+                        align-items : center;
+                        font-size : 0.7rem;
+                    }
+                    section {
+
+                    }
+                    footer {
+                        display : flex;
+                        justify-content: center;
+                        background-color : darkslategrey;
+                        border-radius : 1rem;
+                        color : white;
+                    }
+                }
+                .example-2 {
+                    list-style-type : none;
+                    width : 10rem;
+                    height : 15rem;
+                    background-color : darkcyan;
+                    box-shadow: 0 0 0 lightgrey;
+                    border-radius: 1rem;
+                    position : absolute;
+                    top: -1rem;
+                    right: -1rem;
+                    z-index: 10;
+                    display: flex;
+                    flex-direction : column;
+                    justify-content : space-between;
+
+                    .upper-section {
+                        padding : 1rem;
+                        color : white;
+                    }
+                    .lower-section {
+                        background-color : darkslategrey;
+                        border-bottom-left-radius : 1rem;
+                        border-bottom-right-radius : 1rem;
+                        padding : 1rem;
+                        height : 3rem;
+                        .visa {
+                            width : 3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
