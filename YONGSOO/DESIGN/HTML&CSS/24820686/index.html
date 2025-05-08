@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <nav>
+        <nav class="fade-in-up">
             <div class="nav-left">
                 <div>
                     <img src="images/logo.png" alt="logo" class="logo"/>
@@ -30,45 +30,59 @@
         </nav>
     </header>
     <main>
-        <article>
+        <article class="first-page">
             <section class="intro-left">
-                <h1>Get paid early</h1>
-                <h1>save automatically all your pay</h1>
-                <p>Support small business with simple invoicing</p>
-                <p>powerful integrations, and cash flow management tools</p>
-                <form>
+                <div class="fade-in-up" style="animation-delay: 0.2s">
+                    <p class="section-1">Get paid early</p>
+                    <p class="section-2">save automatically all your pay.</p>
+                </div>
+                <div class="fade-in-up section-3 "  style="animation-delay: 0.4s">
+                    <p>Support small business with simple invoicing</p>
+                    <p>powerful integrations, and cash flow management tools</p>
+                </div>
+                <form class="fade-in-up section-4"  style="animation-delay: 0.6s">
                     <label>
-                        이메일
                         <input id="email" name="email" placeholder="Your business email" />
+                        <button>Get Started</button>
                     </label>
-                    <button>Get Started</button>
                 </form>
-                <div class="endorser-brand">
+                <div class="endorser-brand fade-in-up"  style="animation-delay: 0.8s">
                     <img src="./images/Klarna.svg" alt="Klarna" class="klarna"/>
                     <img src="./images/coinbase.svg" alt="coinbase" class="coinbase"/>
                     <img src="./images/instacart.svg" alt="instacart" class="instacart"/>
                     <span></span>
                 </div>
             </section>
+            <img class="background-figure fade-in-right" style="animation-delay: 1.5s" alt="background-figure" src="./images/background.svg"/>
             <ul class="intro-right">
-                <li class="example-1">
+                <li class="example-1 fade-in-up" style="animation-delay: 1s" >
                     <header>
                         <div>
-                            1
+                            icon
                         </div>
                         <div>
-                            <p>Dipa Inhouse</p>
+                            <p class="address">Dipa Inhouse</p>
                             <p>dipainhouse@gmail.com</p>
                         </div>
                     </header>
                     <section>
-                        <div>
-                            <p>Invoice</p>
-                            <p>$1,875,580</p>
-                            <p>April 21, 2024</p>
+                        <div class="upper">
+                            <p class="upper-section-1">Invoice</p>
+                            <p class="upper-section-2">$1,875,580</p>
+                            <p class="upper-section-3">April 21, 2024</p>
                         </div>
-                        <p>Credit card</p>
-                        <p>Bank Account</p>
+                        <div class="mid">
+                            <label class="credit">
+                                Credit card
+                                <input type="radio" name="payment" />
+                            </label>
+                        </div>
+                        <div class="lower">
+                            <label class="bank">
+                                Bank Account
+                                <input type="radio" name="payment" />
+                            </label>
+                        </div>
                     </section>
                     <footer>
                         <p>
@@ -77,7 +91,7 @@
                     </footer>
 
                 </li>
-                <li class="example-2">
+                <li class="example-2 fade-in-up" style="animation-delay: 1.2s">
                     <div class="upper-section">
                         <p>Credit Card</p>
                         <p>234 **** ****</p>
@@ -87,6 +101,14 @@
                     </div>
                 </li>
             </ul>
+            <section class="empty-space-bottom"></section>
+        </article>
+
+
+        <article class="second-page">
+            <section class="card-section">
+                ㅇㄹㄴㅁㄹㅇㄴㅁ
+            </section>
         </article>
 
     </main>
