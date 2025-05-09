@@ -1,0 +1,175 @@
+{
+  "main": {
+    "id": "aa2e1032ea9da5e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "f8cc9609682f5509",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "71723215548a8403",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PROGRAMMING/ALGORITHM/20250510-Kruskal.MD",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "20250510-Kruskal"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9434b84a8d3eefd7",
+    "type": "split",
+    "children": [
+      {
+        "id": "89a2f3275fd903cf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "aa27aab2e0345d48",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "e0c07d79243c1742",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "6d0ef1cd568358fe",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "97bc5595ad9b436c",
+    "type": "split",
+    "children": [
+      {
+        "id": "5332b4a4d9407745",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "441acb68349349cc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "PROGRAMMING/ALGORITHM/20250510-Kruskal.MD",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 20250510-Kruskal"
+            }
+          },
+          {
+            "id": "320847e7a4eda0e3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "PROGRAMMING/ALGORITHM/20250510-Kruskal.MD",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 20250510-Kruskal"
+            }
+          },
+          {
+            "id": "6912bc50d9636115",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "d6f8f03a24984aed",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "PROGRAMMING/ALGORITHM/20250510-Kruskal.MD",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 20250510-Kruskal"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "71723215548a8403",
+  "lastOpenFiles": [
+    "PROGRAMMING/ALGORITHM/YYYYMMDD-SUBJECT.MD"
+  ]
+}
