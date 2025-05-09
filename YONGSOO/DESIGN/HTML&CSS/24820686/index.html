@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Finpay</title>
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -107,14 +107,80 @@
 
         <article class="second-page">
             <section class="card-section">
-                ㅇㄹㄴㅁㄹㅇㄴㅁ
+                <div class="card-section-top scroll-fade-in-up" data-delay="0.4">
+                    <p>FUTURE PAYMENT</p>
+                </div>
+                <div class="card-section-mid">
+                    <div class="description-left scroll-fade-in-up" data-delay="0.8">
+                        <p>Experience that grows</p>
+                        <p>with your scales.</p>
+                    </div>
+                    <div class="description-right scroll-fade-in-up" data-delay="1.2">
+                        <p>Design financial operating system that works for</p>
+                        <p>your business and streamlined cash flow</p>
+                        <p>management</p>
+                    </div>
+                </div>
+                <div class="card-section-bottom">
+                    <div class="left scroll-fade-in-right" data-delay="1.6">
+                        <img src="./images/card-section-1.svg" alt="card-section-1">
+                        <H1>Free transfers</H1>
+                        <p>Create a financial experience and</p>
+                        <p>automate repeat purchase by scheduling</p>
+                        <p>recurring payments</p>
+                    </div>
+                    <div class="mid scroll-fade-in-right" data-delay="2.0">
+                        <img src="./images/card-section-2.svg" alt="card-section-2" class="left-img">
+                        <H1>Multiple account</H1>
+                        <p>Run your operations with cash from your</p>
+                        <p>account and generate yield on funds stored in</p>
+                        <p>your account.</p>
+                    </div>
+                    <div class="right scroll-fade-in-right" data-delay="2.4">
+                        <img src="./images/card-section-3.svg" alt="card-section-3">
+                        <H1>Unmatched security</H1>
+                        <p>Securely manage your finances with</p>
+                        <p>organization-wide MFA, card-locking, and</p>
+                        <p>account-level controls.</p>
+                    </div>
+                </div>
             </section>
         </article>
-
     </main>
     <footer>
 
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 스크롤 애니메이션 요소 선택
+            const scrollFadeInUp = document.querySelectorAll('.scroll-fade-in-up');
+            const scrollFadeInRight = document.querySelectorAll('.scroll-fade-in-right');
 
+            // 모든 스크롤 애니메이션 요소 합치기
+            const scrollAnimElements = [...scrollFadeInUp, ...scrollFadeInRight];
+
+            // 스크롤 이벤트 핸들러
+            function checkScroll() {
+                scrollAnimElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 200; // 요소가 이 픽셀만큼 보이면 애니메이션 시작
+
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        // 지연시간 적용
+                        const delay = element.dataset.delay || 0;
+                        setTimeout(() => {
+                            element.classList.add('active');
+                        }, delay * 1000);
+                    }
+                });
+            }
+
+            // 초기 체크
+            checkScroll();
+
+            // 스크롤 시 체크
+            window.addEventListener('scroll', checkScroll);
+        });
+    </script>
 </body>
 </html>

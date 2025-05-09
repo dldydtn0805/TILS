@@ -61,8 +61,7 @@ body {
             align-items : center;
             justify-content: space-evenly;
             margin : 0;
-            height : 40rem;
-
+            height : 45rem;
             .intro-left {
                 margin : 0;
                 .section-1 {
@@ -120,7 +119,7 @@ body {
             .background-figure {
                 width : 30rem;
                 position: absolute;
-                top : 0;
+                top : 5rem;
                 right : 0;
                 z-index : 1
             }
@@ -240,12 +239,74 @@ body {
             align-items: center ;
             flex-direction: column;
             .card-section {
-                width : 90%;
-                height : 30rem;
+                width : 85%;
+                height : 25rem;
                 margin-top : -2rem;
                 background-color: white;
                 border-radius : 1rem;
                 box-shadow : 0.1rem 0.1rem 0.1rem 0.1rem ghostwhite;
+                display : flex;
+                flex-direction: column;
+                padding : 4rem;
+                .card-section-top {
+                    display : flex;
+                    justify-content: start;
+                    p {
+                        color : darkcyan;
+                    }
+                }
+                .card-section-mid {
+                    display : flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .description-left {
+                        font-size : 2rem;
+                        font-weight : bold;
+                    }
+                    .description-right {
+                        font-size : 0.8rem;
+                        color : #7a8088;
+                    }
+                }
+                .card-section-bottom {
+                    display : flex;
+                    justify-content: space-between;
+                    align-items : center;
+                    gap : 2rem;
+                    .left {
+                        H1 {
+                            font-weight : bold;
+                            font-size: 1rem;
+                        }
+                        p {
+                            color : #7a8088;
+                            font-size: 0.8rem;
+
+                        }
+                    }
+                    .mid {
+                        H1 {
+                            font-weight : bold;
+                            font-size: 1rem;
+                        }
+                        p {
+                            color : #7a8088;
+                            font-size: 0.8rem;
+
+                        }
+                    }
+                    .right {
+                        H1 {
+                            font-weight : bold;
+                            font-size: 1rem;
+                        }
+                        p {
+                            color : #7a8088;
+                            font-size: 0.8rem;
+
+                        }
+                    }
+                }
             }
         }
     }
@@ -284,4 +345,24 @@ body {
         transform: translateX(0);
 
     }
+}
+
+/* 스크롤 애니메이션 클래스 */
+.scroll-fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-fade-in-right {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* 활성화된 스크롤 애니메이션 */
+.scroll-fade-in-up.active,
+.scroll-fade-in-right.active {
+    opacity: 1;
+    transform: translate(0);
 }
