@@ -270,11 +270,11 @@ body {
                 }
                 .card-section-bottom {
                     display : flex;
-                    justify-content: space-between;
                     align-items : center;
-                    gap : 2rem;
-                    .left {
-                        H1 {
+                    justify-content: space-between;
+                    gap : 1rem;
+                    .card-section-bottom-left {
+                        h1 {
                             font-weight : bold;
                             font-size: 1rem;
                         }
@@ -284,8 +284,8 @@ body {
 
                         }
                     }
-                    .mid {
-                        H1 {
+                    .card-section-bottom-mid {
+                        h1 {
                             font-weight : bold;
                             font-size: 1rem;
                         }
@@ -295,8 +295,8 @@ body {
 
                         }
                     }
-                    .right {
-                        H1 {
+                    .card-section-bottom-right {
+                        h1 {
                             font-weight : bold;
                             font-size: 1rem;
                         }
@@ -305,6 +305,115 @@ body {
                             font-size: 0.8rem;
 
                         }
+                    }
+                }
+            }
+            .mid-title {
+                margin-top : 2rem;
+                display : flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .title-1 {
+                    font-size : 0.5rem;
+                    color : darkcyan;
+                    margin : 0;
+                }
+                .title-2 {
+                    margin : 0;
+                    font-size : 2rem;
+                }
+            }
+            .mid {
+                width : 80%;
+                .mid-content {
+                    margin-top : 2rem;
+                    display : flex;
+                    justify-content: center;
+                    gap : 1rem;
+                    .content-section-1 {
+                        background-color : #f3f7f8;
+                        border-radius : 1rem;
+                        display : flex;
+                        width : 100%;
+                        padding : 5%;
+                        flex-direction : column;
+                        justify-content : center;
+                        .section-1-title {
+                            font-size : 3rem;
+                            font-weight : bolder;
+                            color : darkcyan;
+                            margin : 0;
+                        }
+                        .section-1-text-1 {
+                            font-size : 1rem;
+                            margin-bottom : 0;
+                        }
+                        .section-1-text-2 {
+                            font-size : 1rem;
+                            margin : 0;
+
+                        }
+                    }
+                    .content-section-2 {
+                        background-color : #f3f7f8;
+                        border-radius : 1rem;
+                        display : flex;
+                        width : 100%;
+                        padding : 5%;
+                        flex-direction : column;
+                        justify-content : space-around;
+                        align-items : center;
+                        .section-2-title {
+
+                        }
+                        .section-2-title-1 {
+                            font-size: 1rem;
+                            margin : 0;
+                        }
+                        .section-2-title-2 {
+                            font-size : 1rem;
+                            margin : 0;
+
+                        }
+                        .section-2-icons {
+                            display : flex;
+                            justify-content: center;
+                            gap : 2rem;
+                            width : 1rem;
+                            img {
+                                width : 2rem;
+                            }
+
+                        }
+
+                    }
+                }
+                .bottom {
+                    margin-top : 1rem;
+                    background-color : #f3f7f8;
+                    border-radius : 1rem;
+                    width : 100%;
+                    display : flex;
+                    justify-content: space-around;
+                    align-items : center;
+                    .bottom-section-1 {
+                        padding : 5%;
+                        .bottom-section-1-text-1 {
+                            font-size : 2rem;
+                            font-weight : bold;
+                        }
+                        .bottom-section-1-text-2 {
+                            font-weight : lighter;
+                        }
+                    }
+                    .bottom-section-2 {
+                        padding : 5%;
+                        margin : 5%;
+                        width : 40%;
+                        height : 8rem;
+                        background-color: white;
+                        border-radius : 1rem;
                     }
                 }
             }
@@ -360,8 +469,15 @@ body {
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+.scroll-fade-in-down {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
 /* 활성화된 스크롤 애니메이션 */
 .scroll-fade-in-up.active,
+.scroll-fade-in-down.active,
 .scroll-fade-in-right.active {
     opacity: 1;
     transform: translate(0);

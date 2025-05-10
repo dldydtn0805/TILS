@@ -91,7 +91,7 @@
                     </footer>
 
                 </li>
-                <li class="example-2 fade-in-up" style="animation-delay: 1.2s">
+                <li class="example-2 fade-in-up" style="animation-delay: 0.4s">
                     <div class="upper-section">
                         <p>Credit Card</p>
                         <p>234 **** ****</p>
@@ -111,76 +111,81 @@
                     <p>FUTURE PAYMENT</p>
                 </div>
                 <div class="card-section-mid">
-                    <div class="description-left scroll-fade-in-up" data-delay="0.8">
+                    <div class="description-left scroll-fade-in-up" data-delay="0.5">
                         <p>Experience that grows</p>
                         <p>with your scales.</p>
                     </div>
-                    <div class="description-right scroll-fade-in-up" data-delay="1.2">
+                    <div class="description-right scroll-fade-in-up" data-delay="0.6">
                         <p>Design financial operating system that works for</p>
                         <p>your business and streamlined cash flow</p>
                         <p>management</p>
                     </div>
                 </div>
                 <div class="card-section-bottom">
-                    <div class="left scroll-fade-in-right" data-delay="1.6">
+                    <div class="card-section-bottom-left scroll-fade-in-right" data-delay="0.4">
                         <img src="./images/card-section-1.svg" alt="card-section-1">
-                        <H1>Free transfers</H1>
+                        <h1>Free transfers</h1>
                         <p>Create a financial experience and</p>
                         <p>automate repeat purchase by scheduling</p>
                         <p>recurring payments</p>
                     </div>
-                    <div class="mid scroll-fade-in-right" data-delay="2.0">
+                    <div class="card-section-bottom-mid scroll-fade-in-right" data-delay="0.5">
                         <img src="./images/card-section-2.svg" alt="card-section-2" class="left-img">
-                        <H1>Multiple account</H1>
+                        <h1>Multiple account</h1>
                         <p>Run your operations with cash from your</p>
                         <p>account and generate yield on funds stored in</p>
                         <p>your account.</p>
                     </div>
-                    <div class="right scroll-fade-in-right" data-delay="2.4">
+                    <div class="card-section-bottom-right scroll-fade-in-right" data-delay="0.6">
                         <img src="./images/card-section-3.svg" alt="card-section-3">
-                        <H1>Unmatched security</H1>
+                        <h1>Unmatched security</h1>
                         <p>Securely manage your finances with</p>
                         <p>organization-wide MFA, card-locking, and</p>
                         <p>account-level controls.</p>
                     </div>
                 </div>
             </section>
+            <section class="mid-title">
+                <p class="title-1 scroll-fade-in-up" data-delay="0.4">WHY US</p>
+                <p class="title-2 scroll-fade-in-up" data-delay="0.5">Why they prefer Finpay</p>
+            </section>
+            <section class="mid">
+                <section class="mid-content">
+                    <div class="content-section-1 scroll-fade-in-right" data-delay="0.5">
+                        <p class="section-1-title scroll-fade-in-right" data-delay="0.6">3k+</p>
+                        <p class="section-1-text-1 scroll-fade-in-right" data-delay="0.7">Business already running</p>
+                        <p class="section-1-text-2 scroll-fade-in-right" data-delay="0.8">on Finpay</p>
+                    </div>
+                    <div class="content-section-2 scroll-fade-in-down" data-delay="0.9">
+                        <div class="section-2-title">
+                            <p class="section-2-title-1 scroll-fade-in-down" data-delay="1.0">Instant Withdraw your funds</p>
+                            <p class="section-2-title-2 scroll-fade-in-down" data-delay="1.1">at any time</p>
+                        </div>
+                        <div class="section-2-icons scroll-fade-in-down" data-delay="1.1">
+                            <img src="./images/section-2-icon-1.svg" alt="section-2-icon-1">
+                            <img src="./images/section-2-icon-2.svg" alt="section-2-icon-2">
+                            <img src="./images/section-2-icon-3.svg" alt="section-2-icon-3">
+                        </div>
+                    </div>
+                </section>
+                <section class="bottom scroll-fade-in-down" data-delay="0.4">
+                    <div class="bottom-section-1 scroll-fade-in-down" data-delay="0.5">
+                        <p class="bottom-section-1-text-1 scroll-fade-in-right" data-delay="0.6">No asset volatility</p>
+                        <p class="bottom-section-1-text-2 scroll-fade-in-right" data-delay="0.7">Generate returns on your</p>
+                        <p class="bottom-section-1-text-2 scroll-fade-in-right" data-delay="0.8">cash reserves without making</p>
+                        <p class="bottom-section-1-text-2 scroll-fade-in-right" data-delay="0.9">any investments.</p>
+                    </div>
+                    <div class="bottom-section-2 scroll-fade-in-up" data-delay="1.0">
+
+                    </div>
+
+                </section>
+            </section>
         </article>
     </main>
     <footer>
 
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 스크롤 애니메이션 요소 선택
-            const scrollFadeInUp = document.querySelectorAll('.scroll-fade-in-up');
-            const scrollFadeInRight = document.querySelectorAll('.scroll-fade-in-right');
-
-            // 모든 스크롤 애니메이션 요소 합치기
-            const scrollAnimElements = [...scrollFadeInUp, ...scrollFadeInRight];
-
-            // 스크롤 이벤트 핸들러
-            function checkScroll() {
-                scrollAnimElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 200; // 요소가 이 픽셀만큼 보이면 애니메이션 시작
-
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        // 지연시간 적용
-                        const delay = element.dataset.delay || 0;
-                        setTimeout(() => {
-                            element.classList.add('active');
-                        }, delay * 1000);
-                    }
-                });
-            }
-
-            // 초기 체크
-            checkScroll();
-
-            // 스크롤 시 체크
-            window.addEventListener('scroll', checkScroll);
-        });
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
