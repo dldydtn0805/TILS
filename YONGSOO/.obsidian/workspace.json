@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PROGRAMMING/ALGORITHM/20250510-TwoPointer.md",
+                "file": "PROGRAMMING/ALGORITHM/20250512-BFS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "20250510-TwoPointer"
+              "title": "20250512-BFS"
             }
           }
         ]
@@ -170,13 +170,20 @@
   },
   "active": "71723215548a8403",
   "lastOpenFiles": [
+    "PROGRAMMING/ALGORITHM/YYYYMMDD-SUBJECT.MD",
+    "PROGRAMMING/ALGORITHM/20250512-BFS.md",
+    "PROGRAMMING/ALGORITHM/20250511-Backtracking.md",
+    "PROGRAMMING/ALGORITHM/20250511-TreeSet.md",
+    "PROGRAMMING/ALGORITHM/20250511-HashMap.md",
+    "PROGRAMMING/ALGORITHM/20250510-TwoPointer.md",
+    "PROGRAMMING/ALGORITHM/20250510-Kruskal.MD",
+    "Untitled",
+    "Untitled 1.md",
+    "Untitled.md",
     "DESIGN/HTML&CSS/24820686/images/section-2-icon-3.svg",
     "DESIGN/HTML&CSS/24820686/images/section-2-icon-2.svg",
     "DESIGN/HTML&CSS/24820686/images/section-2-icon-1.svg",
     "DESIGN/HTML&CSS/24820686/index.html~",
-    "DESIGN/HTML&CSS/24820686/index.js",
-    "PROGRAMMING/ALGORITHM/YYYYMMDD-SUBJECT.MD",
-    "PROGRAMMING/ALGORITHM/20250510-TwoPointer.md",
-    "PROGRAMMING/ALGORITHM/20250510-Kruskal.MD"
+    "DESIGN/HTML&CSS/24820686/index.js"
   ]
 }

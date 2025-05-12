@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkScroll() {
         scrollAnimElements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 100; // 요소가 이 픽셀만큼 보이면 애니메이션 시작
+            const elementVisible = 150; // 요소가 이 픽셀만큼 보이면 애니메이션 시작
 
             if (elementTop < window.innerHeight - elementVisible) {
                 // 지연시간 적용
