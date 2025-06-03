@@ -19,19 +19,26 @@ https://www.acmicpc.net/problem/1103
 첫째 줄에 문제의 정답을 출력한다. 만약 형택이가 동전을 무한번 움직일 수 있다면 -1을 출력한다.  
   
 ---  
-  
+
+BFS & Dijkstra 를 사용할 수 있다
+
 지점 X 와 지점 Y가 서로 갈수있다면, 사이클이다  
   
-모든 지점들에 대해 서로 BFS를 하려면 625*10^4 의 시간이 필요하다  
+모든 지점들에 대해 서로 BFS를 하려면 `625*10^4` 의 시간이 필요하다  
 
 따라서 각 지점이 서로 갈 수 있는지에 대한 사이클을 만들어줄 수 있다
 
 `cycle[ni][nj][cur.ci][cur.cj] && cycle[cur.ci][cur.cj][ni][nj]`
 
-그 뒤에는 우선순위큐를 사용해서 시작지점에서 구멍으로 빠지거나 외부로 빠질 때까지 사용할 수  있는 가장 큰 이동 횟수를 세줄 수 있다
+그 뒤에는 Dijkstra를 사용해서 시작지점에서 구멍으로 빠지거나 외부로 빠질 때까지 사용할 수  있는 가장 큰 이동 횟수를 세줄 수 있다
 
 `PriorityQueue<Node> pq = new PriorityQueue<>((a,b)->{return b.curMoveCnt-a.curMoveCnt;});`
 
+---
+
+혹은 DFS & DP 를 사용할 수 있다
+
+visited 배열로 사이클을 탐지하고 dp 배열로 최대 이동 횟수를 찾을 수도 있다.
 
 
 ## Input
@@ -140,7 +147,7 @@ public class Main {
             for (int[] dir : direction) {  
                 int ni = cur[0] + dir[0]*weight;  
                 int nj = cur[1] + dir[1]*weight;  
-                if (0 <= ni & ni < N && 0 <= nj && nj < M) {  
+                if (0 <= ni && ni < N && 0 <= nj && nj < M) {  
                     if (board[ni][nj] == -1) continue;  
                     if (!visited[ni][nj]) {  
                         visited[ni][nj] = true;  
@@ -162,5 +169,67 @@ public class Main {
             this.curMoveCnt = curMoveCnt;  
         }  
     }  
-}  
+}
+```
+
+
+```java
+import java.io.*;  
+import java.util.*;  
+  
+public class Main {  
+    static int N, M, ans;  
+    static int[][] direction = {{-1,0},{0,1},{1,0},{0,-1}};  
+    static int INF = (int) 1e9;  
+    public static void main(String[] args) throws IOException {  
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));  
+        StringTokenizer st = new StringTokenizer(br.readLine());  
+        N = Integer.parseInt(st.nextToken());  
+        M = Integer.parseInt(st.nextToken());  
+        int[][] board = new int[N][M];  
+        for (int i = 0; i < N; i ++) {  
+            String line = br.readLine();  
+            for (int j = 0; j < M; j ++) {  
+                if (line.charAt(j) == 'H') {  
+                    board[i][j] = -1;  
+                } else {  
+                    board[i][j] = Integer.parseInt(String.valueOf(line.charAt(j)));  
+                }  
+            }  
+        }  
+        boolean[][] visited = new boolean[N][M];  
+        int[][] dp = new int[N][M];  
+        ans = -1;  
+        ans = Math.max(ans, DFS(board, visited, 0, 0, 0, dp));  
+        System.out.println(ans == INF ? -1 : ans);  
+        br.close();  
+    }  
+  
+    private static int DFS (int[][] board, boolean[][] visited, int ci, int cj, int moveCnt, int[][] dp) {  
+        if (ans == INF) return INF;  
+        visited[ci][cj] = true;  
+        int res = moveCnt;  
+        int weight = board[ci][cj];  
+        for (int[] dir : direction) {  
+            int ni = ci + dir[0]*weight;  
+            int nj = cj + dir[1]*weight;  
+            if (0 <= ni && ni < N && 0 <= nj && nj < M) {  
+                if (board[ni][nj] == -1) {  
+                    res = Math.max(res, moveCnt + 1);  
+                } else {  
+                    if (visited[ni][nj]) return INF;  
+                    if (dp[ni][nj] < moveCnt+1) {  
+                        dp[ni][nj] = moveCnt+1;  
+                        res = Math.max(res, DFS(board, visited, ni, nj, moveCnt+1, dp));  
+                    }  
+                }  
+            } else {  
+                res = Math.max(res, moveCnt + 1);  
+            }  
+        }  
+        visited[ci][cj] = false;  
+        ans = Math.max(res, ans);  
+        return res;  
+    }  
+}
 ```
