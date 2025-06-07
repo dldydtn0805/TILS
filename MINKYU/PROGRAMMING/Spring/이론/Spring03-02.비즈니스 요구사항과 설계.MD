@@ -32,11 +32,11 @@
 
 회원 도메인 요구사항
 
+![회원 클래스 다이어그램](<images/회원 클래스 다이어그램.png>)
+
 1. 회원을 가입하고 조회할 수 있다
 2. 회원은 일반과 VIP 두 개의 등급이 있다
 3. 회원 데이터는 자체 DB를 구축하거나, 외부 시스템과 연동할 것이다(미확정)
-
-![회원 도메인 설계](./images/회원 도메인 설계.png)
 
 #### 회원 도메인 개발 및 실행과 테스트
 
@@ -261,4 +261,194 @@ public class MemberServiceTest {
 
 #### 주문과 할인 도메인 설계
 
+주문 도메인 요구사항
+
+![주문 클래스 다이어그램](<images/주문 클래스 다이어그램.png>)
+
+1. 회원은 상품을 주문할 수 있다
+2. 회원 등급에 따라 할인 정책을 적용할 수 있다
+3. 할인 정책은 변경 가능성이 높다
+
+- 회사 기본 할인 정책을 결정하지 못 한 상황
+- 최악의 경우, 할인을 적용하지 않을 수도 있다
+
 #### 주문과 할인 도메인 개발 및 실행과 테스트
+
+주문 도메인을 개발 해 봅시다
+
+1. 할인 정책 역할 - 구현체 만들기
+
+```java
+// 할인 정책 역할(DiscountPolicy)
+package hello.core.discount;
+import hello.core.member.Member;
+
+public interface DiscountPolicy {
+    int discount(Member member, int price);
+}
+```
+
+```java
+// 할인 정책 구현체(FixDiscountPolicy)
+package hello.core.discount;
+import hello.core.member.Grade;
+import hello.core.member.Member;
+
+public class FixDiscountPolicy implements DiscountPolicy {
+    private final int discountFixAmount = 1000;
+
+    @Override
+    public int discount(Member member, int price) {
+        if (member.getGrade() == Grade.VIP) {
+            return discountFixAmount;
+        }
+        return 0;
+    }
+}
+```
+
+2. 주문 역할과 구현체 만들기
+
+- 주문 Class
+
+```java
+package hello.core.order;
+
+public class Order {
+    private Long memberId;
+    private String itemName;
+    private int itemPrice;
+    private int discountPrice;
+    // constructor
+    public Order(Long memberId, String itemName, int itemPrice, int discountPrice) {
+        this.memberId = memberId;
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
+        this.discountPrice = discountPrice;
+    }
+
+    public int calculatePrice() {
+        return itemPrice - discountPrice;
+    }
+
+    // getter
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public int getItemPrice() {
+        return itemPrice;
+    }
+
+    public int getDiscountPrice() {
+        return discountPrice;
+    }
+    // setter
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public void setDiscountPrice(int discountPrice) {
+        this.discountPrice = discountPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "memberId=" + memberId +
+                ", itemName='" + itemName + '\'' +
+                ", itemPrice=" + itemPrice +
+                ", discountPrice=" + discountPrice +
+                '}';
+    }
+}
+```
+
+- 주문 Service 역할
+
+```java
+package hello.core.order;
+
+public interface OrderService {
+    Order createOrder(Long memberId, String itemName, int itemPrice);
+}
+```
+
+- 주문 Service 구현체
+
+```java
+package hello.core.order;
+import hello.core.discount.DiscountPolicy;
+import hello.core.discount.FixDiscountPolicy;
+import hello.core.member.Member;
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
+
+public class OrderServiceImpl implements OrderService {
+    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    @Override
+    public Order createOrder(Long memberId, String itemName, int itemPrice) {
+        Member member = memberRepository.findById(memberId);
+        int discountPrice = discountPolicy.discount(member, itemPrice);
+
+        return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+}
+```
+
+테스트도 마찬가지로, 아까 했던 Member 테스트 했던 것 처럼 해보기
+
+```java
+package hello.core.order;
+
+import hello.core.member.Grade;
+import hello.core.member.Member;
+import hello.core.member.MemberService;
+import hello.core.member.MemberServiceImpl;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class OrderServiceTest {
+    MemberService memberService = new MemberServiceImpl();
+    OrderService orderService = new OrderServiceImpl();
+
+    @Test
+    void createOrder() {
+        Long memberId = 1L;
+        Member member = new Member(memberId, "memberA", Grade.VIP);
+        memberService.join(member);
+        Order order = orderService.createOrder(memberId, "itemA", 10000);
+        Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
+    }
+}
+```
+
+추가로, 퍼센티지로 할인을 해주는 RateDiscountPolicy도 개발 해 보고 적용합니다...
+
+#### 주문 도메인 설계의 문제점
+
+지금까지 주문 도메인을 설계 및 개발, 테스트 해 보았음
+
+- 테스트 결과, 잘 되는데??
+- 역할과 구현 분리
+  - 다형성을 활용한 인터페이스와 구현 객체 분리
+- OCP, DIP를 잘 지켰는가? NO!
+  - DIP 위배 : 주문 서비스 클라이언트는 역할(DiscountPolicy)에만 의존하지 않고, 구현(FixDiscountPolicy, RateDiscountPolicy)에도 의존하는 중 ㅠㅠ
+  - OCP 위배 : 기능 확장 시, 클라이언트 코드에 영향을 준다
+
+어떻게 해야 하는 것인가요
+
+- 다음 시간에...
