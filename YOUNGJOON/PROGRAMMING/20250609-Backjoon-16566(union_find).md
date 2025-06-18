@@ -112,7 +112,7 @@ int main()
 >
 > > 1.  주어지는 카드들을 모두 받아 오름차순으로 정렬한다.
 > >
-> > 2. 현재 카드보다 한 단계 큰 카드를 저장할 vector bigger_card를 선언한다. 그리고 해당 카드의 개수를 기록한 unordered_map card_cnt를 선언한다.
+> > 2. 현재 카드보다 한 단계 큰 카드를 저장할 vector bigger_card를 선언한다. 그리고 해당 카드의 개수를 기록할 unordered_map card_cnt를 선언한다.
 > >
 > > 3. 0~M번째 카드를 모두 순회한다. 이때 변수 tmp를 0으로 선언한다.
 > >
