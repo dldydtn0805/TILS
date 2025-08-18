@@ -102,7 +102,7 @@ public class Main {
                     hs[b] = new HashSet<>();  
                 } else {  
                     hs[a].addAll(hs[b]);  
-                    hs[b].clear();  
+                    hs[b] = new HashSet<>();  
                 }  
             } else {  
                 int a = Integer.parseInt(st.nextToken());  
