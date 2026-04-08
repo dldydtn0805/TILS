@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>입력 타입</title>
+  </head>
+  <body>
+    <form action="input" method="post">
+      <!-- 기본 타입 -->
+      ID : <input type="text" name="id" /><br />
+      PW : <input type="password" name="password" /><br />
+      EMAIL : <input type="email" name="email" /><br />
+      URL : <input type="url" name="url" /><br />
+      TEL : <input type="tel" name="tel" /><br />
+      <hr />
+      <!-- 특수 타입 -->
+      NUMBER :
+      <input type="number" name="number" step="10" min="0" max="100" /><br />
+      COLOR : <input type="color" name="color" /><br />
+      DATE : <input type="date" name="date" /><br />
+      TIME : <input type="time" name="time" /><br />
+      DATETIME-LOCAL :
+      <input type="datetime-local" name="datetime-local" /><br />
+      RANGE : <input type="range" name="range" /><br />
+      <!-- 버튼 타입 -->
+      FILE : <input type="file" name="file" /><br />
+      BUTTON : <input type="button" value="기본 버튼" /><br />
+      RESET : <input type="reset" value="취소 버튼" /><br />
+      SUBMIT : <input type="submit" value="제출 버튼" /><br />
+    </form>
+  </body>
+</html>

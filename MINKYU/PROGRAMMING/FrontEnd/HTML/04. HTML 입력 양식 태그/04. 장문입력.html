@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장문 입력</title>
+  </head>
+  <body>
+    <!-- textarea 활용 -->
+    <form action="/write" method="post">
+      <table border="1">
+        <tr>
+          <td align="center"><label for="title">제목</label></td>
+          <td>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="제목을 입력해 주세요."
+            />
+          </td>
+        </tr>
+        <tr>
+          <td align="center"><label for="writer">작성자</label></td>
+          <td>
+            <input type="text" name="writer" id="writer" placeholder="작성자" />
+          </td>
+        </tr>
+        <tr>
+          <label for="content" style="display: none"></label>
+          <td colspan="2">
+            <textarea
+              name="content"
+              id="content"
+              placeholder="내용을 작성해 주세요."
+              rows="8"
+              cols="40"
+              maxlength="400"
+              style="resize: none"
+            ></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="submit" style="width: 100%" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

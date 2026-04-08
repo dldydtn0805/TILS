@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>링크 태그</title>
+  </head>
+  <body>
+    <!-- 
+    <a></a>
+    * 속성(대괄호 활용 시 대체 가능)
+    - href : 이동할 경로(파일 경로, URL, #id 속성)
+    - 경로
+      * 절대 경로 : href="http://www.naver.com" -> 지정한 웹사이트로 이동
+      * 상대 경로 : href="../../test.html"      -> 상위 경로의 다른 문서로 이동
+      * 문서 내부 : href="#text"                -> 지정한 id 속성을 가진 요소로 이동
+      경로 지정 시, ../ : 상위 경로, ./ : 현재 경로
+    
+    - target
+      * _black  : 새 창에서 열기
+      * _self   : 현재 창에서 열기
+      * _parent : 부모 프레임에서 열기
+      * _top    : 최상위 프레임에서 열기
+  -->
+    <h1>링크 태그</h1>
+    <!-- a[href="http://www.naver.com"][target="_blank"] -->
+    <a href="http://www.naver.com" target="_blank">naver로 이동(새 창)</a>
+    <br />
+    <!-- a[href="http://www.naver.com"][target="_self"] -->
+    <a href="http://www.naver.com" target="_self">naver로 이동(현재 창)</a>
+    <br />
+    <!-- a[href="bottom"][id="top"] -->
+    <a href="#bottom" id="top">맨 아래로 가기</a>
+    <br />
+    <div style="height: 1000px"></div>
+
+    <!-- mailto:         : 이메일 지정 -->
+    <!-- tel:            : 전화번호 지정  -->
+    <p>
+      이메일 <br />
+      <!-- href="mailto:이메일 주소" -->
+      <a href="mailto:minkyu1180@naver.com">minkyu1180@naver.com</a>
+    </p>
+    <p>
+      전화번호 <br />
+      <a href="tel:01012345678">010-1234-5678</a>
+    </p>
+
+    <a href="#top" id="bottom">맨 위로 가기</a>
+    <div style="height: 200px"></div>
+  </body>
+</html>

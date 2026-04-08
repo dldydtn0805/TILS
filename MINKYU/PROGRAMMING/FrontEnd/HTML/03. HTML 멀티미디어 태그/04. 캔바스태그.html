@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>브러시로 그림 그리기</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+        display: block;
+        margin: 0 auto;
+        background-color: #f0f0f0;
+      }
+      .controls {
+        text-align: center;
+        margin: 20px;
+      }
+      button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+      <button id="clearBtn">전체 지우기</button>
+      <button id="saveBtn">그림으로 저장하기</button>
+    </div>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+
+    <script>
+      const canvas = document.getElementById('myCanvas');
+      const ctx = canvas.getContext('2d');
+
+      let drawing = false;
+
+      // 마우스 다운 이벤트 핸들러
+      canvas.addEventListener('mousedown', (e) => {
+        drawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+      });
+
+      // 마우스 업 이벤트 핸들러
+      canvas.addEventListener('mouseup', () => {
+        drawing = false;
+      });
+
+      // 마우스 이동 이벤트 핸들러
+      canvas.addEventListener('mousemove', (e) => {
+        if (drawing) {
+          ctx.lineTo(
+            e.clientX - canvas.offsetLeft,
+            e.clientY - canvas.offsetTop
+          );
+          ctx.strokeStyle = 'black'; // 선 색상
+          ctx.lineWidth = 5; // 선 두께
+          ctx.lineCap = 'round'; // 선 끝 모양
+          ctx.stroke();
+        }
+      });
+
+      // 마우스 떠나기 이벤트 핸들러
+      canvas.addEventListener('mouseleave', () => {
+        if (drawing) {
+          drawing = false;
+        }
+      });
+
+      // 전체 지우기 버튼 이벤트 핸들러
+      document.getElementById('clearBtn').addEventListener('click', () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      });
+
+      // 그림으로 저장하기 버튼 이벤트 핸들러
+      document.getElementById('saveBtn').addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'drawing.png';
+        link.click();
+      });
+    </script>
+  </body>
+</html>

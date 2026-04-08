@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- css 파일 링크 연결 -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- 브라우저 타이틀 선정 -->
+    <title>Momentum</title>
+  </head>
+  <body>
+    <!-- 로그인 후 보여지는 h1 태그 -->
+    <h1 id="greeting" class="hidden"></h1>
+    <h2 id="clock">00:00</h2>
+
+    <!-- Login Input -->
+    <form id="login-form" class="hidden">
+      <input
+        required
+        maxlength="15"
+        type="text"
+        placeholder="press your name"
+      />
+      <input type="submit" value="Login" />
+    </form>
+
+    <!-- Todo List Form -->
+    <form id="todo-form" action="">
+      <input type="text" placeholder="Write Your ToDo!" />
+    </form>
+    <ul id="todo-list">
+      <li></li>
+    </ul>
+
+    <!-- 명언 div 태그 -->
+    <div id="quote">
+      <span id="author"></span>
+      <span id=""></span>
+    </div>
+    <!-- js 파일 연결 -->
+    <script src="js/greetings.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/quotes.js"></script>
+    <script src="js/backgrounds.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/weather.js"></script>
+  </body>
+</html>
