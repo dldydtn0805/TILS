@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+
 @Controller
 @Slf4j
 public class ArticleController {
@@ -55,5 +57,20 @@ public class ArticleController {
         
         // 모델에 등록한 article을 활용하여 보여주는 뷰 페이지 반환
         return "articles/show";
+    }
+
+    // 모든 게시글 페이지 요청(get)
+    @GetMapping("/articles")
+    public String index(Model model) {
+        // 1. 다운캐스팅
+        // List<Article> articleEntityList = (List<Article>) articleRepository.findAll();
+        // 2. 업캐스팅
+        // Iterable<Article> articleEntityList = articleRepository.findAll();
+        // 3. Override를 통한 findAll() 메서드를 사용하여 반환 타입이 ArrayList<Article>이 되도록 변경
+        ArrayList<Article> articleEntityList = articleRepository.findAll();
+
+        model.addAttribute("articleList", articleEntityList);
+
+        return "articles/index";
     }
 }
