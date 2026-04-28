@@ -41,7 +41,7 @@ public class ArticleController {
         Article saved = articleRepository.save(article);
         // System.out.println(saved.toString());
         log.info(saved.toString());
-        return "";
+        return "redirect:/articles/" + saved.getId();
     }
     
     // 특정 id값 게시글 페이지 요청(get)

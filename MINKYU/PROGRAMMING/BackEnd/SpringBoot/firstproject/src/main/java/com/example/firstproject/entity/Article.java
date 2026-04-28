@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -12,6 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor // 기본 생성자
 @ToString
+@Getter
 public class Article {
     @Id
     @GeneratedValue
@@ -21,4 +23,8 @@ public class Article {
     @Column
     private String content;
 
+    // getter 메서드
+//    public Long getId() {
+//        return id;
+//    }
 }
