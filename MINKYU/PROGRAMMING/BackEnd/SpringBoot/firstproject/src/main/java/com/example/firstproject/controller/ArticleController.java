@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 
@@ -81,5 +82,32 @@ public class ArticleController {
         model.addAttribute("article", articleEntity);
 
         return "articles/edit";
+    }
+
+    // 수정된 게시글 받기 요청
+    @PostMapping("/articles/update")
+    public String update(ArticleForm form) {
+        // 수정된 게시글을 엔티티로 변경한 것
+        Article articleEntity = form.toEntity();
+        // 수정하기 전의 게시글
+        Article target = articleRepository.findById(articleEntity.getId()).orElse(null);
+        // 기존 데이터 값 갱신
+        if (target != null) {
+            articleRepository.save(articleEntity);
+        }
+        // 리다이렉트
+        return "redirect:/articles/" + articleEntity.getId();
+    }
+
+    // 게시글 삭제 요청
+    @GetMapping("/articles/{id}/delete")
+    public String delete(@PathVariable Long id, RedirectAttributes rttr) {
+        Article target = articleRepository.findById(id).orElse(null);
+        if (target != null) {
+            articleRepository.delete(target);
+            rttr.addFlashAttribute("msg", "삭제 완료");
+        }
+
+        return "redirect:/articles";
     }
 }

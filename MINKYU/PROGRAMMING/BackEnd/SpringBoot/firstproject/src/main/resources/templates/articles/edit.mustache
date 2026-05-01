@@ -1,7 +1,8 @@
 {{> layouts/header }}
 
 {{#article}}
-<form class="container" action="" method="post">
+<form class="container" action="/articles/update" method="post">
+    <input name="id" value="{{id}}" type="hidden">
     <div class="mb-3">
         <label class="form-label">Title</label>
         <input type="text" class="form-control" name="title" value="{{title}}">
@@ -10,7 +11,7 @@
         <label class="form-label">Content</label>
         <textarea class="form-control" name="content" rows="3">{{content}}</textarea>
     </div>
-    <button class="btn btn-primary" type="submit">submit</button>
+    <button class="btn btn-primary" type="submit">edit</button>
     <a href="/articles/{{id}}">취소하기</a>
 </form>
 {{/article}}
