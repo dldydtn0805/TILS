@@ -1,8 +1,10 @@
 package com.example.firstproject.controller;
 
 import com.example.firstproject.dto.ArticleForm;
+import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.repository.ArticleRepository;
+import com.example.firstproject.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -22,7 +25,9 @@ public class ArticleController {
     // private ArticleRepository articleRepository = new ArticleRepositoryImpl();
     @Autowired
     private ArticleRepository articleRepository;
-    
+    // CommentService 서비스 객체 주입
+    @Autowired
+    private CommentService commentService;
     // 새로운 게시글 작성 페이지 요청(get)
     @GetMapping("/articles/new")
     public String newArticleForm() {
@@ -51,11 +56,14 @@ public class ArticleController {
         // 레퍼지토리가 DB에서 받아온 엔터티
         // Optional<Article> articleEntity = articleRepository.findById(id);
         Article articleEntity = articleRepository.findById(id).orElse(null);
-        
+
+        List<CommentDto> commentDtos = commentService.comments(id);
+
         // model에 해당 엔터티를 등록
         // article이라는 이름으로 articleEntity를 model에 등록한다
         model.addAttribute("article", articleEntity);
-        
+
+        model.addAttribute("commentDtos", commentDtos);
         // 모델에 등록한 article을 활용하여 보여주는 뷰 페이지 반환
         return "articles/show";
     }
