@@ -23,12 +23,13 @@
         const commentCreateBtn = document.querySelector("#comment-create-btn");
         commentCreateBtn.addEventListener("click", function() {
             const comment = {
-                articleId: document.querySelector("#new-comment-article-id").value,
+                article_id: document.querySelector("#new-comment-article-id").value,
                 nickname: document.querySelector("#new-comment-nickname").value,
                 body: document.querySelector("#new-comment-body").value
             }
             console.log(comment);
-                    const apiUrl = "/api/articles/" + comment.articleId + "/comments";
+
+            const apiUrl = "/api/articles/" + comment.article_id + "/comments";
             fetch(apiUrl, {
                 method: "POST",
                 headers: {
