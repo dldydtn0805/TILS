@@ -1,10 +1,10 @@
-package com.minkyu.shop;
+package com.minkyu.bookstore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ShopApplicationTests {
+class BookstoreApplicationTests {
 
 	@Test
 	void contextLoads() {
